@@ -1,2 +1,2 @@
-# csm
-Notas de aula do curso de Controle de Sistemas Mecânicos
+# CSM
+Acesse: [https://andresmendes.github.io/csm/](https://andresmendes.github.io/csm/)
