@@ -1,0 +1,1350 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1.0, maximum-scale=2.0, minimum-scale=.2, user-scalable=yes">
+	<meta name="description" content="Notas de aula do curso de Controle de Sistemas Mecânicos">
+	<meta name="author" content="André de S. Mendes">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+	<title>ME9710/NMB710 - Controle de Sistemas Mecânicos</title>
+
+	<link rel="stylesheet" href="mycss/revealasm.css">
+	<link rel="stylesheet" href="mycss/theme/whiteasm.css" id="theme">
+	<!-- My class files -->
+	<link rel="stylesheet" href="mycss/asm.css">
+
+	<!-- Theme used for syntax highlighting of code -->
+	<link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
+
+	<!-- Printing and PDF exports -->
+	<script>
+		var link = document.createElement('link');
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = window.location.search.match(/print-pdf/gi) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+		document.getElementsByTagName('head')[0].appendChild(link);
+	</script>
+
+</head>
+
+<body>
+
+	<div id="mySidenav" class="sidenav">
+
+		<div style="width:100%;height:60px">
+			<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+		</div>
+
+		<div style="width:100%;margin-bottom: 60px">
+			<a href="#/inicial">Página principal</a>
+			<a href="#/intro">0 - Introdução: Controle de Sistemas Mecânicos</a>
+			<a href="#/laplace">1 - Laplace</a>
+			<a href="#/functrans">2 - Função de transferência</a>
+			<a href="#/sistprimeiraordem">3 - Sistemas de primeira ordem</a>
+			<a href="#/sistsegundaordem">4 - Sistemas de segunda ordem</a>
+			<a href="#/errosest">5 - Erros estacionários</a>
+			<a href="#/controladorpid">6 - Controlador PID</a>
+			<a href="#/espacoestados">7 - Espaço de estados</a>
+			<a href="#/linearizacao">8 - Linearização</a>
+			<a href="#/controladoralocacao">9 - Projeto por alocação de polos</a>
+			<a href="#/controladorlqr">10 - Regulador linear quadrático</a>
+			<a href="#/observador">11 - Observador de estados</a>
+			<a href="#/sistemalj">Extra - Sistema LJ</a>
+		</div>
+
+	</div>
+
+	<!-- Para pinch zoom no celular, é preciso insterir este "data-prevent-swipe" para evitar conflito. -->
+	<div class="reveal" onclick="closeNav()" data-prevent-swipe>
+		<div class="slides">
+
+			<section>
+				<section id="inicial">
+
+					<div style="width:100%;position: relative; height: 700px;">
+						<div style="width:100%;position:absolute;top:250px;text-align: center">
+
+							<h5>Controle de Sistemas Mecânicos</h5>
+							<p style="font-size:20px">Criado por André de S. Mendes</p>
+
+						</div>
+						<div style="width:100%;position:absolute; bottom:30px;">
+
+							<a href="https://moodle.fei.edu.br/moodle/course/view.php?id=745" target="_blank"
+								title="Moodle"><img src="ilustracoes/logoMoodle.png" alt="Logo Moodle"
+									style="height: 65px; vertical-align: middle;"></a>
+
+							<a href="https://github.com/andresmendes/csm" target="_blank" title="GitHub"><img
+									src="ilustracoes/logoGitHub.png" alt="Logo GitHub"
+									style="height: 65px; vertical-align: middle;"></a>
+
+							<a href="#ajuda" class="button1" title="Ajuda"
+								style="position:absolute ; left:30px; bottom:0px">?</a>
+
+						</div>
+					</div>
+
+					<aside class="notes">
+						Oh hey, these are some notes. They'll be hidden in your presentation, but you can see them if
+						you open the
+						speaker
+						notes window (hit »S« on your keyboard).
+					</aside>
+				</section>
+
+				<section id="ajuda">
+					<h3>Primeiros passos</h3>
+
+					<ul style="padding:20px">
+						<li>Navegue pelas páginas utilizando as <span style="color:#2a76dd">setas de controle</span> à
+							direita.</li>
+						<li>Acesse diretamente os tópico através do menu à esquerda (<span
+								style="font-family: Helvetica, sans-serif ;font-size:25px;cursor:pointer;">&#9776;</span>).
+						</li>
+						<li>Os diferentes tópicos estão distribuídos na horizontal.</li>
+						<li>O conteúdo de cada tópico está na vertical.</li>
+						<li>Baixe a última versão deste material clicando <a
+								href="https://github.com/andresmendes/csm/releases/" target="_blank">aqui</a>.</li>
+					</ul>
+				</section>
+			</section>
+
+			<section>
+				<section id="intro">
+					<h5>
+						Introdução ao curso
+					</h5>
+				</section>
+
+				<section data-background-image="ilustracoes/introWaymoFleet.jpeg" data-background-size="100%">
+
+				</section>
+
+				<section>
+					<!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/ZPBlO-jm2E4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
+					<!-- <iframe width="420" height="345" src="https://www.youtube.com/embed/ZPBlO-jm2E4" frameborder="0" allowfullscreen></iframe>
+-->
+					<iframe allowfullscreen=""
+						data-src="https://www.youtube.com/embed/WBkgs4u5tW0?start=85;end=166;cc_load_policy=1;autoplay=1"
+						width="100%" height="700px" frameborder="0"></iframe>
+
+				</section>
+
+				<section>
+
+					<table style="font-size: 30px;width:70%">
+						<tr>
+							<th>
+								<p>Modal</p>
+							</th>
+							<th>
+								<p>Milhões [TKU]</p>
+							</th>
+							<th>
+								<p>Participação [%]</p>
+							</th>
+						</tr>
+						<tr>
+							<td>
+								<p>Rodoviário</p>
+							</td>
+							<td>
+								<p>485.625</p>
+							</td>
+							<td>
+								<p>61,1</p>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<p>Ferroviário</p>
+							</td>
+							<td>
+								<p>164.809</p>
+							</td>
+							<td>
+								<p>20,7</p>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<p>Aquaviário</p>
+							</td>
+							<td>
+								<p>108.000</p>
+							</td>
+							<td>
+								<p>13,6</p>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<p>Dutoviário</p>
+							</td>
+							<td>
+								<p>33.300</p>
+							</td>
+							<td>
+								<p>4,2</p>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<p>Aéreo</p>
+							</td>
+							<td>
+								<p>3.169</p>
+							</td>
+							<td>
+								<p>0,4</p>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<p style="font-weight: 600">Total</p>
+							</td>
+							<td>
+								<p style="font-weight: 600">794.903</p>
+							</td>
+							<td>
+								<p style="font-weight: 600">100,0</p>
+							</td>
+						</tr>
+					</table>
+
+					<p style="font-size: 25px;"><a href="http://www.cnt.org.br/Boletim/boletim-estatistico-cnt"
+							target="_blank">CNT</a>:
+						Movimentação anual da matriz de transporte de carga no Brasil em 2016.</p>
+
+				</section>
+
+				<section>
+
+					<img src="ilustracoes/introEmissionsBrasilPT.svg" alt="Emissões Brasil" style="width:90%;">
+
+					<p style="font-size: 25px;"><a href="http://www.cnt.org.br/Boletim/boletim-estatistico-cnt"
+							target="_blank">MCTI</a>:
+						Emissões de CO 2 no Brasil em 2010.</p>
+
+				</section>
+
+				<section data-background-image="ilustracoes/introPlatoon.jpg" data-background-size="100%">
+
+				</section>
+
+				<section>
+
+					<img src="ilustracoes/introCoeficientePressao.svg" alt="Coeficiente de pressão" style="width:90%">
+
+					<p style="font-size: 25px;"><a href="http://www.cnt.org.br/Boletim/boletim-estatistico-cnt"
+							target="_blank">Liang,
+							2016</a>: Campo de pressão no plano de simetria de um comboio de dois caminhões para
+						diferentes
+						distâncias de separação.</p>
+					<!-- Fuel-Efficient Heavy-Duty Vehicle Platoon Formation. 2016. Tese(Doutorado) – KTH ROYAL INSTITUTE OF TECHNOLOGY. -->
+				</section>
+
+				<section>
+
+					<img src="ilustracoes/frameworkPT.svg" alt="Framework PT" style="width: 90%">
+
+				</section>
+
+				<section>
+
+					<iframe allowfullscreen=""
+						data-src="https://www.youtube.com/embed/gVrw7nkHK2c?start=1&end=91&cc_load_policy=1&cc_lang_pref=en&yt:cc=on&autoplay=1"
+						width="100%" height="700px" frameborder="0"></iframe>
+
+				</section>
+
+				<section>
+
+					<img src="ilustracoes/introEcodriving.jpeg" alt="BR-364" style="width:100%">
+
+				</section>
+
+				<section>
+
+					<img src="ilustracoes/introSpeedOptimization.png" alt="Speed Optimization" style="width:70%;">
+
+					<p style="font-size: 25px;"><a href="http://www.cnt.org.br/Boletim/boletim-estatistico-cnt"
+							target="_blank">Huang,
+							2018</a>:
+						Fluxograma para otimização do perfil de velocidade.</p>
+					<!-- Ecological Driving System for Connected/Automated Vehicles Using a Two-StageControl Hierarchy -->
+				</section>
+
+				<section>
+
+					<img src="ilustracoes/introLogoMatlab.svg" alt="Logo Matlab">
+
+				</section>
+
+			</section>
+
+			<section>
+				<section id="laplace">
+
+					<div style="width:100%; height: 700px;">
+						<div style="width:100%;position:absolute;top:250px;text-align: center;">
+
+							<h5>Laplace</h5>
+
+						</div>
+						<div style="width:100%;position:absolute; bottom:30px;">
+
+							<a href="https://moodle.fei.edu.br/moodle/course/view.php?id=745&section=2" target="_blank"
+								class="button2" style="float: left; margin: 10px; align-content: center;bottom: 10 px"
+								title="Estudo recomendado">Estudo
+								recomendado</a>
+
+						</div>
+					</div>
+
+				</section>
+
+				<section id="laplaceteste">
+
+					<p style="font-size: 30px; text-align: justify; margin-bottom: 30px;">Considere o carro de massa
+						\(m\) e coeficiente de
+						arrasto \(c\). Para uma dada velocidade inicial \(v(0)\), qual é a expressão da velocidade
+						em função do tempo \(v(t)\) para uma entrada \(f(t)=1\)?</p>
+
+					<img style="width: 50%;" src="ilustracoes/functransSedan.svg" alt="Sedan">
+
+					<p style="font-size:30px"> \(m \, \dot{v} = f(t) - c \,v\) </p>
+
+				</section>
+
+				<section>
+
+					<div style="width:100%">
+
+						<h5 style="margin-bottom: 50px">Transformada de Laplace</h5>
+
+						<p style="font-size: 25px;">Definição</p>
+						<p style="font-size: 25px;">\[\mathscr{L} \left[ f(t) \right] = \int_0^\infty e^{-st} f(t) \, dt
+							= F(s)\]</p>
+
+						<p style="font-size: 25px;" class="fragment fade-in" data-fragment-index="1">Exemplo:
+							Transformada de Laplace de \(f(t) = 1\)?</p>
+
+						<p style="font-size: 25px;" class="fragment fade-in" data-fragment-index="2">\[ F(s) =
+							\int_0^\infty e^{-st} dt = \left. \frac{e^{-s t}}{-s} \right|^{\infty}_{0} = \left.
+							\frac{e^{-s t}}{s} \right|^{0}_{\infty}\]</p>
+						<p style="font-size: 25px;" class="fragment fade-in" data-fragment-index="3">\[ F(s) =
+							\frac{e^0}{s} - \frac{e^{-\infty}}{s} = \frac{1}{s}\]</p>
+
+						<div style="width:100%;">
+
+							<a href="https://moodle.fei.edu.br/moodle/course/view.php?id=745&section=2" target="_blank"
+								class="button2" style="float: left; margin: 10px; align-content: center;bottom: 10 px"
+								title="Estudo recomendado">Tabelas de Laplace</a>
+
+						</div>
+
+				</section>
+
+				<section>
+
+					<a href="#laplaceteste" class="button2" style="margin: 10px; align-content: center;"
+						title="Mais exercícios">Voltar
+						para o exercício</a>
+
+					<a href="#functrans" class="button2" style="margin: 10px; align-content: center;"
+						title="Dúvidas">Próximo
+						tópico</a>
+
+				</section>
+
+			</section>
+			<section>
+				<section id="functrans">
+
+					<div style="width:100%; height: 700px;">
+						<div style="width:100%;position:absolute;top:250px;text-align: center;">
+
+							<h5>Função de transferência</h5>
+
+						</div>
+						<div style="width:100%;position:absolute; bottom:30px;">
+
+							<a href="https://moodle.fei.edu.br/moodle/course/view.php?id=745&section=3" target="_blank"
+								class="button2" style="float: left; margin: 10px; align-content: center;bottom: 10 px"
+								title="Estudo recomendado">Estudo
+								recomendado</a>
+
+						</div>
+					</div>
+
+				</section>
+
+				<section id="functransteste">
+
+					<p style="font-size: 25px">Verifique a estabilidade das funções de transferência:</p>
+
+					<ol style="font-size: 25px">
+						<li>\(G(s) = \frac{(s - 3)}{(s + 1)(s+2)}\)</li>
+						<li>\(G(s) = \frac{1}{(s+1)(s^2 + 4 s + 13)}\)</li>
+						<li>\(G(s) = \frac{1}{(s-1)}\)</li>
+					</ol>
+
+					<p style="font-size: 25px">Determine os ganhos \(K\) e \(K_g\) da função de transferência 1).</p>
+
+
+
+				</section>
+
+				<section>
+
+					<h5 style="margin-bottom: 50px">Malha aberta X Malha fechada</h5>
+					<img src="ilustracoes/functransMAxMF.svg" style="width:90%" alt="Malha aberta X Malha fechada">
+
+					<p class="fragment fade-in" data-fragment-index="1">Desempenho</p>
+					<ul style="font-size: 25px;">
+						<li class="fragment fade-in" data-fragment-index="1">Acompanhamento do sinal de referência. \(x
+							\rightarrow r \therefore e \rightarrow 0\)</li>
+						<li class="fragment fade-in" data-fragment-index="1">Rejeição de perturbação</li>
+						<li class="fragment fade-in" data-fragment-index="1">Tolerância aos erros de modelagem</li>
+					</ul>
+
+				</section>
+
+				<section>
+
+					<h5 style="margin-bottom: 50px">Aplicação do controlador</h5>
+
+					<img style="width:90%" src="ilustracoes/functransEtapas1.svg" alt="Etapas 1">
+
+				</section>
+
+				<section>
+
+					<h5 style="margin-bottom: 50px">Aplicação do controlador</h5>
+
+					<img style="width:90%" src="ilustracoes/functransEtapas2.svg" alt="Etapas 2">
+
+				</section>
+
+				<section>
+
+					<h5 style="margin-bottom: 50px">Aplicação do controlador</h5>
+
+					<img style="width:90%" src="ilustracoes/functransEtapas3.svg" alt="Etapas 3">
+
+				</section>
+
+				<section>
+
+					<h5 style="margin-bottom: 50px">Reservatório</h5>
+
+					<img style="width:90%" src="ilustracoes/functransReservatorio.svg" alt="Reservatório">
+
+				</section>
+
+				<section>
+
+					<h5>Reservatório</h5>
+
+					<p style="font-size: 25px">\(V(t + \Delta t) - V(t) = \Delta t \, q_i - \Delta t q_o\)</p>
+					<p class="fragment fade-in" data-fragment-index="1" style="font-size: 25px">\[ \lim_{\Delta t \to 0}
+						\frac{V(t + \Delta t) - V(t)}{\Delta t} = \lim_{\Delta t \to 0} \left( q_i - q_o \right)\]</p>
+					<p class="fragment fade-in" data-fragment-index="2" style="font-size: 25px">\( \frac{dV}{dt} = q_i -
+						q_o \)</p>
+
+					<p class="fragment fade-in" data-fragment-index="3" style="font-size: 25px">Supondo área transversal
+						constante ao longo da altura e modelo de válvula de saída: \(q_o = C \, h\)</p>
+
+					<p class="fragment fade-in" data-fragment-index="4" style="font-size: 25px">\( A \frac{dh}{dt} = q_i
+						- C \, h \)</p>
+
+					<p class="fragment fade-in" data-fragment-index="5" style="font-size: 25px">\( A \frac{dh}{dt} + C
+						\, h = q_i \)</p>
+
+					<p class="fragment fade-in" data-fragment-index="6" style="font-size: 25px">\( \mathscr{L} \left[ A
+						\frac{dh}{dt} + C \, h \right] = \mathscr{L} \left[ q_i \right] \rightarrow \left( A \, s + C
+						\right) H(s) = Q_i(s) \)</p>
+
+					<div class="fragment fade-in" data-fragment-index="7"
+						style="background-color:rgb(168, 188, 253); padding:10px; margin:auto; display:inline-block; align-content: center;">
+						<p style="font-size: 25px;">\(G(s) = \frac{H(s)}{Q_i(s)} = \frac{1}{A \, s + C} \)</p>
+					</div>
+
+				</section>
+
+				<section>
+
+					<h5>Estabilidade absoluta</h5>
+
+					<p style="font-size: 25px">\(G(s) = \frac{a_m s^m + a_{m-1} s^{m-1} + \, \cdots \, + a_1 s +
+						1}{(s+p_1)(s+p_2) \, \cdots \, (s+p_n)} \)</p>
+
+					<img style="height:300px" src="ilustracoes/functransPlanoComplexo.svg" alt="Plano complexo">
+
+					<p style="font-size: 25px">Se todos os polos \(p_k\) do sistema estiverem no semi plano esquerdo
+						(SPE), a função de transferência \(G(s)\) é estável.</p>
+
+				</section>
+
+				<section>
+
+					<h5>Estabilidade absoluta</h5>
+
+					<p style="font-size: 25px">\(G(s) = \frac{a_m s^m + a_{m-1} s^{m-1} + \, \cdots \, + a_1 s +
+						1}{(s+p_1)(s+p_2) \, \cdots \, (s+p_n)} \)</p>
+					<p style="font-size: 25px">Qual é a resposta no tempo para uma entrada U(s) = 1?</p>
+					<p class="fragment fade-in" data-fragment-index="1" style="font-size: 25px">\(G(s) = \frac{r_1}{s +
+						p_1} + \cdots + \frac{r_n}{s + p_n}\)</p>
+					<p class="fragment fade-in" data-fragment-index="2" style="font-size: 25px">\( \mathscr{L}^{-1}
+						\left[ G(s) \right] = \mathscr{L}^{-1} \left[ \frac{r_1}{s + p_1} + \cdots + \frac{r_n}{s + p_n}
+						\right]\)</p>
+					<p class="fragment fade-in" data-fragment-index="3" style="font-size: 25px">\(y(t) = r_1 {\rm
+						e}^{-p_1 \, t} + r_2 {\rm e}^{-p_2 \, t} + \cdots + r_n {\rm e}^{-p_n \, t} \)</p>
+
+					<p style="font-size: 25px">Basta que um polo \(p_k\) tenha parte real positiva para que o sistema
+						seja instável.</p>
+
+				</section>
+
+				<section>
+
+					<h5>Ganho da função de transferência</h5>
+
+					<p style="font-size: 25px">\(G(s) = \frac{p_m s^m + p_{m-1} s^{m-1} + \, \cdots \, + p_1 s +
+						p_0}{q_n s^n + q_{n-1} s^{n-1} + \, \cdots \, + q_1 s + q_0}\)</p>
+
+					<div style="width: 30%; height: 110px; float:left;">
+						<p class="fragment fade-in" data-fragment-index="1" style="font-size: 25px;">Primeira forma
+							normal</p>
+					</div>
+					<div style="width: 70%; height: 110px; float:right;">
+						<p class="fragment fade-in" data-fragment-index="1" style="font-size: 25px;">\(G(s) =
+							\color{red}{\frac{p_m}{q_n}} \frac{1 \, s^m + \frac{p_{m-1}}{p_m} s^{m-1} + \, \cdots \, +
+							\frac{p_1}{p_m} s + \frac{p_0}{p_m}}{1 \, s^n + \frac{q_{n-1}}{q_n} s^{n-1} + \, \cdots \, +
+							\frac{q_1}{q_n} s + \frac{q_0}{q_n}}\)</p>
+
+					</div>
+
+					<div style="width: 30%; height: 110px; float:left;">
+						<p class="fragment fade-in" data-fragment-index="2" style="font-size: 25px">Segunda forma normal
+						</p>
+					</div>
+					<div style="width: 70%; height: 110px; float:right;">
+						<p class="fragment fade-in" data-fragment-index="2" style="font-size: 25px">\(G(s) =
+							\color{red}{\frac{p_0}{q_0}} \frac{\frac{p_m}{p_0} s^m + \frac{p_{m-1}}{p_0} s^{m-1} + \,
+							\cdots \, + \frac{p_1}{p_0} s + 1}{\frac{q_m}{q_0} s^n + \frac{q_{n-1}}{q_0} s^{n-1} + \,
+							\cdots \, + \frac{q_1}{q_0} s + 1}\)</p>
+					</div>
+
+
+
+
+
+
+					<div class="fragment fade-in" data-fragment-index="3"
+						style="background-color:rgb(168, 188, 253); padding:10px; float:left; margin-bottom: 30px; align-content: center;">
+						<p style="font-size: 25px;">\(K = \color{red}{\frac{p_m}{q_n}}\) é a constante de ganho</p>
+					</div>
+
+					<div class="fragment fade-in" data-fragment-index="3"
+						style="background-color:rgb(168, 188, 253); padding:10px; float: left; margin:auto; align-content: center;">
+						<p style="font-size: 25px;">\(K_g = \color{red}{\frac{p_0}{q_0}}\) é a constante de ganho de
+							frequência zero (\(s = 0\)).</p>
+					</div>
+
+
+				</section>
+				<section>
+
+					<a href="#functransteste" class="button2" style="margin: 10px; align-content: center;"
+						title="Mais exercícios">Voltar
+						para o exercício</a>
+
+					<a href="#sistprimeiraordem" class="button2" style="margin: 10px; align-content: center;"
+						title="Dúvidas">Próximo
+						tópico</a>
+
+				</section>
+
+			</section>
+
+			<section>
+				<section id="sistprimeiraordem">
+										
+					<div style="width:100%; height: 700px;">
+							<div style="width:100%;position:absolute;top:250px;text-align: center;">
+									
+									<h5>
+										Sistemas de primeira ordem
+									</h5>
+	
+							</div>
+							<div style="width:100%;position:absolute; bottom:30px;">
+	
+								<a href="https://moodle.fei.edu.br/moodle/course/view.php?id=745&section=4" target="_blank"
+									class="button2" style="float: left; margin: 10px; align-content: center;bottom: 10 px"
+									title="Estudo recomendado">Estudo
+									recomendado</a>
+	
+							</div>
+						</div>
+						
+				</section>
+
+				<section id="sistprimeiraordemteste">
+
+					<p style="font-size: 25px; text-align: justify;">Considere o sistema de aquecimento de líquido por
+						meio de vapor da figura a seguir cujas vazões de entrada e de saída são idênticas. A temperatura
+						de entrada do líquido é Ti(t) e a de saída é T(t), a mesma do interior do tanque, pois há uma
+						agitação perfeita do líquido. A vazão de vapor pode ser alterada pela abertura u(t) da válvula
+						(0 a 100\%).</p>
+					<p style="font-size: 25px; text-align: justify;">Um engenheiro mecânico decidiu identificar a função
+						de transferência aproximada do sistema, por meio de ensaios experimentais. Para tal, ele aplicou
+						um sinal de teste u(t) (do tipo degrau) de amplitude 10 (equivalente a 10\% de abertura da
+						válvula) e registrou o comportamento de T(t), obtendo o gráfico de resposta a seguir, cujo ruído
+						presente é devido ao sensor. Determine:</p>
+
+					<div style="width:60%; height:300px; float:left">
+						<ol style="font-size: 25px;">
+							<li>A função de transferência que pode representar o modelo desse sistema;</li>
+							<li>Os parâmetros dessa função de transferência;</li>
+							<li>O tempo de acomodação;</li>
+							<li>A resposta analítica;</li>
+						</ol>
+					</div>
+					<div style="width:40%; height:300px; float:right">
+						<img style="height: 300px" src="ilustracoes/sistprimeiraordemVapor.png" alt="Sistema vapor">
+					</div>
+
+				</section>
+
+				<section>
+
+					<img style="width:80%" src="ilustracoes/sistprimeiraordemRespostaExperimental.png"
+						alt="Experimental">
+				</section>
+
+				<section>
+
+					<h5>Comentários</h5>
+
+					<ul style="font-size: 25px">
+						<li>Dificuldades em se obter as funções no tempo.</li>
+						<li class="fragment fade-in" data-fragment-index="1">Vamos eleger funções típicas e comparar a
+							resposta simulada com a resposta real, quando sujeitas à mesma entrada.</li>
+						<li class="fragment fade-in" data-fragment-index="2">Se as respostas forem parecidas, a função
+							candidata é eleita como modelo do sistema.</li>
+					</ul>
+
+				</section>
+
+				<section>
+					<h5>Descrição do sistema de primeira ordem</h5>
+					<img style="width: 80%" src="ilustracoes/sistprimeiraordemDescricao.svg" alt="Sistema descrição">
+					<p class="fragment fade-in" data-fragment-index="1" style="font-size: 25px;">\( \tau \dot{y}(t) +
+						y(t) = K_g \, u(t)\)</p>
+					<p class="fragment fade-in" data-fragment-index="2" style="font-size: 25px;">\( \mathscr{L} \left[
+						\tau \dot{y}(t) + y(t) \right] = \mathscr{L} \left[ K_g \, u(t) \right]\)</p>
+					<p class="fragment fade-in" data-fragment-index="3" style="font-size: 25px;">\( \tau \, s \, Y(s) +
+						Y(s) = K_g \, U(s)\)</p>
+
+					<div class="fragment fade-in" data-fragment-index="4"
+						style="background-color:rgb(168, 188, 253); padding:10px; float: left; margin-left: 400px; align-content: center;">
+						<p style="font-size: 30px;">\( P(s) = \frac{K_g}{\tau \, s + 1}\)</p>
+					</div>
+				</section>
+
+				<section>
+					<h5>Resposta ao degrau</h5>
+					<img style="width: 80%" src="ilustracoes/sistprimeiraordemEntradaDegrau.svg"
+						alt="Sistema entrada degrau">
+					<p class="fragment fade-in" data-fragment-index="1" style="font-size: 25px;">\(P(s) =
+						\frac{Y(s)}{U(s)} \therefore Y(s) = P(s) U(s)\)</p>
+					<p class="fragment fade-in" data-fragment-index="2" style="font-size: 25px;">\(Y(s) =
+						\frac{K_g}{\tau \, s + 1} \frac{A}{s}\)</p>
+					<p class="fragment fade-in" data-fragment-index="3" style="font-size: 25px;">\(\mathscr{L}^{-1}
+						\left[ Y(s) \right] = \mathscr{L}^{-1} \left[ \frac{A \, K_g}{s (\tau \, s + 1)} \right]\)</p>
+
+					<div class="fragment fade-in" data-fragment-index="4"
+						style="background-color:rgb(168, 188, 253); padding:10px; float: left; margin-left: 350px; align-content: center;">
+						<p class="fragment fade-in" data-fragment-index="1" style="font-size: 25px;">\(y(t) = A \, K_g
+							(1 - \rm{e}^{-t/\tau})\)</p>
+					</div>
+				</section>
+
+				<section>
+					<h5>Constante de tempo</h5>
+					<div style="width:50%; height:500px; float: left;">
+						<img style="width: 80%" src="ilustracoes/sistprimeiraordemConstanteTempo.svg"
+							alt="Sistema constante de tempo">
+					</div>
+					<div style="width:50%; height:500px; float: right;">
+						<p class="fragment fade-in" data-fragment-index="1" style="font-size: 25px;">\(K_g = \frac{y(t
+							\to \infty)}{u(t \to \infty)} = \frac{A \, K_g (1 - \rm{e}^{-\infty/\tau})}{A} = K_g\)</p>
+						<p class="fragment fade-in" data-fragment-index="2" style="font-size: 25px;">\(y(t=\tau) = A \,
+							K_g (1 - \rm{e}^{-\tau/\tau} \)</p>
+						<p class="fragment fade-in" data-fragment-index="3" style="font-size: 25px;">\(y(t=\tau) = A \,
+							K_g 0{,}63 = 0{,}63 y(t \to \infty)\)</p>
+						<div class="fragment fade-in" data-fragment-index="4"
+							style="background-color:rgb(168, 188, 253); padding:10px; float: left; align-content: center;">
+							<p class="fragment fade-in" data-fragment-index="1" style="font-size: 25px;">\(\tau\) é o
+								tempo que a saída demora para alcançar 63% do valor para o qual ela converge.</p>
+						</div>
+					</div>
+
+				</section>
+
+				<section>
+					<h5>Tempo de acomodação</h5>
+					<div style="width:50%; height:500px; float: left;">
+						<img style="width: 80%" src="ilustracoes/sistprimeiraordemAcomodacao.svg"
+							alt="Sistema tempo de acomodação">
+					</div>
+					<div style="width:50%; height:500px; float: right;">
+						<p class="fragment fade-in" data-fragment-index="1" style="font-size: 25px;">\(y(t_{ac}) =
+							0{,}98 A \, K_g\)</p>
+						<p class="fragment fade-in" data-fragment-index="2" style="font-size: 25px;">\(y(t_{ac}) = A \,
+							K_g (1 - \rm{e}^{-t_{ac}/\tau})\)</p>
+						<p class="fragment fade-in" data-fragment-index="3" style="font-size: 25px;">
+							\(\rm{e}^{-t{ac}/\tau} = 0{,}02\)</p>
+						<p class="fragment fade-in" data-fragment-index="4" style="font-size: 25px;">\(t_{ac} = 3{,}9
+							\tau\)</p>
+						<div class="fragment fade-in" data-fragment-index="5"
+							style="background-color:rgb(168, 188, 253); padding:10px; float: left; margin-left: 200px; align-content: center;">
+							<p class="fragment fade-in" data-fragment-index="1" style="font-size: 25px;">\(t_{ac} = 4
+								\tau\)</p>
+						</div>
+					</div>
+				</section>
+
+				<section>
+
+						<a href="#sistprimeiraordemteste" class="button2" style="margin: 10px; align-content: center;"
+							title="Mais exercícios">Voltar
+							para o exercício</a>
+	
+						<a href="#sistsegundaordem" class="button2" style="margin: 10px; align-content: center;"
+							title="Dúvidas">Próximo
+							tópico</a>
+	
+					</section>
+	
+
+			</section>
+
+			<section>
+				<section id="sistsegundaordem">
+					
+					<div style="width:100%; height: 700px;">
+							<div style="width:100%;position:absolute;top:250px;text-align: center;">
+									
+									<h5>
+											Sistemas de segunda ordem
+									</h5>
+	
+							</div>
+							<div style="width:100%;position:absolute; bottom:30px;">
+	
+								<a href="https://moodle.fei.edu.br/moodle/course/view.php?id=745&section=4" target="_blank"
+									class="button2" style="float: left; margin: 10px; align-content: center;bottom: 10 px"
+									title="Estudo recomendado">Estudo
+									recomendado</a>
+	
+							</div>
+						</div>
+
+				</section>
+
+				<section>
+
+						<a href="#sistsegundaordemteste" class="button2" style="margin: 10px; align-content: center;"
+							title="Mais exercícios">Voltar
+							para o exercício</a>
+	
+						<a href="#errosest" class="button2" style="margin: 10px; align-content: center;"
+							title="Dúvidas">Próximo
+							tópico</a>
+	
+					</section>				
+			</section>
+
+			<section>
+				<section id="errosest">
+					
+					<div style="width:100%; height: 700px;">
+							<div style="width:100%;position:absolute;top:250px;text-align: center;">
+									
+									<h5>
+											Erros estacionários
+									</h5>
+	
+							</div>
+							<div style="width:100%;position:absolute; bottom:30px;">
+	
+								<a href="https://moodle.fei.edu.br/moodle/course/view.php?id=745&section=5" target="_blank"
+									class="button2" style="float: left; margin: 10px; align-content: center;bottom: 10 px"
+									title="Estudo recomendado">Estudo
+									recomendado</a>
+	
+							</div>
+						</div>
+
+				</section>
+
+				<section>
+
+						<a href="#errosestteste" class="button2" style="margin: 10px; align-content: center;"
+							title="Mais exercícios">Voltar
+							para o exercício</a>
+	
+						<a href="#controladorpid" class="button2" style="margin: 10px; align-content: center;"
+							title="Dúvidas">Próximo
+							tópico</a>
+	
+					</section>	
+			</section>
+
+			<section>
+				<section id="controladorpid">
+					
+					<div style="width:100%; height: 700px;">
+							<div style="width:100%;position:absolute;top:250px;text-align: center;">
+									
+									<h5>
+											Controlador PID
+									</h5>
+	
+							</div>
+							<div style="width:100%;position:absolute; bottom:30px;">
+	
+								<a href="https://moodle.fei.edu.br/moodle/course/view.php?id=745&section=6" target="_blank"
+									class="button2" style="float: left; margin: 10px; align-content: center;bottom: 10 px"
+									title="Estudo recomendado">Estudo
+									recomendado</a>
+	
+							</div>
+						</div>
+
+				</section>
+			</section>
+
+			<section>
+
+				<section id="sistemalj">
+
+					<div style="width:100%; height: 700px;">
+						<div style="width:100%;position:absolute;top:250px;text-align: center;">
+
+							<h3>Sistema LJ</h3>
+							<!-- <h5>TMA</h5> -->
+
+						</div>
+						<!-- <div style="width:100%;position:absolute; bottom:30px;">
+
+							<a href="https://moodle.fei.edu.br/moodle/course/view.php?id=1305&section=2" class="button2"
+								style="float: left; margin: 10px; align-content: center;bottom: 10 px"
+								title="Estudo recomendado" target="_blank">Estudo
+								recomendado</a>
+
+						</div> -->
+					</div>
+
+				</section>
+
+				<section>
+
+					<h5>O sistema</h5>
+
+					<img style="height: 550px;" src="ilustracoes/sistemaljSistema.jpg" alt="Sistema LJ ilustração">
+
+				</section>
+
+				<section>
+
+					<h5>Esquemático</h5>
+
+					<img style="height: 550px;" src="ilustracoes/sistemaljEsquematico.jpg" alt="Sistema LJ esquemático">
+
+				</section>
+
+				<section>
+
+					<h5>Detalhes</h5>
+
+					<img style="height: 550px;" src="ilustracoes/sistemaljDetalhado.jpg" alt="Sistema LJ detalhado">
+
+				</section>
+
+				<section>
+
+					<h5>Fonte</h5>
+
+					<img style="width: 90%;" src="ilustracoes/sistemaljFonte.jpg" alt="Sistema LJ fonte">
+
+				</section>
+
+				<section>
+
+					<h5>Potenciômetro</h5>
+
+					<img style="height: 550px;" src="ilustracoes/sistemaljPotenciometro.jpg"
+						alt="Sistema LJ potenciômetro">
+
+				</section>
+
+				<section>
+
+					<h5>Ligação em malha aberta</h5>
+
+					<img style="height: 550px;" src="ilustracoes/sistemaljLigacaoMA.svg"
+						alt="Sistema LJ ligação em malha aberta">
+
+				</section>
+
+				<section>
+
+					<p>Em malha aberta, o que acontece com a velocidade do rotor quando o freio é acionado?</p>
+
+				</section>
+
+				<section>
+
+					<h5>Diagrama de blocos</h5>
+
+					<img style="height: 550px;" src="ilustracoes/sistemaljDiagrama.jpg" alt="Sistema LJ diagrama">
+
+				</section>
+
+				<section>
+
+					<h5>Configurações possíveis</h5>
+
+					<img style="width: 90%; margin-top: 50px;" src="ilustracoes/sistemaljConfiguracoes.svg"
+						alt="Sistema LJ configuraões">
+
+				</section>
+
+				<section>
+
+					<h5>Estrutura de controle</h5>
+
+					<img style="width: 90%; margin-top: 50px;" src="ilustracoes/sistemaljControle.svg"
+						alt="Sistema LJ controle">
+
+				</section>
+
+				<section>
+
+					<h5>Controlador e Sistema</h5>
+
+					<img style="width: 90%; margin-top: 50px;" src="ilustracoes/sistemaljControleSeparacao.svg"
+						alt="Sistema LJ controle separação">
+
+				</section>
+
+				<section>
+
+					<h5>PID Controller</h5>
+
+					<img style="height: 550px;" src="ilustracoes/sistemaljPIDController.jpg"
+						alt="Sistema LJ PID Controller">
+
+				</section>
+
+				<section>
+
+					<h5>Controlador e malha</h5>
+
+					<img style="height: 550px;" src="ilustracoes/sistemaljControlePlacaMalha.svg"
+						alt="Sistema LJ placa e malha">
+
+				</section>
+
+				<section>
+
+					<h5>Ligação em malha fechada</h5>
+
+					<img style="height: 550px;" src="ilustracoes/sistemaljLigacaoMF.svg"
+						alt="Sistema LJ ligação em malha fechada">
+
+				</section>
+
+				<section>
+
+					<p>Em malha fechada, o que acontece com a velocidade do rotor quando o freio é acionado?</p>
+
+				</section>
+
+				<!-- 
+				<section>
+				<section>
+
+					<div style="width:100%; height: 700px;">
+						<div style="width:100%;position:absolute;top:250px;text-align: center;">
+
+							<h3>Título</h3>
+							<h5>Subtítulo</h5>
+
+						</div>
+						<div style="width:100%;position:absolute; bottom:30px;">
+
+							<a href="https://moodle.fei.edu.br/moodle/course/view.php?id=1305&section=2" class="button2"
+								style="float: left; margin: 10px; align-content: center;bottom: 10 px"
+								title="Estudo recomendado" target="_blank">Estudo
+								recomendado</a>
+
+						</div>
+					</div>
+
+				</section>
+
+				<section id="cincorpomovgeralteste">
+
+					<div style="width:100%;">
+
+						<img style="width:55%;" src="ilustracoes/cincorpomovgeralExemplo3Kaminski.svg"
+							alt="Exemplo Kaminski">
+
+						 <p style="text-align: justify;"> Determine o tempo de frenagem até que o veículo fique em repouso.</p> 
+
+					</div>
+
+					<div style="width:60%; height:230px; float:left;">
+						<p style="text-align: justify; font-size: 25px; margin-right: 30px">A correia move-se a uma
+							velocidade constante
+							v, rolando sem
+							escorregar sobre uma polia C de raio R. As polias A e B, de raio r, estão ligadas ao sistema
+							por um eixo AB
+							rígido, de comprimento 4R, em torno do qual elas podem girar. Elas rolam sem escorregar
+							sobre o plano
+							horizontal. Determine:</p>
+
+					</div>
+
+					<div style="width:40%; height:230px; float:right;">
+
+						<ol>
+							<li style="font-size: 25px;">O vetor velocidade angular \(\vec{\Omega}\) do eixo AB.</li>
+							<li style="font-size: 25px;">O vetor velocidade angular \(\vec{\omega}\) do disco A.</li>
+							<li style="font-size: 25px;">O vetor velocidade \(\vec{v}_P\) do ponto P do disco A, quando
+								AP // x.</li>
+						</ol>
+
+					</div>
+
+					<div style="width:100%; height:100px;">
+
+						<a href="#ajuda" class="button2" style="float: left; margin: 10px; align-content: center;"
+							title="Mais exercícios">Quero
+							mais
+							exercícios!</a>
+					</div>
+
+				</section>
+
+
+				<section>
+
+					<div style="width:100%;">
+
+						<h5>Título da página</h5>
+
+
+					</div>
+
+					<div style="width:60%; height:160px;float:left; display:flex; align-items: center;">
+
+						<p style="font-size: 25px">Texto.</p>
+
+					</div>
+
+					<div style="width:40%; height:160px;float:right;">
+
+
+						<div
+							style="height:140px; background-color:rgb(168, 188, 253); float: right; margin-right:10px; padding:10px; display:flex; align-items:center;">
+							<p style="font-size: 25px">\( \vec{v}_P (P-Q) = \vec{v}_Q (P-Q) \)</p>
+						</div>
+
+					</div>
+
+					<div style="width:40%; height:400px;float:left; display:flex; align-items: center;">
+						 <img style="width:100%" src="ilustracoes/cincorpomovgeralPropFund1.svg" alt="Propriedade fundamental 1"> 
+			Figura
+		</div>
+		<div style="width:60%; height:400px;float:right;">
+
+			Equações
+		</div>
+
+		</section>
+
+
+		<section>
+
+			<a href="#cinpontomovretteste" class="button2" style="margin: 10px; align-content: center;"
+				title="Mais exercícios">Voltar
+				para o exercício</a>
+
+			<a href="#cinpontomovgeral" class="button2" style="margin: 10px; align-content: center;"
+				title="Dúvidas">Próximo
+				tópico</a>
+
+		</section>
+
+		</section> 
+	-->
+
+
+		</div>
+	</div>
+
+	<div style="position:absolute; z-index:1; float:right; top:10px; right:10px;margin:0;padding:0">
+		<a href="https://portal.fei.edu.br/" target="_blank"><img src="ilustracoes/logoFEI.png" alt="Logo FEI"
+				title="Centro Universitário FEI" style="width:80px; margin-top:0"></a>
+	</div>
+
+	<div style="position:absolute;float:left;z-index:1; margin:10px;top:0px;">
+		<!-- <p style="margin:0; padding:0;"> -->
+
+		<span title="Tópicos"
+			style="font-family: Helvetica, sans-serif ;font-size:22px;font-weight: bolder;cursor:pointer;background-color: rgba(255, 255, 255, 0.8);padding: 0px 5px 3px 5px ; margin:0;"
+			onclick="openNav();">&#9776;</span>
+		<!-- </p> -->
+
+		<!-- OUTRA OPÇÃO: -->
+		<!-- <span title="Tópicos" style="font-family: Helvetica, sans-serif ;font-size:25px;font-weight: 500;cursor:pointer;background-color: rgba(255, 255, 255, 0.8);padding:5px;"
+					onclick="openNav();">&#9776;</span> -->
+
+		<!-- SPEAKER NOTES BUTTON -->
+		<p style="margin-top:10px; padding:0;">
+			<label title="Anotações" class="switch">
+				<input type="checkbox" id='speakerSwitch' onclick="speakerNotes()">
+				<span class="slider"></span>
+			</label>
+		</p>
+		<!-- <a href="javascript:void(0)" class="closebtn" onclick="speakerNotes()">&times;</a> -->
+
+	</div>
+
+
+	<script src="reveal.js/lib/js/head.min.js"></script>
+	<script src="reveal.js/js/reveal.js"></script>
+
+	<script>
+		// More info about config & dependencies:
+		// - https://github.com/hakimel/reveal.js#configuration
+		// - https://github.com/hakimel/reveal.js#dependencies
+		Reveal.initialize({
+			dependencies: [
+				// Cross-browser shim that fully implements classList - https://github.com/eligrey/classList.js/
+				{ src: 'reveal.js/lib/js/classList.js', condition: function () { return !document.body.classList; } },
+
+				// Interpret Markdown in <section> elements
+				{ src: 'reveal.js/plugin/markdown/marked.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+				{ src: 'reveal.js/plugin/markdown/markdown.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+
+				// Syntax highlight for <code> elements
+				{ src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function () { hljs.initHighlightingOnLoad(); } },
+
+				// Zoom in and out with Alt+click
+				{ src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+
+				// Speaker notes
+				{ src: 'reveal.js/plugin/notes/notes.js', async: true },
+
+				// MathJax
+				{ src: 'reveal.js/plugin/math/math.js', async: true }
+			],
+
+			math: {
+				mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js',
+				config: 'TeX-AMS_HTML-full'  // See http://docs.mathjax.org/en/latest/config-files.html
+			},
+
+			// Display presentation control arrows
+			controls: true,
+
+			// Help the user learn the controls by providing hints, for example by
+			// bouncing the down arrow when they first encounter a vertical slide
+			controlsTutorial: true,
+
+			// Determines where controls appear, "edges" or "bottom-right"
+			controlsLayout: 'bottom-right',
+
+			// Visibility rule for backwards navigation arrows; "faded", "hidden"
+			// or "visible"
+			controlsBackArrows: 'faded',
+
+			// Display a presentation progress bar 
+			// [removido, pois gera cliques indesejados na navegação pelo celular. Ao tentar navegar para baixo na seta inferior de controle a barra de progresso é acionada e o slide correspondente é aberto. ]
+			progress: false,
+
+			// Display the page number of the current slide
+			slideNumber: true,
+
+			// Push each slide change to the browser history
+			history: true,
+
+			// Enable keyboard shortcuts for navigation
+			keyboard: true,
+
+			// Enable the slide overview mode
+			overview: false,
+
+			// Vertical centering of slides
+			center: true,
+
+			// Enables touch navigation on devices with touch input
+			touch: true,
+
+			// Loop the presentation
+			loop: false,
+
+			// Change the presentation direction to be RTL
+			rtl: false,
+
+			// Randomizes the order of slides each time the presentation loads
+			shuffle: false,
+
+			// Turns fragments on and off globally
+			fragments: true,
+
+			// Flags whether to include the current fragment in the URL,
+			// so that reloading brings you to the same fragment position
+			fragmentInURL: false,
+
+			// Flags if the presentation is running in an embedded mode,
+			// i.e. contained within a limited portion of the screen
+			embedded: false,
+
+			// Flags if we should show a help overlay when the questionmark
+			// key is pressed
+			help: true,
+
+			// Flags if speaker notes should be visible to all viewers
+			showNotes: false,
+
+			// Global override for autoplaying embedded media (video/audio/iframe)
+			// - null: Media will only autoplay if data-autoplay is present
+			// - true: All media will autoplay, regardless of individual setting
+			// - false: No media will autoplay, regardless of individual setting
+			autoPlayMedia: true,
+
+			// Number of milliseconds between automatically proceeding to the
+			// next slide, disabled when set to 0, this value can be overwritten
+			// by using a data-autoslide attribute on your slides
+			autoSlide: 0,
+
+			// Stop auto-sliding after user input
+			autoSlideStoppable: true,
+
+			// Use this method for navigation when auto-sliding
+			autoSlideMethod: Reveal.navigateNext,
+
+			// Specify the average time in seconds that you think you will spend
+			// presenting each slide. This is used to show a pacing timer in the
+			// speaker view
+			defaultTiming: 120,
+
+			// Enable slide navigation via mouse wheel
+			mouseWheel: true,
+
+			// Hides the address bar on mobile devices
+			hideAddressBar: true,
+
+			// Opens links in an iframe preview overlay
+			// Add `data-preview-link` and `data-preview-link="false"` to customise each link
+			// individually
+			previewLinks: false,
+
+			// Transition style
+			transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+			// Transition speed
+			transitionSpeed: 'default', // default/fast/slow
+
+			// Transition style for full page slide backgrounds
+			backgroundTransition: 'slide', // none/fade/slide/convex/concave/zoom
+
+			// Number of slides away from the current that are visible
+			viewDistance: 3,
+
+			// Parallax background image
+			// parallaxBackgroundImage: '', // e.g. "'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg'"
+
+			// Parallax background size
+			// parallaxBackgroundSize: '', // CSS syntax, e.g. "2100px 900px"
+
+			// Number of pixels to move the parallax background per slide
+			// - Calculated automatically unless specified
+			// - Set to 0 to disable movement along an axis
+			// parallaxBackgroundHorizontal: null,
+			// parallaxBackgroundVertical: null,
+
+			// The display mode that will be used to show slides
+			display: 'block',
+
+			// The "normal" size of the presentation, aspect ratio will be preserved
+			// when the presentation is scaled to fit different resolutions. Can be
+			// specified using percentage units.
+			width: 960,
+			height: 700,
+
+			// // Factor of the display size that should remain empty around the content
+			margin: 0,
+
+			// // Bounds for smallest/largest possible scale to apply to content
+			minScale: 0.2,
+			maxScale: 2,
+
+			pdfMaxPagesPerSlide: 1,
+			pdfSeparateFragments: false,
+		});
+
+	</script>
+
+
+
+	<script>
+		function openNav() {
+			document.getElementById("mySidenav").style.width = "250px";
+			document.getElementById("main").style.marginLeft = "250px";
+		}
+
+		function closeNav() {
+			document.getElementById("mySidenav").style.width = "0";
+			document.getElementById("main").style.marginLeft = "0";
+		}
+
+
+
+		// TOGGLE SPEAKER NOTES
+		function speakerNotes() {
+			var x = document.getElementById("speakerSwitch");
+			if (x.checked == true) {
+				Reveal.configure({ showNotes: true });
+			} else {
+				Reveal.configure({ showNotes: false });
+
+			}
+		}
+
+		// function speakerNotes() {
+		// 		Reveal.configure({ showNotes: true });
+		// 	}
+
+
+	</script>
+
+
+
+
+</body>
+
+</html>
