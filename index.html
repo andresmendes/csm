@@ -94,6 +94,7 @@
 						speaker
 						notes window (hit »S« on your keyboard).
 					</aside>
+
 				</section>
 
 				<section id="ajuda">
@@ -125,9 +126,7 @@
 				</section>
 
 				<section>
-					<!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/ZPBlO-jm2E4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
-					<!-- <iframe width="420" height="345" src="https://www.youtube.com/embed/ZPBlO-jm2E4" frameborder="0" allowfullscreen></iframe>
--->
+
 					<iframe allowfullscreen=""
 						data-src="https://www.youtube.com/embed/WBkgs4u5tW0?start=85;end=166;cc_load_policy=1;autoplay=1"
 						width="100%" height="700px" frameborder="0"></iframe>
@@ -388,24 +387,25 @@
 
 					<p style="font-size: 25px">Verifique a estabilidade das funções de transferência:</p>
 
-					<ol style="font-size: 25px">
+					<ol style="font-size: 35px;">
 						<li>\(G(s) = \frac{(s - 3)}{(s + 1)(s+2)}\)</li>
-						<li>\(G(s) = \frac{1}{(s+1)(s^2 + 4 s + 13)}\)</li>
-						<li>\(G(s) = \frac{1}{(s-1)}\)</li>
+						<li style="margin-top: 20px;">\(G(s) = \frac{1}{(s+1)(s^2 + 4 s + 13)}\)</li>
+						<li style="margin-top: 20px;">\(G(s) = \frac{1}{(s-1)}\)</li>
 					</ol>
 
-					<p style="font-size: 25px">Determine os ganhos \(K\) e \(K_g\) da função de transferência 1).</p>
-
-
+					<p style="font-size: 25px; margin-top: 100px;">Determine os ganhos \(K\) e \(K_g\) da função de
+						transferência #2.</p>
 
 				</section>
 
 				<section>
 
 					<h5 style="margin-bottom: 50px">Malha aberta X Malha fechada</h5>
+
 					<img src="ilustracoes/functransMAxMF.svg" style="width:90%" alt="Malha aberta X Malha fechada">
 
 					<p class="fragment fade-in" data-fragment-index="1">Desempenho</p>
+
 					<ul style="font-size: 25px;">
 						<li class="fragment fade-in" data-fragment-index="1">Acompanhamento do sinal de referência. \(x
 							\rightarrow r \therefore e \rightarrow 0\)</li>
@@ -445,6 +445,18 @@
 
 					<img style="width:90%" src="ilustracoes/functransReservatorio.svg" alt="Reservatório">
 
+					<aside class="notes">
+						<p>
+							\(h(t)\) é o nível do reservatório no instante \(t\), \(q_i\) é a vazão de entrada
+							e \(q_o\) é
+							a vazão de saída.
+						</p>
+						<p>
+							\(G(s)\) é a função de transferência que relaciona a vazão de entrada e o nível do
+							reservatório (saída).
+						</p>
+					</aside>
+
 				</section>
 
 				<section>
@@ -475,6 +487,15 @@
 						<p style="font-size: 25px;">\(G(s) = \frac{H(s)}{Q_i(s)} = \frac{1}{A \, s + C} \)</p>
 					</div>
 
+					<aside class="notes">
+						<p>
+							\(V(t)\) é o volume do reservatório no instante \(t\).
+						</p>
+						<p>
+							Para a obtenção da função de transferência, assumimos condições iniciais nulas.
+						</p>
+					</aside>
+
 				</section>
 
 				<section>
@@ -484,9 +505,11 @@
 					<p style="font-size: 25px">\(G(s) = \frac{a_m s^m + a_{m-1} s^{m-1} + \, \cdots \, + a_1 s +
 						1}{(s+p_1)(s+p_2) \, \cdots \, (s+p_n)} \)</p>
 
-					<img style="height:300px" src="ilustracoes/functransPlanoComplexo.svg" alt="Plano complexo">
+					<img style="height:300px; margin-top: 50px; margin-bottom: 50px"
+						src="ilustracoes/functransPlanoComplexo.svg" alt="Plano complexo">
 
-					<p style="font-size: 25px">Se todos os polos \(p_k\) do sistema estiverem no semi plano esquerdo
+					<p style="font-size: 25px">Se todos os polos \(s_k = -p_k\) do sistema estiverem no semi plano
+						esquerdo
 						(SPE), a função de transferência \(G(s)\) é estável.</p>
 
 				</section>
@@ -497,16 +520,24 @@
 
 					<p style="font-size: 25px">\(G(s) = \frac{a_m s^m + a_{m-1} s^{m-1} + \, \cdots \, + a_1 s +
 						1}{(s+p_1)(s+p_2) \, \cdots \, (s+p_n)} \)</p>
+
 					<p style="font-size: 25px">Qual é a resposta no tempo para uma entrada U(s) = 1?</p>
-					<p class="fragment fade-in" data-fragment-index="1" style="font-size: 25px">\(G(s) = \frac{r_1}{s +
-						p_1} + \cdots + \frac{r_n}{s + p_n}\)</p>
-					<p class="fragment fade-in" data-fragment-index="2" style="font-size: 25px">\( \mathscr{L}^{-1}
-						\left[ G(s) \right] = \mathscr{L}^{-1} \left[ \frac{r_1}{s + p_1} + \cdots + \frac{r_n}{s + p_n}
+
+					<p class="fragment fade-in" data-fragment-index="1" style="font-size: 25px">\(G(s) =
+						\frac{Y(s)}{U(s)} \rightarrow Y(s) = G(s) U(s)\)</p>
+
+					<p class="fragment fade-in" data-fragment-index="2" style="font-size: 25px">\(Y(s) = G(s) =
+						\frac{r_1}{s + p_1} + \frac{r_2}{s + p_2} + \cdots + \frac{r_n}{s + p_n}\)</p>
+
+					<p class="fragment fade-in" data-fragment-index="3" style="font-size: 25px">\( \mathscr{L}^{-1}
+						\left[ Y(s) \right] = \mathscr{L}^{-1} \left[ \frac{r_1}{s + p_1} + \frac{r_2}{s + p_2} + \cdots
+						+ \frac{r_n}{s + p_n}
 						\right]\)</p>
-					<p class="fragment fade-in" data-fragment-index="3" style="font-size: 25px">\(y(t) = r_1 {\rm
+					<p class="fragment fade-in" data-fragment-index="4" style="font-size: 25px">\(y(t) = r_1 {\rm
 						e}^{-p_1 \, t} + r_2 {\rm e}^{-p_2 \, t} + \cdots + r_n {\rm e}^{-p_n \, t} \)</p>
 
-					<p style="font-size: 25px">Basta que um polo \(p_k\) tenha parte real positiva para que o sistema
+					<p style="font-size: 25px">Basta que um polo \(s_k = - p_k\) tenha parte real positiva para que o
+						sistema
 						seja instável.</p>
 
 				</section>
@@ -515,50 +546,46 @@
 
 					<h5>Ganho da função de transferência</h5>
 
-					<p style="font-size: 25px">\(G(s) = \frac{p_m s^m + p_{m-1} s^{m-1} + \, \cdots \, + p_1 s +
+					<p style="font-size: 30px">\(G(s) = \frac{p_m s^m + p_{m-1} s^{m-1} + \, \cdots \, + p_1 s +
 						p_0}{q_n s^n + q_{n-1} s^{n-1} + \, \cdots \, + q_1 s + q_0}\)</p>
 
-					<div style="width: 30%; height: 110px; float:left;">
+					<div style="width: 30%; height: 130px; float:left;">
 						<p class="fragment fade-in" data-fragment-index="1" style="font-size: 25px;">Primeira forma
 							normal</p>
 					</div>
-					<div style="width: 70%; height: 110px; float:right;">
-						<p class="fragment fade-in" data-fragment-index="1" style="font-size: 25px;">\(G(s) =
-							\color{red}{\frac{p_m}{q_n}} \frac{1 \, s^m + \frac{p_{m-1}}{p_m} s^{m-1} + \, \cdots \, +
-							\frac{p_1}{p_m} s + \frac{p_0}{p_m}}{1 \, s^n + \frac{q_{n-1}}{q_n} s^{n-1} + \, \cdots \, +
-							\frac{q_1}{q_n} s + \frac{q_0}{q_n}}\)</p>
 
+					<div style="width: 70%; height: 130px; float:right;">
+						<p class="fragment fade-in" data-fragment-index="1" style="font-size: 30px;">
+							\(G(s) = \color{red}{\frac{p_m}{q_n}} \frac{1 \, s^m + \frac{p_{m-1}}{p_m} s^{m-1} + \,
+							\cdots \, + \frac{p_1}{p_m} s + \frac{p_0}{p_m}}{1 \, s^n + \frac{q_{n-1}}{q_n} s^{n-1} + \,
+							\cdots \, + \frac{q_1}{q_n} s + \frac{q_0}{q_n}}\)
+						</p>
 					</div>
 
-					<div style="width: 30%; height: 110px; float:left;">
+					<div style="width: 30%; height: 130px; float:left;">
 						<p class="fragment fade-in" data-fragment-index="2" style="font-size: 25px">Segunda forma normal
 						</p>
 					</div>
-					<div style="width: 70%; height: 110px; float:right;">
-						<p class="fragment fade-in" data-fragment-index="2" style="font-size: 25px">\(G(s) =
+					<div style="width: 70%; height: 130px; float:right;">
+						<p class="fragment fade-in" data-fragment-index="2" style="font-size: 30px;">\(G(s) =
 							\color{red}{\frac{p_0}{q_0}} \frac{\frac{p_m}{p_0} s^m + \frac{p_{m-1}}{p_0} s^{m-1} + \,
 							\cdots \, + \frac{p_1}{p_0} s + 1}{\frac{q_m}{q_0} s^n + \frac{q_{n-1}}{q_0} s^{n-1} + \,
 							\cdots \, + \frac{q_1}{q_0} s + 1}\)</p>
 					</div>
 
-
-
-
-
-
 					<div class="fragment fade-in" data-fragment-index="3"
-						style="background-color:rgb(168, 188, 253); padding:10px; float:left; margin-bottom: 30px; align-content: center;">
-						<p style="font-size: 25px;">\(K = \color{red}{\frac{p_m}{q_n}}\) é a constante de ganho</p>
+						style="background-color:rgb(168, 188, 253); padding:10px; float:left; margin-bottom: 15px; align-content: center;">
+						<p style="font-size: 30px;">\(K = \color{red}{\frac{p_m}{q_n}}\) é a constante de ganho.</p>
 					</div>
 
 					<div class="fragment fade-in" data-fragment-index="3"
 						style="background-color:rgb(168, 188, 253); padding:10px; float: left; margin:auto; align-content: center;">
-						<p style="font-size: 25px;">\(K_g = \color{red}{\frac{p_0}{q_0}}\) é a constante de ganho de
+						<p style="font-size: 30px;">\(K_g = \color{red}{\frac{p_0}{q_0}}\) é a constante de ganho de
 							frequência zero (\(s = 0\)).</p>
 					</div>
 
-
 				</section>
+
 				<section>
 
 					<a href="#functransteste" class="button2" style="margin: 10px; align-content: center;"
@@ -602,10 +629,11 @@
 						meio de vapor da figura a seguir cujas vazões de entrada e de saída são idênticas. A temperatura
 						de entrada do líquido é Ti(t) e a de saída é T(t), a mesma do interior do tanque, pois há uma
 						agitação perfeita do líquido. A vazão de vapor pode ser alterada pela abertura u(t) da válvula
-						(0 a 100\%).</p>
+						(0 a 100%).</p>
+
 					<p style="font-size: 25px; text-align: justify;">Um engenheiro mecânico decidiu identificar a função
 						de transferência aproximada do sistema, por meio de ensaios experimentais. Para tal, ele aplicou
-						um sinal de teste u(t) (do tipo degrau) de amplitude 10 (equivalente a 10\% de abertura da
+						um sinal de teste u(t) (do tipo degrau) de amplitude 10 (equivalente a 10% de abertura da
 						válvula) e registrou o comportamento de T(t), obtendo o gráfico de resposta a seguir, cujo ruído
 						presente é devido ao sensor. Determine:</p>
 
@@ -617,6 +645,7 @@
 							<li>A resposta analítica;</li>
 						</ol>
 					</div>
+
 					<div style="width:40%; height:300px; float:right">
 						<img style="height: 300px" src="ilustracoes/sistprimeiraordemVapor.png" alt="Sistema vapor">
 					</div>
@@ -633,7 +662,7 @@
 
 					<h5>Comentários</h5>
 
-					<ul style="font-size: 25px">
+					<ul style="font-size: 35px">
 						<li>Dificuldades em se obter as funções no tempo.</li>
 						<li class="fragment fade-in" data-fragment-index="1">Vamos eleger funções típicas e comparar a
 							resposta simulada com a resposta real, quando sujeitas à mesma entrada.</li>
@@ -644,8 +673,12 @@
 				</section>
 
 				<section>
-					<h5>Descrição do sistema de primeira ordem</h5>
-					<img style="width: 80%" src="ilustracoes/sistprimeiraordemDescricao.svg" alt="Sistema descrição">
+
+					<h7>Descrição do sistema de primeira ordem</h7>
+
+					<img style="width: 80%; margin-top: 30px;" src="ilustracoes/sistprimeiraordemDescricao.svg"
+						alt="Sistema primeira ordem descrição">
+
 					<p class="fragment fade-in" data-fragment-index="1" style="font-size: 25px;">\( \tau \dot{y}(t) +
 						y(t) = K_g \, u(t)\)</p>
 					<p class="fragment fade-in" data-fragment-index="2" style="font-size: 25px;">\( \mathscr{L} \left[
@@ -655,18 +688,24 @@
 
 					<div class="fragment fade-in" data-fragment-index="4"
 						style="background-color:rgb(168, 188, 253); padding:10px; float: left; margin-left: 400px; align-content: center;">
-						<p style="font-size: 30px;">\( P(s) = \frac{K_g}{\tau \, s + 1}\)</p>
+						<p style="font-size: 35px;">\( P(s) = \frac{Y(s)}{U(s)}= \frac{K_g}{\tau \, s + 1}\)</p>
 					</div>
+
 				</section>
 
 				<section>
+
 					<h5>Resposta ao degrau</h5>
+
 					<img style="width: 80%" src="ilustracoes/sistprimeiraordemEntradaDegrau.svg"
 						alt="Sistema entrada degrau">
+
 					<p class="fragment fade-in" data-fragment-index="1" style="font-size: 25px;">\(P(s) =
 						\frac{Y(s)}{U(s)} \therefore Y(s) = P(s) U(s)\)</p>
+
 					<p class="fragment fade-in" data-fragment-index="2" style="font-size: 25px;">\(Y(s) =
 						\frac{K_g}{\tau \, s + 1} \frac{A}{s}\)</p>
+
 					<p class="fragment fade-in" data-fragment-index="3" style="font-size: 25px;">\(\mathscr{L}^{-1}
 						\left[ Y(s) \right] = \mathscr{L}^{-1} \left[ \frac{A \, K_g}{s (\tau \, s + 1)} \right]\)</p>
 
@@ -675,22 +714,32 @@
 						<p class="fragment fade-in" data-fragment-index="1" style="font-size: 25px;">\(y(t) = A \, K_g
 							(1 - \rm{e}^{-t/\tau})\)</p>
 					</div>
+
 				</section>
 
 				<section>
 					<h5>Constante de tempo</h5>
 					<div style="width:50%; height:500px; float: left;">
-						<img style="width: 80%" src="ilustracoes/sistprimeiraordemConstanteTempo.svg"
+						<img style="width: 100%" src="ilustracoes/sistprimeiraordemConstanteTempo.svg"
 							alt="Sistema constante de tempo">
 					</div>
 					<div style="width:50%; height:500px; float: right;">
-						<p class="fragment fade-in" data-fragment-index="1" style="font-size: 25px;">\(K_g = \frac{y(t
-							\to \infty)}{u(t \to \infty)} = \frac{A \, K_g (1 - \rm{e}^{-\infty/\tau})}{A} = K_g\)</p>
-						<p class="fragment fade-in" data-fragment-index="2" style="font-size: 25px;">\(y(t=\tau) = A \,
-							K_g (1 - \rm{e}^{-\tau/\tau} \)</p>
-						<p class="fragment fade-in" data-fragment-index="3" style="font-size: 25px;">\(y(t=\tau) = A \,
-							K_g 0{,}63 = 0{,}63 y(t \to \infty)\)</p>
-						<div class="fragment fade-in" data-fragment-index="4"
+
+						<p style="font-size: 30px;">\(K_g = \frac{y(t \to \infty)}{u(t \to \infty)}\)</p>
+
+						<p class="fragment fade-in" data-fragment-index="1" style="font-size: 30px;">\(\frac{A \, K_g (1
+							- \rm{e}^{-\infty/\tau})}{A} = K_g\)</p>
+
+						<p class="fragment fade-in" data-fragment-index="2" style="font-size: 30px;">\(y(t=\tau) = A \,
+							K_g \left( 1 - \rm{e}^{-\tau/\tau} \right) \)</p>
+
+						<p class="fragment fade-in" data-fragment-index="3" style="font-size: 30px;">\(y(t=\tau) = A \,
+							K_g 0{,}63 \)</p>
+
+						<p class="fragment fade-in" data-fragment-index="4" style="font-size: 30px;">\(y(t=\tau) =
+							0{,}63 y(t \to \infty)\)</p>
+
+						<div class="fragment fade-in" data-fragment-index="5"
 							style="background-color:rgb(168, 188, 253); padding:10px; float: left; align-content: center;">
 							<p class="fragment fade-in" data-fragment-index="1" style="font-size: 25px;">\(\tau\) é o
 								tempo que a saída demora para alcançar 63% do valor para o qual ela converge.</p>
@@ -702,21 +751,21 @@
 				<section>
 					<h5>Tempo de acomodação</h5>
 					<div style="width:50%; height:500px; float: left;">
-						<img style="width: 80%" src="ilustracoes/sistprimeiraordemAcomodacao.svg"
+						<img style="width: 100%" src="ilustracoes/sistprimeiraordemAcomodacao.svg"
 							alt="Sistema tempo de acomodação">
 					</div>
 					<div style="width:50%; height:500px; float: right;">
-						<p class="fragment fade-in" data-fragment-index="1" style="font-size: 25px;">\(y(t_{ac}) =
+						<p class="fragment fade-in" data-fragment-index="1" style="font-size: 30px;">\(y(t_{ac}) =
 							0{,}98 A \, K_g\)</p>
-						<p class="fragment fade-in" data-fragment-index="2" style="font-size: 25px;">\(y(t_{ac}) = A \,
+						<p class="fragment fade-in" data-fragment-index="2" style="font-size: 30px;">\(y(t_{ac}) = A \,
 							K_g (1 - \rm{e}^{-t_{ac}/\tau})\)</p>
-						<p class="fragment fade-in" data-fragment-index="3" style="font-size: 25px;">
-							\(\rm{e}^{-t{ac}/\tau} = 0{,}02\)</p>
-						<p class="fragment fade-in" data-fragment-index="4" style="font-size: 25px;">\(t_{ac} = 3{,}9
+						<p class="fragment fade-in" data-fragment-index="3" style="font-size: 30px;">
+							\(\rm{e}^{-t_{ac}/\tau} = 0{,}02\)</p>
+						<p class="fragment fade-in" data-fragment-index="4" style="font-size: 30px;">\(t_{ac} = 3{,}9
 							\tau\)</p>
 						<div class="fragment fade-in" data-fragment-index="5"
 							style="background-color:rgb(168, 188, 253); padding:10px; float: left; margin-left: 200px; align-content: center;">
-							<p class="fragment fade-in" data-fragment-index="1" style="font-size: 25px;">\(t_{ac} = 4
+							<p class="fragment fade-in" data-fragment-index="1" style="font-size: 30px;">\(t_{ac} = 4
 								\tau\)</p>
 						</div>
 					</div>
@@ -760,6 +809,141 @@
 
 				</section>
 
+				<section id="sistsegundaordemteste">
+
+					<p style="font-size: 25px; text-align: justify;">A figura abaixo representa a resposta ao degrau unitário de um sistema de segunda ordem.
+						Determine a partir do gráfico da figura: o tempo de pico; o sobressinal (em porcentagem); e o
+						tempo de acomodação. Determine também a função de transferência.</p>
+						
+						<img style="width: 60%; margin-top: 30px;" src="ilustracoes/sistsegundaordemExercicio.png"
+							alt="Sistema segunda exercício">
+
+				</section>
+
+				<section>
+
+					<h7>Descrição do sistema de segunda ordem</h7>
+
+					<img style="width: 80%; margin-top: 30px;" src="ilustracoes/sistsegundaordemDescricao.svg"
+						alt="Sistema segunda ordem descrição">
+
+					<p class="fragment fade-in" data-fragment-index="1" style="font-size: 25px;">
+						\( \ddot{y}(t) + p \dot{y}(t) + q y(t) = K u(t) \)</p>
+					<!-- <p class="fragment fade-in" data-fragment-index="1" style="font-size: 30px;">
+						\( \mathscr{L} \left[ \ddot{y}(t) + p \dot{y}(t) + q y(t) \right] = \mathscr{L} \left[ K u(t)
+						\right] \)</p> -->
+					<p class="fragment fade-in" data-fragment-index="2" style="font-size: 30px;">
+						\( \mathscr{L} \left[ \cdot \right] \rightarrow \left( s^2 + p \, s + q \right) Y(s) = K \,
+						U(s)\)</p>
+					<p class="fragment fade-in" data-fragment-index="3" style="font-size: 30px;">
+						\( P(s) = \frac{Y(s)}{U(s)} = \frac{K}{s^2 + p \, s + q}\)</p>
+
+					<div class="fragment fade-in" data-fragment-index="4"
+						style="background-color:rgb(168, 188, 253); padding:10px; float: left; margin-left: 50px; align-content: center;">
+						<p style="font-size: 35px;">
+							\( P(s) = \frac{K}{s^2 + 2 \alpha s + \omega_n^2} = \frac{K}{s^2 + 2 \zeta \omega_n s +
+							\omega_n^2} = \frac{K_g \omega_n^2}{s^2 + 2 \zeta \omega_n s + \omega_n^2} \)</p>
+					</div>
+
+					<aside class="notes">
+						<p>\(\omega_n\) - Frequência natural</p>
+						<p>\(\alpha\) - Coeficiente de amortecimento</p>
+						<p>\(\zeta\) - Grau de amortecimento</p>
+						<p>\(K\) - Ganho</p>
+						<p>\(K_g\) - Ganho de frequência zero</p>
+					</aside>
+
+				</section>
+
+				<section>
+
+					<h7>Descrição do sistema de segunda ordem</h7>
+
+					<img style="width: 80%; margin-top: 30px;" src="ilustracoes/sistsegundaordemDescricao.svg"
+						alt="Sistema segunda ordem descrição">
+
+					<p class="fragment fade-in" data-fragment-index="1" style="font-size: 30px; color: blue">
+						Sistema superamortecido com 2 polos reais distintos <br>
+						\( \alpha^2 > \omega_n^2 \) &nbsp; ou &nbsp; \( \zeta > 1 \)</p>
+					<p class="fragment fade-in" data-fragment-index="2" style="font-size: 30px; color: red">
+						Sistema com amortecimento crítico com 2 polos reais iguais <br>
+						\( \alpha^2 = \omega_n^2 \) &nbsp; ou &nbsp; \( \zeta = 1 \)</p>
+					<p class="fragment fade-in" data-fragment-index="3" style="font-size: 30px; color: green">
+						Sistema subamortecido com 2 polos complexos conjugados <br>
+						\( 0 &lt; \alpha^2 &lt; \omega_n^2 \) &nbsp; ou &nbsp; \( 0 &lt; \zeta &lt; 1 \)</p>
+
+				</section>
+
+				<section>
+
+					<h5>Aproximação</h5>
+
+					<img style="width: 90%; margin-top: 30px;" src="ilustracoes/sistsegundaordemComparacaoFuncoes.svg"
+						alt="Sistema segunda comparação funções">
+
+					<img class="fragment fade-in" data-fragment-index="1" style="width: 90%; margin-top: 30px;"
+						src="ilustracoes/sistsegundaordemComparacaoGraficos.svg"
+						alt="Sistema segunda ordem comparação gráficos">
+
+				</section>
+
+				<section>
+
+					<h5>Variação do grau de amortecimento \(\zeta\)</h5>
+
+					<img style="width: 70%; margin-top: 30px;" src="ilustracoes/sistsegundaordemEfeitoZeta.svg"
+						alt="Sistema segunda comparação funções">
+
+				</section>
+
+				<section>
+
+					<h5>Índice de desempenho</h5>
+
+					<img style="width: 90%; margin-top: 30px;" src="ilustracoes/sistsegundaordemDesempenho.svg"
+						alt="Sistema segunda desempenho">
+
+				</section>
+
+				<section>
+
+					<h7>Índice de desempenho</h7>
+
+					<img style="width: 80%;" src="ilustracoes/sistsegundaordemDesempenho.svg"
+						alt="Sistema segunda desempenho">
+						
+						<div style="text-align: left;">
+
+								<p style="font-size: 25px;">
+							Tempo de pico - \(t_p = \frac{\pi}{\omega_d}\) &nbsp; onde &nbsp; \(\omega_d =
+							\sqrt{\omega_n^2 - \alpha^2} \),
+							\(\zeta = \frac{\alpha}{\omega_n}\) </p>
+
+						<p class="fragment fade-in" data-fragment-index="1" style="font-size: 25px;">
+							Tempo de acomodação - \(t_{ac} = \frac{4}{\alpha} \) </p>
+
+						<p class="fragment fade-in" data-fragment-index="2" style="font-size: 25px;">
+							Tempo de subida - \(t_{s} = \frac{\pi \phi}{\omega_d} \) &nbsp; onde &nbsp; \(\phi = \arctan
+							\left( \frac{\omega_d}{\alpha} \right) \) </p>
+
+						<p class="fragment fade-in" data-fragment-index="3" style="font-size: 25px;">
+							Máximo sobressinal - \(M_{p} = {\rm e}^{-\pi \left( \alpha/\omega_d \right)} = {\rm e}^{-\pi
+								\left( \zeta / \sqrt{1 - \zeta^2} \right)} \) </p>
+
+					</div>
+
+				</section>
+
+				<section>
+
+					<p>Considere a função de transferência: \(P(s) = \frac{25}{s^2 + 6 s + 25}\)</p>
+					<p>Esboçe a resposta ao degrau.</p>
+
+					<img style="width: 80%;" src="ilustracoes/sistsegundaordemExemplo.svg"
+						alt="Sistema segunda desempenho">
+
+				</section>
+				
 				<section>
 
 					<a href="#sistsegundaordemteste" class="button2" style="margin: 10px; align-content: center;"
