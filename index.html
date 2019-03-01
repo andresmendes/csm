@@ -60,6 +60,7 @@
 		}
 	</script>
 
+	<!-- Função para realce de cada tópico -->
 	<script>
 		function realceTopico(menu, topic) {
 			var topics = document.getElementById(menu).children[0].children[0].children;
@@ -99,6 +100,7 @@
 			<a href="#/controladorlqr">10 - Regulador linear quadrático</a>
 			<a href="#/observador">11 - Observador de estados</a>
 			<a href="#/sistemalj">Extra - Sistema LJ</a>
+			<a href="#/simulinkrealtime">Extra - Simulink Real Time</a>
 		</div>
 
 	</div>
@@ -1154,6 +1156,184 @@
 						width="100%" height="700px" frameborder="0"></iframe>
 				</section>
 
+				<section id="errosestteste">
+
+					<p style="font-size: 25px;">Determine o erro estacionário dos seguintes sistemas para as entradas:
+					</p>
+					<p> \(1/s\), \(1/s^2\) e \(1/s^3\)</p>
+
+					<img style="height: 150px; margin: 50px;" src="ilustracoes/errosestExemplo1.svg" alt="Exemplo 1">
+					<img style="height: 150px; margin: 50px;" src="ilustracoes/errosestExemplo2.svg" alt="Exemplo 2">
+
+				</section>
+
+				<section>
+					<img style="height:650px;" src="ilustracoes/errosestMalhaFechadaReducao.svg"
+						alt="Redução de blocos">
+				</section>
+
+				<section>
+
+					<p class="fragment fade-in" data-fragment-index="1"
+						style="font-size: 25px; width:50%; float: left;">\(Y(s) = H(s) \, Z(s)\) &nbsp; &nbsp; &nbsp;
+						&nbsp; (1)</p>
+					<p class="fragment fade-in" data-fragment-index="1"
+						style="font-size: 25px; width:50%; float: right;">\(Z(s) = G(s) \, E(s)\) &nbsp; &nbsp; &nbsp;
+						&nbsp; (2) </p>
+					<p class="fragment fade-in" data-fragment-index="2" style="font-size: 25px; float: left;">utilizando
+						(1): &nbsp; \(E(s) = R(s) - Y(s) \rightarrow E(s) = R(s) - H(s) \, Z(s)\) </p>
+					<p class="fragment fade-in" data-fragment-index="3" style="font-size: 25px; float: left;">utilizando
+						(2): &nbsp; \(E(s) = R(s) - H(s) \, Z(s) \rightarrow E(s) = R(s) - G(s) \, H(s) \, E(s)\) </p>
+					<p class="fragment fade-in" data-fragment-index="4" style="font-size: 25px; margin-bottom:5px;">
+						\(E(s) \left(1 + G(s) \, H(s) \right) = R(s) \rightarrow E(s) = \frac{R(s)}{\left(1 + G(s) \,
+						H(s) \right)}\) </p>
+					<p class="fragment fade-in" data-fragment-index="5"
+						style="font-size: 25px; float: left;margin-bottom:50px;">utilizando (2): &nbsp; \(E(s) =
+						\frac{R(s)}{\left(1 + G(s) \, H(s) \right)} \rightarrow \frac{Z(s)}{G(s)} = \frac{R(s)}{\left(1
+						+ G(s) \, H(s) \right)}\) </p>
+
+					<img style="width:50%; float: left" src="ilustracoes/errosestMalhaFechadaDiagrama.svg"
+						alt="Diagrama malha fechada">
+					<div
+						style="height:140px; background-color:rgb(168, 188, 253); float: right; margin-right:10px; padding:10px; display:flex; align-items:center;">
+						<p style="font-size: 30px">\( T(s) = \frac{Z(s)}{R(s)} = \frac{G(s)}{\left(1 + G(s) \, H(s)
+							\right)} \)</p>
+					</div>
+
+				</section>
+
+				<section>
+
+					<h5 style="margin-bottom: 50px;">Tipo do sistema</h5>
+
+					<div style="width:40%; height:250px; float:left">
+						<img style="width:100%;" src="ilustracoes/errosestMalhaFechadaDiagrama.svg"
+							alt="Diagrama malha fechada">
+					</div>
+					<div style="width:60%; height:250px; float:right">
+						<p style="font-size: 30px;">\(A(s) = G(s) H(s) = \frac{K_g (\lambda_1 s + 1)(\lambda_2 s + 1)
+							...}{s^N(\tau_1 s + 1)(\tau_2 s
+							+ 1) ...}\)</p>
+
+						<p style="font-size: 25px; margin: 0; float: left;">\(N\) = número de pólos de \(A(s)\) na
+							origem</p>
+						<p style="font-size: 25px; margin: 0; float: left;">\(N\) = tipo do sistema</p>
+
+					</div>
+
+					<p class="fragment fade-in" data-fragment-index="1" style="font-size: 30px;">\(A_1(s) = \frac{s +
+						1}{s + 2}\) &nbsp; \(\rightarrow\)
+						&nbsp; Tipo 0</p>
+					<p class="fragment fade-in" data-fragment-index="2" style="font-size: 30px;">\(A_2(s) = \frac{s +
+						1}{s \left(s + 2 \right)}\) &nbsp;
+						\(\rightarrow\) &nbsp; Tipo 1</p>
+					<p class="fragment fade-in" data-fragment-index="3" style="font-size: 30px;">\(A_3(s) = \frac{s +
+						1}{s^2 \left(s + 2 \right)}\) &nbsp;
+						\(\rightarrow\) &nbsp; Tipo 2</p>
+
+				</section>
+
+				<section>
+
+					<h5 style="margin-bottom: 50px;">Sinais típicos</h5>
+
+					<img style="width: 90%;" src="ilustracoes/errosestSinaisTipicos.svg" alt="Sinais típicos">
+
+				</section>
+
+
+				<section>
+
+					<h5 style="margin-bottom: 50px;">Efeito do integrador - Posição</h5>
+
+					<div style="width:30%; float:left">
+						<img style="width:100%;" src="ilustracoes/errosestEfeitoIntegradorPos.svg"
+							alt="Efeito do integrador Posição">
+					</div>
+					<div style="width:70%; float:right">
+						<p style="text-align: justify; padding:30px;"><br>O integrador \(\frac{1}{s}\) consegue eliminar
+							o erro estacionário de posição quando:</p>
+						<p>Tipo 0 \(\rightarrow\) Tipo 1.</p>
+					</div>
+
+				</section>
+
+				<section>
+
+					<h5 style="margin-bottom: 50px;">Efeito do integrador - Velocidade</h5>
+
+					<div style="width:30%; float:left">
+						<img style="width:100%;" src="ilustracoes/errosestEfeitoIntegradorVel.svg"
+							alt="Efeito do integrador Velocidade">
+					</div>
+					<div style="width:70%; float:right">
+						<p style="text-align: justify; padding:30px;"><br>O integrador \(\frac{1}{s}\) consegue eliminar
+							o erro estacionário de velocidade quando:</p>
+						<p>Tipo 1 \(\rightarrow\) Tipo 2.</p>
+					</div>
+
+				</section>
+
+				<section>
+
+					<h5 style="margin-bottom: 50px;">Efeito do integrador - Aceleração</h5>
+
+					<div style="width:30%; float:left">
+						<img style="width:100%;" src="ilustracoes/errosestEfeitoIntegradorAce.svg"
+							alt="Efeito do integrador Aceleração">
+					</div>
+					<div style="width:70%; float:right">
+						<p style="text-align: justify; padding:30px;"><br>O integrador \(\frac{1}{s}\) não consegue
+							eliminar o erro estacionário de aceleração quando:</p>
+						<p>Tipo 1 \(\rightarrow\) Tipo 2.</p>
+					</div>
+
+				</section>
+
+				<section>
+
+					<h5 style="margin-bottom: 50px;">Efeito do integrador</h5>
+
+					<img style="width:30%;" src="ilustracoes/errosestEfeitoIntegradorPos.svg"
+						alt="Efeito do integrador Posição">
+					<img style="width:30%;" src="ilustracoes/errosestEfeitoIntegradorVel.svg"
+						alt="Efeito do integrador Velocidade">
+					<img style="width:30%;" src="ilustracoes/errosestEfeitoIntegradorAce.svg"
+						alt="Efeito do integrador Aceleração">
+
+				</section>
+
+				<section>
+
+					<h5 style="margin-bottom: 50px;">Efeito do ganho</h5>
+
+					<img style="width:90%;" src="ilustracoes/errosestEfeitoGanho.svg" alt="Efeito do Ganho">
+
+					<p style="font-size: 30px;">O aumento do ganho \(K_g\) diminui o erro estacionário.</p>
+
+				</section>
+
+				<section>
+
+					<h5 style="margin-bottom: 50px;">Tabela de erros</h5>
+
+					<img style="height:500px;" src="ilustracoes/errosestTabelaErros.png" alt="Tabela de erros">
+
+				</section>
+
+				<section>
+
+					<p>
+						Utilizando um sistema de primeira ordem, mostre que o erro estacionário dos sistemas do tipo 0
+						para uma entrada degrau \(\frac{A}{s}\) é igual a
+					</p>
+
+					<p>
+						\(e_{ss} = \frac{A}{1 + K_g}\)
+					</p>
+
+				</section>
+
 				<section>
 
 					<a href="#errosestteste" class="button2" style="margin: 10px; align-content: center;"
@@ -1206,22 +1386,7 @@
 
 				<section id="sistemalj">
 
-					<div style="width:100%; height: 700px;">
-						<div style="width:100%;position:absolute;top:250px;text-align: center;">
-
-							<h3>Sistema LJ</h3>
-							<!-- <h5>TMA</h5> -->
-
-						</div>
-						<!-- <div style="width:100%;position:absolute; bottom:30px;">
-
-							<a href="https://moodle.fei.edu.br/moodle/course/view.php?id=1305&section=2" class="button2"
-								style="float: left; margin: 10px; align-content: center;bottom: 10 px"
-								title="Estudo recomendado" target="_blank">Estudo
-								recomendado</a>
-
-						</div> -->
-					</div>
+					<h3>Sistema LJ</h3>
 
 				</section>
 
@@ -1349,126 +1514,93 @@
 
 				</section>
 
-				<!-- 
-				<section>
-				<section>
+			</section>
 
-					<div style="width:100%; height: 700px;">
-						<div style="width:100%;position:absolute;top:250px;text-align: center;">
+			<section>
 
-							<h3>Título</h3>
-							<h5>Subtítulo</h5>
+				<section id="simulinkrealtime">
 
-						</div>
-						<div style="width:100%;position:absolute; bottom:30px;">
-
-							<a href="https://moodle.fei.edu.br/moodle/course/view.php?id=1305&section=2" class="button2"
-								style="float: left; margin: 10px; align-content: center;bottom: 10 px"
-								title="Estudo recomendado" target="_blank">Estudo
-								recomendado</a>
-
-						</div>
-					</div>
+					<h3>Simulink Desktop Real Time</h3>
 
 				</section>
 
-				<section id="cincorpomovgeralteste">
+				<section>
 
-					<div style="width:100%;">
+					<h5 style="margin-bottom: 50px;">Entrada e saída</h5>
 
-						<img style="width:55%;" src="ilustracoes/cincorpomovgeralExemplo3Kaminski.svg"
-							alt="Exemplo Kaminski">
-
-						 <p style="text-align: justify;"> Determine o tempo de frenagem até que o veículo fique em repouso.</p> 
-
-					</div>
-
-					<div style="width:60%; height:230px; float:left;">
-						<p style="text-align: justify; font-size: 25px; margin-right: 30px">A correia move-se a uma
-							velocidade constante
-							v, rolando sem
-							escorregar sobre uma polia C de raio R. As polias A e B, de raio r, estão ligadas ao sistema
-							por um eixo AB
-							rígido, de comprimento 4R, em torno do qual elas podem girar. Elas rolam sem escorregar
-							sobre o plano
-							horizontal. Determine:</p>
-
-					</div>
-
-					<div style="width:40%; height:230px; float:right;">
-
-						<ol>
-							<li style="font-size: 25px;">O vetor velocidade angular \(\vec{\Omega}\) do eixo AB.</li>
-							<li style="font-size: 25px;">O vetor velocidade angular \(\vec{\omega}\) do disco A.</li>
-							<li style="font-size: 25px;">O vetor velocidade \(\vec{v}_P\) do ponto P do disco A, quando
-								AP // x.</li>
-						</ol>
-
-					</div>
-
-					<div style="width:100%; height:100px;">
-
-						<a href="#ajuda" class="button2" style="float: left; margin: 10px; align-content: center;"
-							title="Mais exercícios">Quero
-							mais
-							exercícios!</a>
-					</div>
+					<img style="width:90%;" src="ilustracoes/simulinkrealtimeInputOutput.svg" alt="Input / Output">
 
 				</section>
 
+				<section>
+
+					<h5 style="margin-bottom: 50px;">Placa PCI 6221-37 da National Instruments</h5>
+
+					<img style="width:90%;" src="ilustracoes/simulinkrealtimeNational.svg" alt="Placa da national">
+
+				</section>
 
 				<section>
 
-					<div style="width:100%;">
+					<h5 style="margin-bottom: 50px;">Instruções</h5>
 
-						<h5>Título da página</h5>
+					<ul>
+						<li style="font-size: 30px;"> Baixar arquivo <span
+								style="font-weight: bold">SimulinkDesktopRealTime.pdf</span> no Moodle </li>
+						<li style="font-size: 30px;"> Baixar arquivo <span style="font-weight: bold">Modelo Simulink
+								Desktop Real-Time</span> no Moodle </li>
+						<li style="font-size: 30px;"> Salvar arquivo no disco local. Ex.: "Documentos/MATLAB" </li>
+						<li style="font-size: 30px;"> Conectar cabo </li>
+						<li style="font-size: 30px;"> Abrir Matlab/Simulink </li>
+					</ul>
 
+				</section>
 
-					</div>
+				<section>
 
-					<div style="width:60%; height:160px;float:left; display:flex; align-items: center;">
+					<h5 style="margin-bottom: 50px;">Pinos da placa PCI-6221-37</h5>
 
-						<p style="font-size: 25px">Texto.</p>
+					<img style="height:550px;" src="ilustracoes/simulinkrealtimePinos.png" alt="Pinos">
 
-					</div>
+				</section>
 
-					<div style="width:40%; height:160px;float:right;">
+				<section>
 
+					<h5 style="margin-bottom: 50px;">Exemplo 1 - Pilha</h5>
 
-						<div
-							style="height:140px; background-color:rgb(168, 188, 253); float: right; margin-right:10px; padding:10px; display:flex; align-items:center;">
-							<p style="font-size: 25px">\( \vec{v}_P (P-Q) = \vec{v}_Q (P-Q) \)</p>
-						</div>
+					<img style="width: 90%;" src="ilustracoes/simulinkrealtimeEx1pilha.svg" alt="Pinos">
 
-					</div>
+				</section>
+				<section>
 
-					<div style="width:40%; height:400px;float:left; display:flex; align-items: center;">
-						 <img style="width:100%" src="ilustracoes/cincorpomovgeralPropFund1.svg" alt="Propriedade fundamental 1"> 
-			Figura
-		</div>
-		<div style="width:60%; height:400px;float:right;">
+					<h5 style="margin-bottom: 50px;">Exemplo 2 - Led</h5>
 
-			Equações
-		</div>
+					<img style="width: 90%;" src="ilustracoes/simulinkrealtimeEx2led.svg" alt="Pinos">
 
-		</section>
+				</section>
+				<section>
 
+					<h5 style="margin-bottom: 50px;">Exemplo 3 - Entrada e saída</h5>
 
-		<section>
+					<img style="width: 90%;" src="ilustracoes/simulinkrealtimeEx3io.svg" alt="Pinos">
 
-			<a href="#cinpontomovretteste" class="button2" style="margin: 10px; align-content: center;"
-				title="Mais exercícios">Voltar
-				para o exercício</a>
+				</section>
+				<section>
 
-			<a href="#cinpontomovgeral" class="button2" style="margin: 10px; align-content: center;"
-				title="Dúvidas">Próximo
-				tópico</a>
+					<h5 style="margin-bottom: 50px;">Exemplo 4 - Entrada e saı́da com integrador</h5>
 
-		</section>
+					<img style="width: 90%;" src="ilustracoes/simulinkrealtimeEx4ioIntegrador.svg" alt="Pinos">
 
-		</section> 
-	-->
+				</section>
+				<section>
 
+					<h5 style="margin-bottom: 50px;">Exemplo 5 - Conexão entre dois PCs</h5>
+
+					<img style="width: 90%;" src="ilustracoes/simulinkrealtimeEx5conexao.svg" alt="Pinos">
+
+				</section>
+
+			</section>
 
 		</div>
 	</div>
