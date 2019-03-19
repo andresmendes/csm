@@ -100,6 +100,7 @@
 			<a href="#/controladorlqr">10 - Regulador linear quadrático</a>
 			<a href="#/observador">11 - Observador de estados</a>
 			<a href="#/sistemalj">Extra - Sistema LJ</a>
+			<a href="#/identificacaolj">Extra - Identificação do sistema LJ</a>
 			<a href="#/simulinkrealtime">Extra - Simulink Real Time</a>
 		</div>
 
@@ -1374,12 +1375,195 @@
 					<div id="controladorpidmenu" w3-include-html="aux/content.html"></div>
 				</section>
 
+				<section id="controladorpidteste">
+
+					<p style="font-size: 30px;">Considere a função de transferência do sistema LJ: </p>
+
+					<p style="font-size: 30px;">\( G(s) = \frac{0{,}9}{0{,}3 s + 1} \)</p>
+
+					<p style="font-size: 30px; text-align: justify;">Projete um controlador PI para o sistema LJ de
+						forma que o tempo de acomodação em malha fechada seja \(\tau_{mf} = \frac{\tau}{2}\). </p>
+
+				</section>
+
 				<section>
 					<iframe allowfullscreen=""
 						data-src="https://www.youtube.com/embed/u1pgaJHiiew?start=20;end=305;cc_load_policy=1;autoplay=1"
 						width="100%" height="700px" frameborder="0"></iframe>
 				</section>
 
+				<section>
+
+					<img style="width:80%;" src="ilustracoes/controladorPIDdiagramaSimples.svg"
+						alt="Diagrama controlador pid simples">
+
+					<img class="fragment fade-in" data-fragment-index="1" style="width:80%; padding-top: 25px;"
+						src="ilustracoes/controladorPIDdiagramaDetalhe.svg" alt="Diagrama controlador pid detalhe">
+
+				</section>
+
+				<section>
+
+					<p style="font-size: 25px">\(C(s) = \frac{U(s)}{E(s)} = K_p + \frac{K_i}{s} + K_d \, s\)</p>
+
+					<p style="font-size: 25px">\(U(s) = K_p E(s) + \frac{K_i}{s}E(s) + K_d \, s E(s)\)</p>
+
+					<p class="fragment fade-in" data-fragment-index="1" style="font-size: 30px; padding-top: 20px;">
+						\(\mathscr{L}^{-1} [ \cdot ] \rightarrow u(t) = \underbrace{K_p e(t)}_{\text{presente}} +
+						\underbrace{K_i \int^{t_i}_0 e(t) \, dt}_{\text{passado}} + \underbrace{K_d
+						\frac{d}{dt}e(t)}_{\text{futuro}}\)</p>
+
+					<img style="width:80%;" src="ilustracoes/controladorPIDgraficoErro.svg" alt="Erro controlador">
+
+					<aside class="notes">
+						Se \(K_i \neq 0\), o controlador aumenta o tipo do sistema.
+					</aside>
+
+				</section>
+
+				<section>
+
+					<h5>Controladores</h5>
+
+					<ol>
+						<li>Técnicas indiretas (LGR, Bode, ...)</li>
+						<li>Técnicas empíricas (Ziegler-Nichols, ...)</li>
+						<li>Técnicas algébricas (<span style="color: red">Cancelamento</span>, ...)</li>
+					</ol>
+
+					<p class="fragment fade-in" data-fragment-index="1">Estratégia</p>
+
+					<ul class="fragment fade-in" data-fragment-index="1" style="font-size: 30px;">
+						<li>Uma boa função de transferência para o ramo direto é a de um integrador (\(\frac{1}{s}\)).
+						</li>
+						<li>Nunca se cancelam polos instáveis, pois o cancelamento é inexato.</li>
+					</ul>
+
+				</section>
+
+				<section>
+
+					<h5>Projeto PD</h5>
+
+					<p style="font-size:25px;">Para plantas de 2a ordem com polo na origem</p>
+
+					<img style="width:70%;" src="ilustracoes/controladorPIDdiagramaPD.svg"
+						alt="Diagrama controlador pid simples">
+
+					<p style="font-size:30px;">\(C(s)P(s) = \left( K_p + K_d \, s \right) \frac{K_g}{s(\tau s + 1)}
+						\quad = \quad \frac{K_g K_p}{s} \frac{\frac{K_d}{K_p}s + 1}{\tau s + 1}\)</p>
+
+					<p class="fragment fade-in" data-fragment-index="1" style="font-size:25px;">Se
+						\(\color{red}{\frac{K_d}{K_p} =
+						\tau} \quad \rightarrow \quad C(s) \, P(s) = \frac{K_g K_p}{s} \quad \rightarrow \quad T(s) =
+						\frac{C(s) P(s)}{1 + C(s)P(s)} = \frac{K_g K_p}{s + K_g K_p} \) </p>
+
+					<div class="fragment fade-in" data-fragment-index="2"
+						style="background-color:rgb(168, 188, 253); padding:10px; margin:auto; display:inline-block; align-content: center;">
+						<p style="font-size: 30px;">\( T(s) = \frac{K_{m.f.}}{\tau_{m.f.}s + 1} = \frac{1}{\frac{1}{K_g
+							K_p}s + 1} \)</p>
+					</div>
+
+				</section>
+
+				<section>
+
+					<h5>Projeto PI</h5>
+
+					<p style="font-size:25px;">Para plantas de 1a ordem</p>
+
+					<img style="width:70%;" src="ilustracoes/controladorPIDdiagramaPI.svg"
+						alt="Diagrama controlador pid simples">
+
+					<p style="font-size:30px;">\(C(s)P(s) = \left( \frac{K_p s + K_i}{s} \right) \frac{K_g}{\tau s + 1}
+						\quad = \quad \frac{K_g K_i}{s} \frac{\frac{K_p}{K_i}s + 1}{\tau s + 1}\)</p>
+
+					<p class="fragment fade-in" data-fragment-index="1" style="font-size:25px;">Se
+						\(\color{red}{\frac{K_p}{K_i} =
+						\tau} \quad \rightarrow \quad C(s) \, P(s) = \frac{K_g K_i}{s} \quad \rightarrow \quad T(s) =
+						\frac{C(s) P(s)}{1 + C(s)P(s)} = \frac{K_g K_i}{s + K_g K_i} \) </p>
+
+					<div class="fragment fade-in" data-fragment-index="2"
+						style="background-color:rgb(168, 188, 253); padding:10px; margin:auto; display:inline-block; align-content: center;">
+						<p style="font-size: 30px;">\( T(s) = \frac{K_{m.f.}}{\tau_{m.f.}s + 1} = \frac{1}{\frac{1}{K_g
+							K_i}s + 1} \)</p>
+					</div>
+
+				</section>
+
+				<section>
+
+					<h5>Projeto PID</h5>
+
+					<p style="font-size:25px;">Para plantas de 2a ordem sem polo na origem</p>
+
+					<img style="width:70%;" src="ilustracoes/controladorPIDdiagramaPID.svg"
+						alt="Diagrama controlador pid simples">
+
+					<p style="font-size:30px;">\(C(s)P(s) = \left( \frac{K_d s^2 + K_p s + K_i}{s} \right) \frac{K}{s^2
+						+ a s + b}
+						= \frac{K_d \left( s^2 + \frac{K_p}{K_d} s + \frac{K_i}{K_d} \right)}{s} \frac{K}{s^2 + a s +
+						b}\)</p>
+
+					<p class="fragment fade-in" data-fragment-index="1" style="font-size:25px;">Se
+						\(\color{red}{\frac{K_p}{K_d} =
+						a}\) e \( \color{red}{\frac{K_i}{K_d} = b}\):</p>
+
+					<p class="fragment fade-in" data-fragment-index="1" style="font-size:25px;">\(C(s) \, P(s) = \frac{K
+						K_d}{s} \quad \rightarrow \quad T(s) =
+						\frac{C(s) P(s)}{1 + C(s)P(s)} = \frac{K \, K_d}{s + K \, K_d} \) </p>
+
+					<div class="fragment fade-in" data-fragment-index="2"
+						style="background-color:rgb(168, 188, 253); padding:10px; margin:auto; display:inline-block; align-content: center;">
+						<p style="font-size: 30px;">\( T(s) = \frac{K_{m.f.}}{\tau_{m.f.}s + 1} = \frac{1}{\frac{1}{K \,
+							K_d}s + 1} \)</p>
+					</div>
+
+				</section>
+
+				<section>
+
+					<a href="#controladorpidteste" class="button2" style="margin: 10px; align-content: center;"
+						title="Mais exercícios">Voltar
+						para o exercício</a>
+
+					<a href="#espacoestados" class="button2" style="margin: 10px; align-content: center;"
+						title="Dúvidas">Próximo
+						tópico</a>
+
+				</section>
+
+			</section>
+
+			<section>
+				<section id="espacoestados">
+					<h5>Espaço de Estados</h5>
+				</section>
+			</section>
+
+			<section>
+				<section id="linearizacao">
+					<h5>Linearização</h5>
+				</section>
+			</section>
+
+			<section>
+				<section id="controladoralocacao">
+					<h5>Projeto por alocação de polos</h5>
+				</section>
+			</section>
+
+
+			<section>
+				<section id="controladorlqr">
+					<h5>Regulador linear quadrático</h5>
+				</section>
+			</section>
+
+			<section>
+				<section id="observador">
+					<h5>Observador de estados</h5>
+				</section>
 			</section>
 
 			<section>
@@ -1518,6 +1702,57 @@
 
 			<section>
 
+				<section id="identificacaolj">
+
+					<h3>Identificação do sistema LJ</h3>
+
+				</section>
+
+				<section>
+
+					<h5>Funções candidatas</h5>
+
+					<img style="width:90%; padding-bottom: 30px;" src="ilustracoes/identificacaoLJdiagrama.svg"
+						alt="Identificação diagrama">
+
+					<div style="float:left; width: 50%; height:100px">
+						<p style="font-size: 30px;">
+							\(P(1) = \frac{V_{taco}}{V_{in}} = \frac{K_1}{\tau s + 1}\)
+						</p>
+					</div>
+
+					<div style="float:right; width: 50%; height:100px">
+						<p style="font-size: 30px;">
+							\(P(2) = \frac{V_{pot}}{V_{in}} = \frac{K_2}{s(\tau s + 1)}\)
+						</p>
+					</div>
+
+				</section>
+
+				<section>
+
+					<h5 style="margin-bottom: 50px;">Instruções</h5>
+
+					<ul>
+						<li style="font-size: 30px;"> Baixar arquivo <span style="font-weight: bold">Simulink Desktop
+								Real-Time (template)</span> (Semana 4) no Moodle </li>
+						<li style="font-size: 30px;"> Baixar arquivo <span
+								style="font-weight: bold">Identificacao.zip</span> (Semana 5) no Moodle </li>
+						<li style="font-size: 30px;"> Salvar arquivo no disco local. Ex.: "Documentos/MATLAB" </li>
+						<li style="font-size: 30px;"> Conectar cabo </li>
+						<li style="font-size: 30px;"> Abrir Matlab/Simulink </li>
+					</ul>
+
+					<img style="width:90%; padding-top: 30px;" src="ilustracoes/identificacaoLJligacao.svg"
+						alt="Identificação ligação">
+
+				</section>
+
+
+			</section>
+
+			<section>
+
 				<section id="simulinkrealtime">
 
 					<h3>Simulink Desktop Real Time</h3>
@@ -1545,10 +1780,8 @@
 					<h5 style="margin-bottom: 50px;">Instruções</h5>
 
 					<ul>
-						<li style="font-size: 30px;"> Baixar arquivo <span
-								style="font-weight: bold">SimulinkDesktopRealTime.pdf</span> no Moodle </li>
-						<li style="font-size: 30px;"> Baixar arquivo <span style="font-weight: bold">Modelo Simulink
-								Desktop Real-Time</span> no Moodle </li>
+						<li style="font-size: 30px;"> Baixar arquivo <span style="font-weight: bold">Simulink Desktop
+								Real-Time (template)</span> no Moodle </li>
 						<li style="font-size: 30px;"> Salvar arquivo no disco local. Ex.: "Documentos/MATLAB" </li>
 						<li style="font-size: 30px;"> Conectar cabo </li>
 						<li style="font-size: 30px;"> Abrir Matlab/Simulink </li>
