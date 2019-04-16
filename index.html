@@ -1538,8 +1538,198 @@
 
 			<section>
 				<section id="espacoestados">
-					<h5>Espaço de Estados</h5>
+
+					<h5>
+						Espaço de Estados
+					</h5>
+
 				</section>
+
+				<section data-state="espacoestadosevento">
+					<div id="espacoestadosmenu" w3-include-html="auxfiles/content.html"></div>
+				</section>
+
+				<section>
+
+					<h5>Representação</h5>
+
+					<img style="width:550px;padding:40px;" src="ilustracoes/espacoestadosBloco.svg" alt="Bloco">
+
+					<p style="font-size:25px;">Modelo no Espaço de Estados (SS):</p>
+					<p style="font-size:25px;">\(\dot{x} = f(x,u,t)\)</p>
+					<p style="font-size:25px;">\(y = g(x,u,t)\)</p>
+
+					<p style="font-size:25px;">O estado de um sistema é a menor quantidade de informação que é suficiente para determinar de forma única a configuração do sistema.</p>
+
+<!-- 					<aside class="notes">
+						O estado de um sistema é a menor quantidade de informação que é suficiente para determinar de forma única a configuração do sistema.
+					</aside> -->
+
+				</section>
+
+				<section>
+
+					<h5>Diagrama</h5>
+
+					<p style="font-size:25px;">Modelo linear invariante no tempo (LTI) no SS:</p>
+					<p style="font-size:25px;">\(\dot{x} = Ax + Bu\)</p>
+					<p style="font-size:25px;padding-bottom: 60px">\(y = Cx + Du\)</p>
+
+					<img style="width:90%;" src="ilustracoes/espacoestadosDiagramaSS.svg" alt="Diagrama SS">
+
+				</section>
+
+				<section>
+					
+					<h5>Exemplo</h5>
+					
+					<p style="font-size:25px; padding-bottom: 50px;">Represente no espaço de estados:</p>
+
+					<img style="width:450px;" src="ilustracoes/espacoestadosExemploBloco.svg" alt="Exemplo Bloco">
+					
+					<p style="font-size:30px;">\(f(t) = m \ddot{p} + b \dot{p} + k p\)</p>
+
+				</section>
+
+				<section>
+					
+					<h5>A partir da F.T. - Caso 1</h5>
+
+					<img style="width:450px; padding:50px;" src="ilustracoes/espacoestadosBlocoSimples1.svg" alt="Bloco simples 1">
+					
+					<p class="fragment fade-in" data-fragment-index="1" style="font-size:30px;">\(\frac{Y(s)}{U(s)} = \frac{1}{as^2 + bs + c}\)</p>
+
+					<p class="fragment fade-in" data-fragment-index="1" style="font-size:25px;">
+					\(a Y(s) s^2 + b Y(s) s + c Y(s) = U(s)\)</p>
+
+					<p class="fragment fade-in" data-fragment-index="1" style="font-size:25px;">
+					\(\mathscr{L}[\cdot] \rightarrow a \ddot{y}(t) + b \dot{y}(t) + c y(t) = u(t)\)</p>
+
+				</section>
+
+				<section>
+					
+					<h5>A partir da F.T. - Caso 1 (Cont.)</h5>
+
+					<p style="font-size:25px;">
+					\(a \ddot{y}(t) + b \dot{y}(t) + C y(t) = u(t)\)</p>
+
+					<p class="fragment fade-in" data-fragment-index="1" style="font-size:25px; text-align: justify;"> Escolhendo os estados \(x_1 = y(t)\) e \(x_2 = \dot{y}(t)\)</p>
+
+					<p class="fragment fade-in" data-fragment-index="1" style="font-size:25px;">
+					\(
+					\begin{eqnarray} 
+					\dot{x}_1 &=& x_2      				\nonumber \\
+					\dot{x}_2 &=& (u - b x_2 - c x_1)/a \nonumber \\
+					y &=& x_1    						\nonumber
+					\end{eqnarray} 
+					\)</p>
+
+					<p class="fragment fade-in" data-fragment-index="1" style="font-size:25px; text-align: justify;">Modelo linear:</p>
+
+					<p class="fragment fade-in" data-fragment-index="1" style="font-size:25px;">
+					\(
+					\begin{eqnarray} 
+					\left[ \begin{array}{c} \dot{x}_1 \\ \dot{x}_2 \end{array} \right] &=& \left[ \begin{array}{cc} 0 & 1 \\ -c/a & -b/a \end{array} \right] \left[ \begin{array}{c} x_1 \\ x_2 \end{array} \right] + \left[ \begin{array}{c} 0 \\ 1/a \end{array} \right] u	\nonumber \\
+					y &=& \left[ \begin{array}{cc} 1 & 0 \end{array} \right] \left[ \begin{array}{c} x_1 \\ x_2 \end{array} \right] + [0] u  						\nonumber
+					\end{eqnarray} 
+					\)</p>
+
+				</section>
+
+				<section>
+					
+					<h5>A partir da F.T. - Caso 2</h5>
+
+					<img style="width:450px; padding:50px;" src="ilustracoes/espacoestadosBlocoSimples2.svg" alt="Bloco simples 2">
+					
+					<p class="fragment fade-in" data-fragment-index="1" style="font-size:30px;">\(\frac{Y(s)}{U(s)} = \frac{ds + e}{as^2 + bs + c} \frac{W(s)}{W(s)\)</p>
+
+					<p class="fragment fade-in" data-fragment-index="1" style="font-size:25px;">
+					\( (a s^2 + b s + c) W(s) = U(s)\)</p>
+
+					<p class="fragment fade-in" data-fragment-index="1" style="font-size:25px;">
+					\(\mathscr{L}[\cdot] \rightarrow a \ddot{w}(t) + b \dot{w}(t) + c w(t) = u(t)\)</p>
+
+					<p class="fragment fade-in" data-fragment-index="1" style="font-size:25px;">
+					\( (ds + e) W(s) = Y(s)\)</p>
+
+					<p class="fragment fade-in" data-fragment-index="1" style="font-size:25px;">
+					\(\mathscr{L}[\cdot] \rightarrow d \dot{w}(t) + e w(t) = y(t)\)</p>
+
+				</section>
+
+				<section>
+					
+					<h5>A partir da F.T. - Caso 2 (Cont.)</h5>
+
+					<p style="font-size:25px;">
+					\(a \ddot{w}(t) + b \dot{w}(t) + c w(t) = u(t)\)</p>
+
+					<p style="font-size:25px;">
+					\(d \dot{w}(t) + e w(t) = y(t)\)</p>
+
+					<p class="fragment fade-in" data-fragment-index="1" style="font-size:25px; text-align: justify;"> Escolhendo os estados \(x_1 = w(t)\) e \(x_2 = \dot{w}(t)\)</p>
+
+					<p class="fragment fade-in" data-fragment-index="1" style="font-size:25px;">
+					\(
+					\begin{eqnarray} 
+					\dot{x}_1 &=& x_2      				\nonumber \\
+					\dot{x}_2 &=& (u - b x_2 - c x_1)/a \nonumber \\
+					y &=& d x_2 + e x_1    						\nonumber
+					\end{eqnarray} 
+					\)</p>
+
+					<p class="fragment fade-in" data-fragment-index="1" style="font-size:25px; text-align: justify;">Modelo linear:</p>
+
+					<p class="fragment fade-in" data-fragment-index="1" style="font-size:25px;">
+					\(
+					\begin{eqnarray} 
+					\left[ \begin{array}{c} \dot{x}_1 \\ \dot{x}_2 \end{array} \right] &=& \left[ \begin{array}{cc} 0 & 1 \\ -c/a & -b/a \end{array} \right] \left[ \begin{array}{c} x_1 \\ x_2 \end{array} \right] + \left[ \begin{array}{c} 0 \\ 1/a \end{array} \right] u	\nonumber \\
+					y &=& \left[ \begin{array}{cc} e & d \end{array} \right] \left[ \begin{array}{c} x_1 \\ x_2 \end{array} \right] + [0] u  						\nonumber
+					\end{eqnarray} 
+					\)</p>
+
+				</section>
+
+				<section>
+					
+					<h5>Exercício 1</h5>
+					
+					<p style="font-size:25px; padding-bottom: 50px;">Represente no espaço de estados considerando as posições como saída do sistema:</p>
+
+					<img style="width:80%;" src="ilustracoes/espacoestadosBlocos.svg" alt="Exercício Blocos">
+					
+					<p style="font-size:30px;">\(
+					\begin{eqnarray} 
+					m_1 \ddot{x}_1 &=& - k_2 (x_1 - x_2) - b_2 ( \dot{x}_1 - \dot{x}_2 ) - k_1 x_1	\nonumber \\
+					m_2 \ddot{x}_2 &=& - k_2 (x_2 - x_1) - b_2 ( \dot{x}_2 - \dot{x}_1 ) + f(t)		\nonumber
+					\end{eqnarray} \)</p>
+
+				</section>
+
+				<section>
+					
+					<h5>Exercício 2</h5>
+					
+					<p style="font-size:25px; padding-bottom: 50px;">Represente no espaço de estados:</p>
+
+					<img style="width:50%;" src="ilustracoes/espacoestadosMalhaFechada.svg" alt="Exercício Malha fechada">
+					
+				</section>
+				
+				<section>
+					
+					<h5>Exercício 3</h5>
+					
+					<p style="font-size:25px; padding-bottom: 50px;">Represente no espaço de estados:</p>
+
+					<img style="width:90%;" src="ilustracoes/espacoestadosReservatorioSerie.svg" alt="Exercício Reservatório">
+					
+					<p style="font-size:25px; text-align: justify">Considere \(h_1\) e \(h_2\) como saídas e \(f_1\) como entrada. As vazões são dadas por \(f_{12} = K_{12} h_1\) e \(f_2 = K_2 h_2\).</p>
+
+				</section>
+
 			</section>
 
 			<section>
@@ -2105,6 +2295,10 @@
 		Reveal.addEventListener('controladorpidevento', function () {
 			//  event.previousSlide, event.currentSlide, event.indexh, event.indexv
 			realceTopico("controladorpidmenu", "Controladores PID");
+		});
+		Reveal.addEventListener('espacoestadosevento', function () {
+			//  event.previousSlide, event.currentSlide, event.indexh, event.indexv
+			realceTopico("espacoestadosmenu", "Espaço de estados");
 		});
 
 	</script>
