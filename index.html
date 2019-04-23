@@ -79,36 +79,45 @@
 
 <body>
 
-	<div id="mySidenav" class="sidenav">
-
-		<div style="width:100%;height:60px">
-			<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-		</div>
-
-		<div style="width:100%;margin-bottom: 60px">
-			<a href="#/inicial">Página principal</a>
-			<a href="#/intro">0 - Introdução: Controle de Sistemas Mecânicos</a>
-			<a href="#/laplace">1 - Laplace</a>
-			<a href="#/functrans">2 - Função de transferência</a>
-			<a href="#/sistprimeiraordem">3 - Sistemas de primeira ordem</a>
-			<a href="#/sistsegundaordem">4 - Sistemas de segunda ordem</a>
-			<a href="#/errosest">5 - Erros estacionários</a>
-			<a href="#/controladorpid">6 - Controlador PID</a>
-			<a href="#/espacoestados">7 - Espaço de estados</a>
-			<a href="#/linearizacao">8 - Linearização</a>
-			<a href="#/controladoralocacao">9 - Projeto por alocação de polos</a>
-			<a href="#/controladorlqr">10 - Regulador linear quadrático</a>
-			<a href="#/observador">11 - Observador de estados</a>
-			<a href="#/sistemalj">Extra - Sistema LJ</a>
-			<a href="#/identificacaolj">Extra - Identificação do sistema LJ</a>
-			<a href="#/controladorlj">Extra - Controlador do sistema LJ</a>
-			<a href="#/simulinkrealtime">Extra - Simulink Real Time</a>
-		</div>
-
-	</div>
-
 	<!-- Para pinch zoom no celular, é preciso insterir este "data-prevent-swipe" para evitar conflito. -->
-	<div class="reveal" onclick="closeNav()" data-prevent-swipe>
+	<div class="reveal" data-prevent-swipe>
+
+		<div id="mySidenav" class="sidenav" onclick="closeNav()">
+
+			<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+
+			<p style="padding: 0px 0px 0px 16px;">Tópicos</p>
+
+			<a href="#/inicial">Página principal</a><br>
+			<a href="#/intro">Introdução ao curso</a><br>
+			
+			<p style="font-size: 35px; padding: 0px 0px 0px 16px;">Teoria</p>
+
+			<a href="#/laplace">1 - Laplace</a><br>
+			<a href="#/functrans">2 - Função de transferência</a><br>
+			<a href="#/sistprimeiraordem">3 - Sistemas de primeira ordem</a><br>
+			<a href="#/sistsegundaordem">4 - Sistemas de segunda ordem</a><br>
+			<a href="#/errosest">5 - Erros estacionários</a><br>
+			<a href="#/controladorpid">6 - Controlador PID</a><br>
+			<a href="#/espacoestados">7 - Espaço de estados</a><br>
+			<a href="#/linearizacao">8 - Linearização</a><br>
+			<a href="#/controladoralocacao">9 - Projeto por alocação de polos</a><br>
+			<a href="#/controladorlqr">10 - Regulador linear quadrático</a><br>
+			<a href="#/observador">11 - Observador de estados</a><br>
+
+			<p style="font-size: 35px; padding: 0px 0px 0px 16px;">Laboratório</p>
+
+			<a href="#/sistemalj">1 - Sistema LJ</a><br>
+			<a href="#/simulinkrealtime">2 - Simulink Real Time</a><br>
+			<a href="#/identificacaolj">3 - Identificação do sistema LJ</a><br>
+			<a href="#/controladorlj">4 - Controlador do sistema LJ</a><br>
+			<a href="#/dominancia">5 - Polos dominantes</a><br>
+			<a href="#/lugardasraizes">6 - Lugar das raízes</a><br>
+
+			<p>&nbsp;</p>		
+
+		</div>
+
 		<div class="slides">
 
 			<section>
@@ -187,9 +196,11 @@
 
 			<section>
 				<section id="intro">
-					<h5>
+					
+					<h3>
 						Introdução ao curso
-					</h5>
+					</h3>
+
 				</section>
 
 				<section data-background-image="ilustracoes/introWaymoFleet.jpeg" data-background-size="100%">
@@ -360,21 +371,7 @@
 			<section>
 				<section id="laplace">
 
-					<div style="width:100%; height: 700px;">
-						<div style="width:100%;position:absolute;top:250px;text-align: center;">
-
-							<h5>Laplace</h5>
-
-						</div>
-						<div style="width:100%;position:absolute; bottom:30px;">
-
-							<a href="https://moodle.fei.edu.br/moodle/course/view.php?id=745&section=2" target="_blank"
-								class="button2" style="float: left; margin: 10px; align-content: center;bottom: 10 px"
-								title="Estudo recomendado">Estudo
-								recomendado</a>
-
-						</div>
-					</div>
+					<h3>Laplace</h3>
 
 				</section>
 
@@ -441,21 +438,7 @@
 			<section>
 				<section id="functrans">
 
-					<div style="width:100%; height: 700px;">
-						<div style="width:100%;position:absolute;top:250px;text-align: center;">
-
-							<h5>Função de transferência</h5>
-
-						</div>
-						<div style="width:100%;position:absolute; bottom:30px;">
-
-							<a href="https://moodle.fei.edu.br/moodle/course/view.php?id=745&section=3" target="_blank"
-								class="button2" style="float: left; margin: 10px; align-content: center;bottom: 10 px"
-								title="Estudo recomendado">Estudo
-								recomendado</a>
-
-						</div>
-					</div>
+					<h3>Função de transferência</h3>
 
 				</section>
 
@@ -698,23 +681,9 @@
 			<section>
 				<section id="sistprimeiraordem">
 
-					<div style="width:100%; height: 700px;">
-						<div style="width:100%;position:absolute;top:250px;text-align: center;">
-
-							<h5>
-								Sistemas de primeira ordem
-							</h5>
-
-						</div>
-						<div style="width:100%;position:absolute; bottom:30px;">
-
-							<a href="https://moodle.fei.edu.br/moodle/course/view.php?id=745&section=4" target="_blank"
-								class="button2" style="float: left; margin: 10px; align-content: center;bottom: 10 px"
-								title="Estudo recomendado">Estudo
-								recomendado</a>
-
-						</div>
-					</div>
+					<h3>
+						Sistemas de primeira ordem
+					</h3>
 
 				</section>
 
@@ -927,23 +896,9 @@
 			<section>
 				<section id="sistsegundaordem">
 
-					<div style="width:100%; height: 700px;">
-						<div style="width:100%;position:absolute;top:250px;text-align: center;">
-
-							<h5>
-								Sistemas de segunda ordem
-							</h5>
-
-						</div>
-						<div style="width:100%;position:absolute; bottom:30px;">
-
-							<a href="https://moodle.fei.edu.br/moodle/course/view.php?id=745&section=4" target="_blank"
-								class="button2" style="float: left; margin: 10px; align-content: center;bottom: 10 px"
-								title="Estudo recomendado">Estudo
-								recomendado</a>
-
-						</div>
-					</div>
+					<h3>
+						Sistemas de segunda ordem
+					</h3>
 
 				</section>
 
@@ -1122,23 +1077,9 @@
 			<section>
 				<section id="errosest">
 
-					<div style="width:100%; height: 700px;">
-						<div style="width:100%;position:absolute;top:250px;text-align: center;">
-
-							<h5>
-								Erros estacionários
-							</h5>
-
-						</div>
-						<div style="width:100%;position:absolute; bottom:30px;">
-
-							<a href="https://moodle.fei.edu.br/moodle/course/view.php?id=745&section=5" target="_blank"
-								class="button2" style="float: left; margin: 10px; align-content: center;bottom: 10 px"
-								title="Estudo recomendado">Estudo
-								recomendado</a>
-
-						</div>
-					</div>
+					<h3>
+						Erros estacionários
+					</h3>
 
 				</section>
 
@@ -1352,23 +1293,9 @@
 			<section>
 				<section id="controladorpid">
 
-					<div style="width:100%; height: 700px;">
-						<div style="width:100%;position:absolute;top:250px;text-align: center;">
-
-							<h5>
-								Controlador PID
-							</h5>
-
-						</div>
-						<div style="width:100%;position:absolute; bottom:30px;">
-
-							<a href="https://moodle.fei.edu.br/moodle/course/view.php?id=745&section=6" target="_blank"
-								class="button2" style="float: left; margin: 10px; align-content: center;bottom: 10 px"
-								title="Estudo recomendado">Estudo
-								recomendado</a>
-
-						</div>
-					</div>
+					<h3>
+						Controlador PID
+					</h3>
 
 				</section>
 
@@ -1539,9 +1466,9 @@
 			<section>
 				<section id="espacoestados">
 
-					<h5>
+					<h3>
 						Espaço de Estados
-					</h5>
+					</h3>
 
 				</section>
 
@@ -1735,27 +1662,294 @@
 
 			<section>
 				<section id="linearizacao">
-					<h5>Linearização</h5>
+
+					<h3>Linearização</h3>
+
 				</section>
+
+				<section data-state="linearizacaoevento">
+					<div id="linearizacaomenu" w3-include-html="auxfiles/content.html"></div>
+				</section>
+
+				<section>
+					
+				<iframe allowfullscreen=""
+					data-src="https://www.youtube.com/embed/JLRc_jBiZeY?cc_load_policy=1;autoplay=1"
+					width="100%" height="700px" frameborder="0"></iframe>
+
+				</section>
+
+				<section>
+					
+					<img style="height: 300px;" src="ilustracoes/linearizacaoColossus.png">
+					<br>
+					<img class="fragment fade-in" data-fragment-index="1" src="ilustracoes/linearizacaoSetas.svg">
+					<br>
+
+					<div class="fragment fade-in" data-fragment-index="1" style="width:50%; height:200px; float: left;">
+						<p style="font-size: 25px;">Função de transferência</p>
+						<p style="font-size: 30px;">\(G(s) = \frac{K_g}{\tau s + 1}\)</p>
+					</div>
+
+					<div class="fragment fade-in" data-fragment-index="1" style="width:50%; height:200px; float:right;">
+						<p style="font-size: 25px;">Espaço de estados</p>
+						<p style="font-size: 25px;">\(
+							\begin{eqnarray} 
+								\dot{x} &=& A x + B u \nonumber \\
+								y &=& C x + D u \nonumber
+							\end{eqnarray}
+						\)</p>
+					</div>
+
+					<div class="fragment fade-in" data-fragment-index="2" style="width:50%; height:100px; float: left;">
+						<p style="font-size: 25px;">Controladores: P, PI, PD, PID</p>
+					</div>
+
+					<div class="fragment fade-in" data-fragment-index="2" style="width:50%; height:100px; float:right;">
+						<p style="font-size: 25px;">Controladores: Alocação, LQR</p>
+					</div>
+
+				</section>
+
+				<section>
+					
+					<p style="font-size:30px;">Modelo no Espaço de Estados (Não linear):</p>
+					<p style="font-size:25px;">\(\dot{x} = f(x,u,t)\)</p>
+					<p style="font-size:25px;">\(y = g(x,u,t)\)</p>
+
+					<p style="font-size:30px; padding-top: 50px;">É possível aproximar o sistema não linear por um sistema LTI?</p>
+
+					<p style="font-size:25px;">
+						\( \dot{x} = f(x,u,t) \qquad \xrightarrow[\text{Linearização}]{\text{Aproximação}} \qquad \dot{x} = A x + B u \)
+					</p>
+
+					<p style="text-align: justify; font-size: 30px; padding-top: 50px;">Motivação</p>
+
+					<ul style="font-size: 25px;">
+						<li>Projeto de controladores</li>
+						<li>Verificar estabilidade e comportamento dinâmico</li>
+						<li>Simulação mais rápida (Hardware in the loop)</li>
+					</ul>
+
+				</section>
+
+<section>
+
+	<h5>Inspiração</h5>
+	
+	<img src="ilustracoes/linearizacaoGrafico1.png">
+
+	<p style="font-size: 25px; ">
+		Equação não linear: \(y = x^2\)
+	</p>
+
+</section>
+
+<section>
+	
+	<h5>Inspiração</h5>
+
+	<img src="ilustracoes/linearizacaoGrafico2.png">
+
+	<p style="font-size: 25px; ">
+		Equação não linear: \(y = x^2\)
+	</p>
+	<p style="font-size: 25px; ">
+		Região de interesse em torno de \((x_{in},y_{in})=(6,36)\).
+	</p>
+
+</section>
+
+<section>
+	
+	<h5>Inspiração</h5>
+
+	<img src="ilustracoes/linearizacaoGrafico3.png">
+
+	<p style="font-size: 25px; ">
+		Equação não linear: \(y = x^2\)
+	</p>
+	<p style="font-size: 25px; ">
+		Região de interesse em torno de \((x_{in},y_{in})=(6,36)\)
+	</p>
+	<p style="font-size: 25px; ">
+		\(y_{linear} = y_{in} + 2 x_{in} (x - x_{in}) \qquad \rightarrow \qquad y_{linear} = 36 + 12 (x - 6)\)
+	</p>
+
+</section>
+
+<section>
+
+	<h5>Série de Taylor</h5>
+
+	<p style="font-size: 25px;">
+		Uma função não linear \(y = f(x)\) pode ser representada por uma série de Taylor em torno do ponto \((\overline{x},\overline{y})\)
+	</p>
+
+	<p style="font-size: 25px;">
+		\(y=f(x)=f(\overline{x})+(x-\overline{x})\left.\frac{d f}{d x}\right|_{x=\overline{x}}+\frac{1}{2 !}(x-\overline{x})^{2}\left.\frac{d^{2} f}{d x^{2}}\right|_{x=\overline{x}}+\cdots\)
+	</p>
+	
+	<p class="fragment fade-in" data-fragment-index="1" style="font-size: 25px; padding-top: 50px;">
+		Se a variação \( ( x - \overline{x} ) \) for pequena, podemos truncar a série de Taylor no termo de primeira ordem
+	</p>
+
+	<p class="fragment fade-in" data-fragment-index="1" style="font-size: 25px;">
+		\(y=f(x)=f(\overline{x})+(x-\overline{x})\left.\frac{d f}{d x}\right|_{x=\overline{x}}\)
+	</p>
+	<p class="fragment fade-in" data-fragment-index="1" style="font-size: 25px;">
+		\(y - \overline{y} = K(x - \overline{x})\)
+	</p>
+
+	<div class="fragment fade-in" data-fragment-index="3"
+		style="background-color:rgb(168, 188, 253); padding:10px; float:left; margin-bottom: 15px; align-content: center;">
+		<p style="font-size: 30px;">\(\Delta y = K \Delta x\)</p>
+	</div>
+
+	<div class="fragment fade-in" data-fragment-index="3"
+		style="padding:10px; float:left; margin-bottom: 15px; align-content: center;">
+		<p style="font-size: 25px;">Onde \(\qquad K = \left.\frac{d f}{d x}\right|_{x=\overline{x}}\) \(\qquad \Delta y = y - \overline{y}\) \(\qquad \Delta x = x - \overline{x}\)</p>
+	</div>
+
+</section>
+
+<section>
+	
+<h5>Exemplos</h5>
+
+<p style="font-size: 30px; text-align: justify; padding-top: 100px; padding-bottom: 100px;">
+1) Linearize a função \(f(x) = x^2\) em torno do ponto \(x_{op} = 4\).
+</p>
+
+<p class="fragment fade-in" data-fragment-index="1" style="font-size: 30px; text-align: justify;">
+2) Determine o valor aproximado de \(y=\sqrt{10}\) por meio da linearização, sabendo que \(\overline{y} = \sqrt{9}\)
+</p>
+
+</section>
+
+
+
+
+<section>
+	
+<h5>Linearização de sistema dinâmicos</h5>
+
+<p style="font-size: 25px; text-align: justify;">
+	Os sistemas dinâmicos não lineares são escritos como
+</p>
+
+<p style="font-size: 25px;">
+	\(\begin{aligned} \dot{x}_{1} &= f_{1}\left(x_{1}, x_{2}, \cdots x_{n}, u_{1}, u_{2}, \cdots u_{m}\right) \\ \dot{x}_{2}  &= f_{2}\left(x_{1}, x_{2}, \cdots x_{n}, u_{1}, u_{2}, \cdots u_{m}\right) \\ \vdots &= \vdots \\ \dot{x}_{n}  &=f_{n}\left(x_{1}, x_{2}, \cdots x_{n}, u_{1}, u_{2}, \cdots u_{m}\right) \end{aligned}\)
+
+</p>
+
+<p class="fragment fade-in" data-fragment-index="1" style="font-size: 25px; text-align: justify">
+	Logo, teremos as variações
+</p>
+
+<p class="fragment fade-in" data-fragment-index="1" style="font-size: 25px;">
+	\(\begin{array}{ccc}{\Delta x_{1}=\left(x_{1}-\overline{x}_{1}\right)} & & {\Delta u_{1}=\left(u_{1}-\overline{u}_{1}\right)} \\ {\Delta x_{2}=\left(x_{2}-\overline{x}_{2}\right)} & & {\Delta u_{2}=\left(u_{2}-\overline{u}_{2}\right)} \\ {\vdots} & \qquad \qquad & {\vdots} \\ {\Delta x_{n}=\left(x_{n}-\overline{x}_{n}\right)} & & {\Delta u_{m}=\left(u_{m}-\overline{u}_{m}\right)}\end{array}\)
+</p>
+
+</section>
+
+<section>
+
+<h5>Linearização de sistema dinâmicos</h5>
+
+<p style="font-size: 25px; text-align: justify;">
+	Os sistemas dinâmicos linearizados são escritos como
+</p>
+
+<p style="font-size: 25px;">
+\(\begin{array}{c}
+\begin{aligned} \frac{d}{d t}\left(\Delta x_{1}\right)=& a_{11} \Delta x_{1}+a_{12} \Delta x_{2}+\cdots+a_{1 n} \Delta x_{n}+\\ & b_{11} \Delta u_{1}+b_{12} \Delta u_{2}+\cdots+b_{1 m} \Delta u_{m} \end{aligned}
+\\
+\begin{aligned} \frac{d}{d t}\left(\Delta x_{2}\right)=& a_{21} \Delta x_{1}+a_{22} \Delta x_{2}+\cdots+a_{2 n} \Delta x_{n}+\\ & b_{21} \Delta u_{1}+b_{22} \Delta u_{2}+\cdots+b_{2 m} \Delta u_{m} \end{aligned}
+\\
+\vdots
+\\
+\begin{aligned} \frac{d}{d t}\left(\Delta x_{n}\right)=& a_{n 1} \Delta x_{1}+a_{n 2} \Delta x_{2}+\cdots+a_{m n} \Delta x_{n}+\\ & b_{n 1} \Delta u_{1}+b_{n 2} \Delta u_{2}+\cdots+b_{n m} \Delta u_{m} \end{aligned}
+\end{array}\)
+</p>	
+
+<p style="font-size: 25px; text-align: justify;">
+	Onde
+</p>
+
+<p style="font-size: 25px;">
+\(a_{i j}=\left.\frac{\partial f_{i}}{\partial x_{j}}\right|_{\overline{x}, \overline{u}} \mathrm{e} \quad b_{i j}=\left.\frac{\partial f_{i}}{\partial u_{j}}\right|_{\overline{x}, \overline{u}}\)
+</p>
+
+</section>
+
+<section>
+	
+	<h5>Exercício 1</h5>
+
+	<p style="font-size: 25px;text-align: justify;">
+		Considere o problema de se obter um modelo linear aproximado da seguinte equação diferencial que representa o comportamento dinâmico do nível \(h(t)\) de um tanque com uma vazão de alimentação \(u(t)\) e uma saída proporcional à \(\sqrt{h(t)}\)
+	</p>
+
+	<p style="font-size: 30px; padding: 70px;">
+		\(\dot{h}(t) = - \alpha \sqrt{h(t)} + \beta u(t)\)
+	</p>
+
+	<p style="font-size: 25px;text-align: justify;">
+		Considere o ponto de linearização \(\overline{h}\)=0,4m e as constantes \(\alpha\)=0,7 e \(\beta\)=1,3.
+	</p>
+
+</section>
+
+<section>
+	
+	<h5>Exercício 2</h5>
+
+	<p style="font-size: 25px;text-align: justify;">
+		Obtenha o modelo linear aproximado da seguinte equação de estado não linear que possui dois estados \((x_1,x_2)\) e duas entradas \((u_1,u_2)\). Considere o ponto de linearização em torno de \(\overline{x}_1\)=1 e \(\overline{x}_2\)=2. Apresente a equação de estado na forma matricial.
+	</p>
+
+	<p style="font-size: 30px; padding: 70px;">
+		\(\begin{array}{l}{\frac{d}{d t}\left(x_{1}(t)\right)=-\sqrt{x_{1}(t)}-x_{2}(t)+u_{2}(t)} \\ {\frac{d}{d t}\left(x_{2}(t)\right)=-x_{2}(t)+\left(u_{1}(t)\right)^{2}}\end{array}\)
+	</p>
+
+</section>
+
 			</section>
 
 			<section>
 				<section id="controladoralocacao">
-					<h5>Projeto por alocação de polos</h5>
+
+					<h3>Projeto por alocação de polos</h3>
 				</section>
+
+				<section data-state="controladoralocacaoevento">
+					<div id="controladoralocacaomenu" w3-include-html="auxfiles/content.html"></div>
+				</section>
+
 			</section>
 
 
 			<section>
 				<section id="controladorlqr">
-					<h5>Regulador linear quadrático</h5>
+					<h3>Regulador linear quadrático</h3>
 				</section>
+
+				<section data-state="controladorlqrevento">
+					<div id="controladorlqrmenu" w3-include-html="auxfiles/content.html"></div>
+				</section>
+
 			</section>
 
 			<section>
 				<section id="observador">
-					<h5>Observador de estados</h5>
+					<h3>Observador de estados</h3>
 				</section>
+
+				<section data-state="observadorevento">
+					<div id="observadormenu" w3-include-html="auxfiles/content.html"></div>
+				</section>
+
 			</section>
 
 			<section>
@@ -1894,6 +2088,90 @@
 
 			<section>
 
+				<section id="simulinkrealtime">
+
+					<h3>Simulink Desktop Real Time</h3>
+
+				</section>
+
+				<section>
+
+					<h5 style="margin-bottom: 50px;">Entrada e saída</h5>
+
+					<img style="width:90%;" src="ilustracoes/simulinkrealtimeInputOutput.svg" alt="Input / Output">
+
+				</section>
+
+				<section>
+
+					<h5 style="margin-bottom: 50px;">Placa PCI 6221-37 da National Instruments</h5>
+
+					<img style="width:90%;" src="ilustracoes/simulinkrealtimeNational.svg" alt="Placa da national">
+
+				</section>
+
+				<section>
+
+					<h5 style="margin-bottom: 50px;">Instruções</h5>
+
+					<ul>
+						<li style="font-size: 30px;"> Baixar arquivo <span style="font-weight: bold">Simulink Desktop
+								Real-Time (template)</span> no Moodle </li>
+						<li style="font-size: 30px;"> Salvar arquivo no disco local. Ex.: "Documentos/MATLAB" </li>
+						<li style="font-size: 30px;"> Conectar cabo </li>
+						<li style="font-size: 30px;"> Abrir Matlab/Simulink </li>
+					</ul>
+
+				</section>
+
+				<section>
+
+					<h5 style="margin-bottom: 50px;">Pinos da placa PCI-6221-37</h5>
+
+					<img style="height:550px;" src="ilustracoes/simulinkrealtimePinos.png" alt="Pinos">
+
+				</section>
+
+				<section>
+
+					<h5 style="margin-bottom: 50px;">Exemplo 1 - Pilha</h5>
+
+					<img style="width: 90%;" src="ilustracoes/simulinkrealtimeEx1pilha.svg" alt="Pinos">
+
+				</section>
+				<section>
+
+					<h5 style="margin-bottom: 50px;">Exemplo 2 - Led</h5>
+
+					<img style="width: 90%;" src="ilustracoes/simulinkrealtimeEx2led.svg" alt="Pinos">
+
+				</section>
+				<section>
+
+					<h5 style="margin-bottom: 50px;">Exemplo 3 - Entrada e saída</h5>
+
+					<img style="width: 90%;" src="ilustracoes/simulinkrealtimeEx3io.svg" alt="Pinos">
+
+				</section>
+				<section>
+
+					<h5 style="margin-bottom: 50px;">Exemplo 4 - Entrada e saı́da com integrador</h5>
+
+					<img style="width: 90%;" src="ilustracoes/simulinkrealtimeEx4ioIntegrador.svg" alt="Pinos">
+
+				</section>
+				<section>
+
+					<h5 style="margin-bottom: 50px;">Exemplo 5 - Conexão entre dois PCs</h5>
+
+					<img style="width: 90%;" src="ilustracoes/simulinkrealtimeEx5conexao.svg" alt="Pinos">
+
+				</section>
+
+			</section>
+
+			<section>
+
 				<section id="identificacaolj">
 
 					<h3>Identificação do sistema LJ</h3>
@@ -1979,86 +2257,126 @@
 			</section>
 
 			<section>
+				
+				<section id="dominancia">
+					
+					<h3>Polos dominantes</h3>
 
-				<section id="simulinkrealtime">
-
-					<h3>Simulink Desktop Real Time</h3>
-
-				</section>
-
-				<section>
-
-					<h5 style="margin-bottom: 50px;">Entrada e saída</h5>
-
-					<img style="width:90%;" src="ilustracoes/simulinkrealtimeInputOutput.svg" alt="Input / Output">
+					<p>Maya Cap. 6.10.5, página 95.</p>
 
 				</section>
 
 				<section>
-
-					<h5 style="margin-bottom: 50px;">Placa PCI 6221-37 da National Instruments</h5>
-
-					<img style="width:90%;" src="ilustracoes/simulinkrealtimeNational.svg" alt="Placa da national">
+					
+					<img src="ilustracoes/dominanciaDiagrama1.png" alt="Dominância diagrama 1">
 
 				</section>
 
 				<section>
-
-					<h5 style="margin-bottom: 50px;">Instruções</h5>
-
-					<ul>
-						<li style="font-size: 30px;"> Baixar arquivo <span style="font-weight: bold">Simulink Desktop
-								Real-Time (template)</span> no Moodle </li>
-						<li style="font-size: 30px;"> Salvar arquivo no disco local. Ex.: "Documentos/MATLAB" </li>
-						<li style="font-size: 30px;"> Conectar cabo </li>
-						<li style="font-size: 30px;"> Abrir Matlab/Simulink </li>
-					</ul>
+					
+					<img src="ilustracoes/dominanciaDiagrama2.png" alt="Dominância diagrama 2">
 
 				</section>
 
 				<section>
-
-					<h5 style="margin-bottom: 50px;">Pinos da placa PCI-6221-37</h5>
-
-					<img style="height:550px;" src="ilustracoes/simulinkrealtimePinos.png" alt="Pinos">
+					
+					<img src="ilustracoes/dominanciaDiagrama3.png" alt="Dominância diagrama 3">
 
 				</section>
 
-				<section>
+			</section>
 
-					<h5 style="margin-bottom: 50px;">Exemplo 1 - Pilha</h5>
+			<section>		
 
-					<img style="width: 90%;" src="ilustracoes/simulinkrealtimeEx1pilha.svg" alt="Pinos">
+					<section id="lugardasraizes">	
 
-				</section>
-				<section>
+						<h3>Lugar das raízes</h3>
 
-					<h5 style="margin-bottom: 50px;">Exemplo 2 - Led</h5>
+					</section>
 
-					<img style="width: 90%;" src="ilustracoes/simulinkrealtimeEx2led.svg" alt="Pinos">
+					<section>	
 
-				</section>
-				<section>
+						<p>
+						Obtenha o gráfico do lugar das raízes para as funções de transferência abaixo:
+						</p>
 
-					<h5 style="margin-bottom: 50px;">Exemplo 3 - Entrada e saída</h5>
 
-					<img style="width: 90%;" src="ilustracoes/simulinkrealtimeEx3io.svg" alt="Pinos">
+						<div style="width: 50%; height:150px; float:left">	
+							<p style="font-size: 30px;">\(G1 = \frac{1}{(s+1)}\)</p>
+						</div>
+						<div style="width: 50%; height:150px; float:left">	
+							<p style="font-size: 30px;">\(G2 = \frac{1}{((s+1)(s+4))}\)</p>
+						</div>
+						<div style="width: 50%; height:150px; float:left">	
+							<p style="font-size: 30px;">\(G3 = \frac{(s+4)}{(s+1)}\)</p>
+						</div>
+						<div style="width: 50%; height:150px; float:left">	
+							<p style="font-size: 30px;">\(G4 = \frac{1}{((s+1)(s+2)(s+3))}\)</p>
+						</div>
+						<div style="width: 50%; height:150px; float:left">	
+							<p style="font-size: 30px;">\(G5 = \frac{(s+3)}{((s+1)(s+2))}\)</p>
+						</div>
+						<div style="width: 50%; height:150px; float:left">	
+							<p style="font-size: 30px;">\(G6 = \frac{1}{((s+1)(s+2)(s+3)(s+4))}\)</p>
+						</div>
 
-				</section>
-				<section>
+					</section>
 
-					<h5 style="margin-bottom: 50px;">Exemplo 4 - Entrada e saı́da com integrador</h5>
+					<section>			
 
-					<img style="width: 90%;" src="ilustracoes/simulinkrealtimeEx4ioIntegrador.svg" alt="Pinos">
+						<!-- <p>Considerações</p> -->
+						<h5>Considerações</h5>
 
-				</section>
-				<section>
+						<ul style="font-size: 40px;">	
+							<li>Simetria em relação ao eixo real</li>
+							<li class="fragment fade-in" data-fragment-index="1">LGR no eixo real</li>
+							<li class="fragment fade-in" data-fragment-index="2">Número de ramos do LGR é igual ao número de polos</li>
+							<li class="fragment fade-in" data-fragment-index="3">Quando \(K=0\), os polos são iguais aos polos de malha aberta </li>
+							<li class="fragment fade-in" data-fragment-index="4">Quando \(K \rightarrow \infty\), os polos tendem ao infinito ou ao zero</li>
+							<li class="fragment fade-in" data-fragment-index="5">Atração do LGR pelos zeros e repulsão pelos polos</li>
+							<li class="fragment fade-in" data-fragment-index="6">Ramos que vão para o infinito: Número de assíntotas = (número de polos) - (número de zeros)</li>
+						</ul>
 
-					<h5 style="margin-bottom: 50px;">Exemplo 5 - Conexão entre dois PCs</h5>
+					</section>
 
-					<img style="width: 90%;" src="ilustracoes/simulinkrealtimeEx5conexao.svg" alt="Pinos">
+					<section>
 
-				</section>
+						<h5>Projeto 1</h5>
+
+						<p>Projeto PI de velocidade do sistema LJ</p>
+
+						<p style="padding: 70px;">\(P(s) = \frac{K_g}{\tau s + 1} = \frac{0{,}9}{0{,}3s+1}\)</p>
+
+						<p>Deseja-se \(e_{ss}\)=0 (Degrau) e \(\tau_{m.f.} = \tau/2\)</p>
+						
+					</section>
+
+					<section>
+
+						<h5>Projeto 2</h5>
+
+						<p>Projeto PD de posição do sistema LJ</p>
+
+						<p style="padding: 70px;">\(P(s) = \frac{10}{s(0{,}3 s + 1)} = \frac{100/3}{s+10/3}\)</p>
+
+						<p>Deseja-se \(e_{ss}\)=0 (Degrau) e \(\tau_{m.f.} = \tau/2\)</p>
+						
+					</section>
+
+					<section>
+
+						<h5>Projeto 3</h5>
+
+						<p>Projeto LEAD de posição do sistema LJ</p>
+
+						<p style="padding: 30px;">\(P(s) = \frac{10}{s(0{,}3 s + 1)} = \frac{100/3}{s+10/3}\)</p>
+						
+						<p style="padding: 30px;">\(C(s) = \frac{(\lambda_1 s + 1)}{(\lambda_2 s + 1))} = \frac{(s + z)}{s+p}\)</p>
+
+						<p>Deseja-se \(e_{ss}\)=0 (Degrau) e polos dominantes em \(-4 \pm 4j\)</p>
+						
+					</section>
+
 
 			</section>
 
@@ -2218,7 +2536,7 @@
 			defaultTiming: 120,
 
 			// Enable slide navigation via mouse wheel
-			mouseWheel: true,
+			mouseWheel: false,
 
 			// Hides the address bar on mobile devices
 			hideAddressBar: true,
@@ -2301,6 +2619,22 @@
 			//  event.previousSlide, event.currentSlide, event.indexh, event.indexv
 			realceTopico("espacoestadosmenu", "Espaço de estados");
 		});
+		Reveal.addEventListener('linearizacaoevento', function () {
+			//  event.previousSlide, event.currentSlide, event.indexh, event.indexv
+			realceTopico("linearizacaomenu", "Linearização");
+		});
+		Reveal.addEventListener('controladoralocacaoevento', function () {
+			//  event.previousSlide, event.currentSlide, event.indexh, event.indexv
+			realceTopico("controladoralocacaomenu", "Projeto por alocação de polos");
+		});
+		Reveal.addEventListener('controladorlqrevento', function () {
+			//  event.previousSlide, event.currentSlide, event.indexh, event.indexv
+			realceTopico("controladorlqrmenu", "Regulador linear quadrático");
+		});
+		Reveal.addEventListener('observadorevento', function () {
+			//  event.previousSlide, event.currentSlide, event.indexh, event.indexv
+			realceTopico("observadormenu", "Observador de estados");
+		});
 
 	</script>
 
@@ -2310,13 +2644,16 @@
 
 	<script>
 		function openNav() {
-			document.getElementById("mySidenav").style.width = "250px";
-			document.getElementById("main").style.marginLeft = "250px";
+			document.getElementById("mySidenav").style.width = "100%";
+			// document.getElementById("main").style.marginLeft = "250px";
 		}
 
 		function closeNav() {
-			document.getElementById("mySidenav").style.width = "0";
-			document.getElementById("main").style.marginLeft = "0";
+			var x = document.getElementById("mySidenav").style.width;
+			if (x == "100%") {
+				document.getElementById("mySidenav").style.width = "0";
+				// document.getElementById("main").style.marginLeft = "0";
+			}
 		}
 
 
