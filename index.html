@@ -1933,6 +1933,143 @@
 					<div id="controladoralocacaomenu" w3-include-html="auxfiles/content.html"></div>
 				</section>
 
+				<section>
+
+					<ul>
+					<!-- <ul style="font-size: 30px"> -->
+				        <li> Os polos definem o padrão da resposta. </li>
+				        <li class="fragment fade-in" data-fragment-index="1"> Os zeros influenciam somente os resíduos da expansão em frações parciais. </li>
+				        <li class="fragment fade-in" data-fragment-index="2"> Os polos próximos ao eixo imaginário, normalmente, são aqueles que predominam na resposta. </li>
+				        <li class="fragment fade-in" data-fragment-index="3"> A realimentação não altera os zeros de malha fechada, mas altera os polos de malha fechada. </li>
+					</ul>
+
+				</section>
+
+				<section>
+					<p style="text-align: justify">
+					    Numa transformação linear \(\color{red}{A \, x = z}\), o vetor \(x\) é transformado em \(z\). Dada a matriz de transformação \(A\), pode-se procurar por um vetor \(x\) particular, tal que \(A \, x = \lambda \, x\), ou seja, que o vetor transformado é o mesmo, podendo ter um tamanho \(\lambda\) distinto ao original. Neste caso:
+					</p>
+
+					<ul class="fragment fade-in" data-fragment-index="1">
+						<li>\(x\) é o autovetor de \(A\).</li>
+						<li>\(\lambda\) é o autovalor associado ao autovetor.</li>
+					</ul>
+				</section>
+
+				<section>
+
+					<h5>Exemplo</h5>
+					
+					<p style="text-align: justify; padding-top: 50px;">
+						Determine os autovalores da matriz: 
+					</p>
+
+					<p>
+						\(A = \left[ \begin{array}{cc} -4 & -4 \\ 1{,}5 & 1 \end{array} \right]\)
+					</p>
+
+				</section>
+
+
+				<section>
+
+					<h5>Autovalores x Polos</h5>
+
+					<img style="width:90%;" src="ilustracoes/controladoralocacaoDiagrama.svg" alt="Diagrama">
+
+					<p class="fragment fade-in" data-fragment-index="1" style="font-size: 30px;">\(G(s) = \frac{Y(s)}{U(s)} = \frac{1}{s^2 + 3 s + 2} \quad \rightarrow \quad s^2 Y(s) + 3 s Y(s) + 2 Y(s) = U(s)\)</p>
+
+					<p class="fragment fade-in" data-fragment-index="2" style="font-size: 30px;">\(\mathscr{L}[\cdot] \rightarrow \ddot{y}(t) + 3 \dot{y}(t) + 2 y(t) = u(t)\)</p>
+
+					<p class="fragment fade-in" data-fragment-index="3" style="font-size: 30px; text-align: justify;">No espaço de estados com \(x_1 = y\) e \(x_2 = \dot{y}\)</p>
+
+					<p class="fragment fade-in" data-fragment-index="4" style="font-size: 30px;">
+					\( \begin{eqnarray} \dot{x} &=& \left[ \begin{array}{cc} 0 & 1 \\ -2 & -3 \end{array} \right] x + \left[ \begin{array}{c} 0 \\ 1 \end{array} \right] u \\ y &=& \left[ \begin{array}{cc} 1 & 0 \end{array} \right] x \end{eqnarray}\)
+					</p>
+
+				</section>
+
+				<section>
+
+					<h5>Exercício</h5>
+
+					<p style="text-align: justify; padding-top: 50px; padding-bottom: 50px;">
+					    Determine os polos do sistema dado no E.E..
+					</p>
+
+					<p>
+    					\( \begin{eqnarray} \dot{x} &=& \left[ \begin{array}{ccc} 0 & 2 & 4 \\ -4 & -6 & -4 \\ -2 & -2 & -6 \end{array} \right] x + \left[ \begin{array}{c} 0 \\ 0 \\ 1 \end{array} \right] u \\ y &=& \left[ \begin{array}{ccc} 1 & 0 & 0 \end{array} \right] x \end{eqnarray}\)
+					</p>    
+
+				</section>
+
+				<section>
+					<p style="text-align: justify;">Controlador PID</p>
+					<img style="width: 70%;" src="ilustracoes/controladoralocacaoDiagramaPID.svg" alt="Controlador pid">
+					<p style="text-align: justify;">Alocação de polos</p>
+					<img style="width: 50%;" src="ilustracoes/controladoralocacaoMalhaFechada.svg" alt="Controlador alocação malha fechada">
+				</section>
+
+				<section>
+
+					<h5>Lei de controle</h5>
+
+					<p style="text-align: justify; padding-top: 50px; padding-bottom: 50px">No contexto do espaço de estados, controlar é alterar os polos (autovalores) por meio da realimentação do tipo \(u = -K \, x\).</p>
+
+					<img style="width: 50%;" src="ilustracoes/controladoralocacaoMalhaFechada.svg" alt="Controlador alocação malha fechada">
+
+				</section>
+			
+				<section>
+
+					<h5>Lei de controle</h5>
+
+					<div style="width: 50%; height: 400px; float:left;">
+						
+						<img style="width: 100%; padding-top: 50px;"; src="ilustracoes/controladoralocacaoMalhaFechada.svg" alt="Controlador alocação malha fechada">
+
+					</div>
+
+					<div style="width: 50%; height: 400px; float:left;">
+						
+						<p>\(\dot{x} = A x + B u\)</p>
+
+						<p>\(u = - K u\)</p>
+
+						<p class="fragment fade-in" data-fragment-index="1">\(\dot{x} = A x - BK x\)</p>
+
+						<p class="fragment fade-in" data-fragment-index="2">\(\dot{x} = \underbrace{(A - BK)}_{A_f} x\)</p>
+
+					</div>
+
+
+					<p class="fragment fade-in" data-fragment-index="3" style="text-align: justify; padding-top: 30px; padding-bottom: 50px"> Escolhendo-se bem os autovalores de \(A_f\), temos que \(x(\infty) \rightarrow 0\) com dinâmica apropriada. </p>
+
+				</section>
+				
+				<section>
+
+					<h5>Exemplo</h5>
+
+
+					<p style="text-align: justify; padding-bottom: 50px; padding-top: 50px;">Projete a lei de controle \(u = -Kx\) para que os polos de malha fechada estejam em -10+0j.</p>
+
+					<p>\( \begin{eqnarray} \dot{x} &=& \left[ \begin{array}{cc} 0 & 1 \\ -2 & -3 \end{array} \right] x + \left[ \begin{array}{c} 0  \\ 1 \end{array} \right] u \\ y &=& \left[ \begin{array}{cc} 1 & 0 \end{array} \right] x \end{eqnarray}\)</p>
+
+				</section>
+
+				<section>
+					
+					<h5>Exercício</h5>
+
+					<p style="text-align: justify; padding-top: 50px;">Projete a lei de controle \(u = -Kx\) para o sistema LJ com saída de posição:</p>
+
+					<p style="font-size: 55px; padding-bottom: 50px; padding-top: 50px;"> \( P(s) = \frac{10}{s(0{,}3s+1)} \) </p>
+
+					<p style="text-align: justify;"> Adote polos em malha fechada \(\left\{ -2{,}5; -135 \right\}\) </p>
+
+				</section>
+
 			</section>
 
 
@@ -1943,6 +2080,19 @@
 
 				<section data-state="controladorlqrevento">
 					<div id="controladorlqrmenu" w3-include-html="auxfiles/content.html"></div>
+				</section>
+
+				<section>
+
+					<h5>Alocação Vs. LQR</h5>
+
+					<ul>
+						<li>Mesma lei de controle \(u = -K x\)</li>
+						<li>Escolha de \(K\) é diferente</li>
+					</ul>
+
+					<p>Alocação: Onde colocar os polos da alocação?</p>
+
 				</section>
 
 			</section>
