@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="281.92709mm"
+   height="52.473331mm"
+   viewBox="0 0 281.92709 52.473331"
+   version="1.1"
+   id="svg923"
+   inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
+   sodipodi:docname="controladorlqrProblema.svg">
+  <defs
+     id="defs917">
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lend"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path2131"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.49497475"
+     inkscape:cx="444.83387"
+     inkscape:cy="-110.21389"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1366"
+     inkscape:window-height="705"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0" />
+  <metadata
+     id="metadata920">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(81.981555,-45.385327)">
+    <g
+       transform="matrix(0.08613945,0,0,0.08613945,136.58998,44.361268)"
+       id="g858">
+      <path
+         inkscape:connector-curvature="0"
+         d="m 276.619,38.115 c -2.046,-3.158 -2.703,-5.292 -2.703,-5.292 l 0.975,-0.897 c 0,0 1.896,0.788 5.21,2.146 1.564,0.624 3.479,1.39 5.674,2.254 2.162,0.783 4.515,1.696 7.037,2.308 1.242,0.385 2.507,0.768 3.814,0.915 0.658,0.087 1.285,0.268 1.937,0.388 0.646,0.044 1.294,0.065 1.938,0.147 2.605,0.35 5,0.067 7.626,-0.07 1.218,-0.448 2.572,-0.574 3.897,-1.144 1.214,-0.717 2.801,-1.133 3.928,-2.052 0.597,-0.41 1.217,-0.837 1.882,-1.259 0.69,-0.388 1.424,-0.695 2.157,-1.488 l 4.64,-3.896 c 0.044,-0.06 -0.271,0.399 -0.12,0.185 l 0.032,-0.033 0.079,-0.07 0.153,-0.131 0.305,-0.273 0.612,-0.547 1.217,-1.067 2.297,-2.178 c 1.444,-1.488 3.261,-2.648 4.717,-4.082 1.434,-1.484 3.361,-2.392 4.894,-3.831 1.64,-1.292 3.557,-2.26 5.406,-3.513 3.885,-1.828 8.425,-3.185 12.49,-2.615 1.019,0.109 2.009,0.268 2.983,0.448 0.942,0.262 1.827,0.586 2.703,0.914 1.794,0.592 3.339,1.439 4.795,2.276 2.909,1.681 5.221,3.628 7.069,5.511 1.837,1.888 3.218,3.727 4.212,5.33 1.042,1.569 1.644,2.955 2.068,3.902 0.351,0.974 0.536,1.499 0.536,1.499 l -0.974,0.908 c 0,0 -2.089,-0.706 -5.297,-2.047 -1.563,-0.623 -3.459,-1.405 -5.635,-2.281 -2.101,-0.865 -4.412,-1.817 -6.853,-2.643 -1.215,-0.449 -2.472,-0.914 -3.742,-1.221 -0.645,-0.158 -1.279,-0.411 -1.927,-0.596 -0.646,-0.131 -1.29,-0.296 -1.938,-0.509 -2.621,-0.854 -5.329,-1.696 -8.682,-2.046 -1.54,0.203 -3.379,0.137 -4.981,0.805 -1.541,0.782 -3.311,1.384 -4.548,2.774 -1.247,1.34 -2.67,2.512 -3.544,4.219 l -1.271,2.544 -0.584,1.281 -0.284,0.635 -0.14,0.328 -0.07,0.147 -0.033,0.077 -0.022,0.049 c 0.126,-0.186 -0.196,0.296 -0.174,0.268 l -2.501,5.516 c -0.821,1.779 -2.704,3.787 -4.241,5.554 -1.56,1.926 -3.649,3.032 -5.509,4.542 -1.947,1.368 -4.324,2.156 -6.5,3.146 -4.631,1.323 -9.469,1.56 -13.54,0.471 -2.079,-0.459 -3.992,-1.062 -5.678,-1.937 -1.765,-0.745 -3.286,-1.674 -4.72,-2.572 -2.85,-1.887 -5.109,-3.885 -6.894,-5.844 -1.824,-1.895 -3.175,-3.766 -4.178,-5.353 z M 476.518,351.03 v 113.6 H 0 V 351.03 H 32.459 V 223.42 l 91.47,-64.177 v 64.177 l 91.456,-64.177 v 64.177 l 91.475,-64.177 v 126.143 h 31.56 L 355.56,62.247 h 52.313 l 15.002,223.139 h 35.196 v 65.653 h 18.446 V 351.03 Z M 149.375,301.975 H 77.461 v 66.387 h 71.914 z m 123.918,0 h -71.916 v 66.387 h 71.916 z m 125.475,0 h -71.914 v 66.387 h 71.914 z"
+         id="path856" />
+    </g>
+    <g
+       transform="matrix(0.26458333,0,0,0.26458333,-68.638876,46.727683)"
+       id="g1523">
+      <g
+         id="g1521">
+        <path
+           inkscape:connector-curvature="0"
+           style="fill:#010002"
+           d="M 125.967,51.533 V 20.314 H 109.105 V 38.06 L 77.569,12.814 0,74.869 h 21.361 v 67.455 h 112.416 v -67.45 h 21.361 z m -0.042,82.939 H 97.546 V 82.37 H 57.58 v 52.103 H 29.202 V 71.146 l 48.356,-38.689 48.355,38.689 v 63.326 z"
+           id="path1519" />
+      </g>
+    </g>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.59768999;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow1Lend)"
+       d="M -19.529376,71.763955 H 129.53898"
+       id="path2126"
+       inkscape:connector-curvature="0" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="-8.2664309"
+       y="61.632641"
+       id="text2420"><tspan
+         sodipodi:role="line"
+         id="tspan2418"
+         x="-8.2664309"
+         y="61.632641"
+         style="stroke-width:0.26458332">Qual é a solução ótima?</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="-83.015083"
+       y="96.685593"
+       id="text2420-8"><tspan
+         sodipodi:role="line"
+         id="tspan2418-4"
+         x="-83.015083"
+         y="96.685593"
+         style="stroke-width:0.26458332">Estado inicial</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="113.24799"
+       y="95.672745"
+       id="text2496"><tspan
+         sodipodi:role="line"
+         id="tspan2494"
+         x="113.24799"
+         y="95.672745"
+         style="stroke-width:0.26458332">Estado desejado</tspan></text>
+  </g>
+</svg>

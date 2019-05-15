@@ -1979,7 +1979,7 @@
 
 					<p class="fragment fade-in" data-fragment-index="1" style="font-size: 30px;">\(G(s) = \frac{Y(s)}{U(s)} = \frac{1}{s^2 + 3 s + 2} \quad \rightarrow \quad s^2 Y(s) + 3 s Y(s) + 2 Y(s) = U(s)\)</p>
 
-					<p class="fragment fade-in" data-fragment-index="2" style="font-size: 30px;">\(\mathscr{L}[\cdot] \rightarrow \ddot{y}(t) + 3 \dot{y}(t) + 2 y(t) = u(t)\)</p>
+					<p class="fragment fade-in" data-fragment-index="2" style="font-size: 30px;">\(\mathscr{L}^{-1}[\cdot] \rightarrow \ddot{y}(t) + 3 \dot{y}(t) + 2 y(t) = u(t)\)</p>
 
 					<p class="fragment fade-in" data-fragment-index="3" style="font-size: 30px; text-align: justify;">No espaço de estados com \(x_1 = y\) e \(x_2 = \dot{y}\)</p>
 
@@ -2034,7 +2034,7 @@
 						
 						<p>\(\dot{x} = A x + B u\)</p>
 
-						<p>\(u = - K u\)</p>
+						<p>\(u = - K x\)</p>
 
 						<p class="fragment fade-in" data-fragment-index="1">\(\dot{x} = A x - BK x\)</p>
 
@@ -2083,15 +2083,203 @@
 				</section>
 
 				<section>
-
+					
 					<h5>Alocação Vs. LQR</h5>
 
+					<img height="200px;" src="ilustracoes/controladorlqrMalhaFechada.svg" atl="Controlador LQR Malha fechada">
+
 					<ul>
-						<li>Mesma lei de controle \(u = -K x\)</li>
-						<li>Escolha de \(K\) é diferente</li>
+						<li>Mesma implementação: lei de controle \(u = -K x\)</li>
+						<li class="fragment fade-in" data-fragment-index="1">Escolha de \(K\) é diferente</li>
+						<ul>
+							<li class="fragment fade-in" data-fragment-index="1">Alocação: Escolhendo os polos, calculamos os ganhos \(K\).</li>
+							<li class="fragment fade-in" data-fragment-index="1">LQR: Escolhendo certas características, obtemos ganhos ótimos \(K\).</li>
+						</ul>
 					</ul>
 
-					<p>Alocação: Onde colocar os polos da alocação?</p>
+				</section>
+
+				<section>
+
+					<img width="80%;" src="ilustracoes/controladorlqrProblema.svg" atl="Controlador LQR problema">
+					<img  class="fragment fade-in" data-fragment-index="1" width="80%;" src="ilustracoes/controladorlqrOpcoes.svg" atl="Controlador LQR opções">
+
+					<p  class="fragment fade-in" data-fragment-index="2">\(J = Q \cdot tempo + R \cdot valor\)</p>
+
+				</section>
+
+				<section>
+
+					<h5>Função custo / Função objetivo</h5>
+					
+					<p>\(J = Q \cdot tempo + R \cdot valor\)</p>
+					
+					<p  class="fragment fade-in" data-fragment-index="1">\(J = Q \cdot x(t) + R \cdot u(t)\)</p>
+
+					<p  class="fragment fade-in" data-fragment-index="2">\(J = \int_{t=0}^{\infty} \left( Q \cdot x + R \cdot u \right) dt \)</p>
+
+					<p  class="fragment fade-in" data-fragment-index="3">\(J = \int_{0}^{\infty} \left( Q \cdot x^2 + R \cdot u^2 \right) dt\)</p>
+
+					<p class="fragment fade-in" data-fragment-index="4" style="font-size: 25px; text-align: justify;">
+						Considerando \(x = [\begin{array}{cccc} x_1 & x_2 & \cdots & x_n \end{array}]^T\) e \(u = [ \begin{array}{cccc} u_1 & u_2 & \cdots & u_m \end{array}]^T\)
+					</p>
+
+					<div class="fragment fade-in" data-fragment-index="5" style="width:70%; height:140px; float:left; background-color: rgb(168, 188, 253); display:flex; align-items:center; justify-content: center; margin-bottom: 20px">
+					<p>\(J = \int_{0}^{\infty} \left( x^T Q x  + u^T R u  \right) dt\)</p>
+					</div>
+
+				</section>
+
+				<section>
+					
+					<p style="text-align: justify;">Lembrando:</p>
+
+					<p>\( x^Tx = \left[ \begin{array}{cccc} x_1 & x_2 & \cdots & x_n \end{array} \right] \left[ \begin{array}{c} x_1 \\ x_2 \\ \vdots \\ x_n \end{array} \right] \)</p>
+					
+					<p class="fragment fade-in" data-fragment-index="1" style="padding-top: 70px;">\( x^Tx = x_1^2 + x_2^2 + \cdots + x_n^2 \)</p>
+
+				</section>
+
+				<section>
+					
+					<p>\(J = \int_{0}^{\infty} \left( x^T Q x  + u^T R u  \right) dt\)</p>
+
+					<p class="fragment fade-in" data-fragment-index="1" style="text-align: justify;">Penalizando o erro:</p>
+
+					<p class="fragment fade-in" data-fragment-index="1" style="font-size: 20px;">\( x^T Q x = \left[ \begin{array}{cccc} x_1 & x_2 & \cdots & x_n \end{array} \right] \left[ \begin{array}{cccc} Q_1 & 0 &  & 0 \\ 0 	& Q2 &   & 0 \\ 0 	&  & \ddots & \vdots \\0 	&  & \cdots & Q_n \end{array} \right] \left[ \begin{array}{c} x_1 \\ x_2 \\ \vdots \\ x_n \end{array} \right]\)</p>
+
+					<p class="fragment fade-in" data-fragment-index="1" style="font-size: 25px;">
+					\( x^T Q x = Q_1 x_1^2 + Q_2 x_2^2 + \cdots + Q_n x_n^2 \)
+					</p>
+					
+					<p class="fragment fade-in" data-fragment-index="2" style="text-align: justify;">Penalizando o esforço de controle:</p>
+
+					<p class="fragment fade-in" data-fragment-index="2" style="font-size: 20px;">\( u^T R u = \left[ \begin{array}{cccc} u_1 & u_2 & \cdots & u_n \end{array} \right] \left[ \begin{array}{cccc} R_1 & 0 &  & 0 \\ 0 	& R2 &   & 0 \\ 0 	&  & \ddots & \vdots \\0 	&  & \cdots & R_m \end{array} \right] \left[ \begin{array}{c} u_1 \\ u_2 \\ \vdots \\ u_m \end{array} \right]\)</p>
+					
+					<p class="fragment fade-in" data-fragment-index="2" style="font-size: 25px;">
+					\( u^T R u = R_1 u_1^2 + R_2 u_2^2 + \cdots + R_m u_m^2 \)
+					</p>
+
+				</section>
+
+				<section>
+
+					<h5>Controle ótimo</h5>
+					
+					<p style="text-align: justify;">Dado um sistema dinâmico:</p>
+
+					<p style="font-size: 35px;">\(\begin{eqnarray} \dot{x} &=& A x + B u \nonumber \\ y &=& C x + D u \nonumber \end{eqnarray} \)</p>
+
+					<p class="fragment fade-in" data-fragment-index="1" style="text-align: justify;">Implementamos a realimentação de estados:</p>
+
+					<p class="fragment fade-in" data-fragment-index="1" style="font-size: 35px;">\( u  = - K x\) </p>
+
+					<p class="fragment fade-in" data-fragment-index="2" style="text-align: justify;">Determinamos \(K\) que minimiza a função custo:</p>
+
+					<p class="fragment fade-in" data-fragment-index="2" style="font-size: 35px;">\(J = \int_{0}^{\infty} \left( x^T Q x  + u^T R u  \right) dt\)</p>
+
+				</section>
+
+				<section>
+					
+					<h5>Penalizando o erro</h5>
+
+					<p style="font-size: 35px; padding-bottom: 50px; padding-top: 50px;">\(J = \int_{0}^{\infty} \left( x^T x \right) dt\)</p>
+
+					<p  class="fragment fade-in" data-fragment-index="1" style="text-align: justify; font-size: 35px;">Queremos uma função de energia \(V(x) > 0\), tal que \( \dot{V} < 0 \)</p>
+
+					<p class="fragment fade-in" data-fragment-index="2" style="text-align: justify; font-size: 35px;">Uma escolha possível é: \(V = x^T P x\), com \(P > 0\)</p>
+
+					<div class="fragment fade-in" data-fragment-index="3" style="width:50%; height:140px; float:left; background-color: rgb(168, 188, 253); display:flex; align-items:center; justify-content: center; margin-bottom: 20px">
+					<p>\(\frac{d \, x^T P x }{dt} = - x^T x\)</p>
+					</div>
+
+				</section>
+
+				<section>
+					
+					<p style="font-size: 35px;">\(\dot{x} = \underbrace{(A - BK)}_{F} x\)</p>
+
+					<p style="font-size: 35px;" class="fragment fade-in" data-fragment-index="1">\(\frac{d \, x^T P x }{dt} = - x^T x\)</p>
+
+					<p style="font-size: 35px;" class="fragment fade-in" data-fragment-index="2">\(\frac{d \, x^T P x }{dt} = \dot{x}^T P x + x^T P \dot{x} = - x^T x\)</p>					
+
+					<p style="font-size: 35px;" class="fragment fade-in" data-fragment-index="3">\((Fx)^T P x + x^T P (Fx) = - x^T x \)</p>
+					
+					<p style="font-size: 35px;" class="fragment fade-in" data-fragment-index="4">\(F^T x^T P x + x^T P F x = - x^T I x \)</p>
+					
+					<p style="font-size: 35px;" class="fragment fade-in" data-fragment-index="5">\(x^T (F^T P + P F) x = x^T (- I) x \)</p>
+					
+					<div class="fragment fade-in" data-fragment-index="7" style="width:50%; height:140px; float:left; background-color: rgb(168, 188, 253); display:flex; align-items:center; justify-content: center; margin-bottom: 20px">
+					<p>\((F^T P + P F) = - I\)</p>
+					</div>
+
+				</section>
+
+				<section>
+
+					<p style="font-size: 35px;">\(\frac{d \, x^T P x }{dt} = - x^T x\)</p>
+
+					
+					<p style="font-size: 35px;" class="fragment fade-in" data-fragment-index="1">	
+					\( J = \int_{0}^{\infty} x^T x dt = - \int_{0}^{\infty} \frac{d \, x^T P x }{dt} dt\)</p>
+
+					<p style="font-size: 35px;" class="fragment fade-in" data-fragment-index="2">	
+					\( J = - \int_{0}^{\infty} \frac{d \, x^T P x }{dt} dt = \left. - x^T P x \right|_{0}^{\infty}\)</p>
+
+					<p style="font-size: 35px;" class="fragment fade-in" data-fragment-index="3">	
+					\( J = x(0)^T P x(0) - x(\infty)^T P x(\infty)\)</p>
+
+					<div class="fragment fade-in" data-fragment-index="4" style="width:50%; height:140px; float:left; background-color: rgb(168, 188, 253); display:flex; align-items:center; justify-content: center; margin-bottom: 20px">
+					<p>\(J = x(0)^T P x(0)\)</p>
+
+					</div>
+
+				</section>
+
+				<section>
+					
+					<h5>Penalizando o esforço de controle</h5>
+
+					<p style="font-size: 30px;">\( J = \int_{0}^{\infty} \left( x^T x + \lambda u^T u \right) dt \)</p>
+
+					<p style="font-size: 30px;" class="fragment fade-in" data-fragment-index="1">\( J = \int_{0}^{\infty} \left( x^T x + \lambda (k x)^T (k x) \right) dt \)</p>
+
+					<p style="font-size: 30px;" class="fragment fade-in" data-fragment-index="2">\( J = \int_{0}^{\infty} \left( x^T I x + \lambda (x^T k^T k x) \right) dt \)</p>
+
+					<p style="font-size: 30px;" class="fragment fade-in" data-fragment-index="3">\( J = \int_{0}^{\infty} \left( x^T \underbrace{(I + \lambda k^T k)}_{s} x \right) dt \)</p>
+
+					<p style="font-size: 30px; text-align: justify;" class="fragment fade-in" data-fragment-index="4">Por analogia</p>
+
+					<p style="font-size: 30px;" class="fragment fade-in" data-fragment-index="4">\((F^T P + P F) = - S\)</p>
+
+					<div class="fragment fade-in" data-fragment-index="5" style="width:70%; height:140px; float:left; background-color: rgb(168, 188, 253); display:flex; align-items:center; justify-content: center; margin-bottom: 20px">
+					<p>\((F^T P + P F) = - (I + \lambda k^T k)\)</p>
+					</div>
+
+				</section>
+
+				<section>
+					
+					<h5>Exemplo</h5>
+
+					<p style="font-size: 35px; text-align: justify;">Determine o valor de \(k\) da lei de controle \(u = - k x\) que minimiza \(J\) para \(x(0) = 1\) e \(\lambda=3\)</p>
+
+					<p style="padding-bottom: 50px; padding-top: 50px;">\(\dot{x}(t) = - x(t) + u(t)\)</p>
+					
+					<p style="padding-bottom: 50px; padding-top: 50px;">\(J = \int_{0}^{\infty} \left( x^T x + \lambda u^T u \right) dt\)</p>
+
+				</section>
+
+				<section>
+					
+					<h5>Exercício</h5>
+
+					<p style="font-size: 35px; text-align: justify;">Determine o valor de \(k\) da lei de controle \(u = - k x\) que minimiza \(J\) para \(x(0) = [\begin{array}{cc} 1 & 0 \end{array}]^T\) e \(\lambda=0{,}1\)</p>
+
+					<p style="padding-bottom: 50px; padding-top: 50px;">\( \left[ \begin{array}{c} \dot{x}_1 \\ \dot{x}_2 \end{array} \right] = \left[ \begin{array}{cc} 0 & 0 \\ 1 & 0 \end{array} \right]\left[ \begin{array}{c} x_1 \\ x_2 \end{array} \right] + \left[ \begin{array}{c} 1 \\ 0 \end{array} \right]u(t)\)</p>
+					
+					<p style="padding-bottom: 50px; padding-top: 50px;">\(J = \int_{0}^{\infty} \left( x^T x + \lambda u^T u \right) dt\)</p>
 
 				</section>
 
