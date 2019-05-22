@@ -133,7 +133,6 @@
 						<div style="width:100%;position:absolute;top:250px;text-align: center">
 
 							<h5>Controle de Sistemas Mecânicos</h5>
-							<p style="font-size:20px">Criado por André de S. Mendes</p>
 
 						</div>
 						<div style="width:100%;position:absolute; bottom:30px;">
@@ -2286,6 +2285,7 @@
 			</section>
 
 			<section>
+
 				<section id="observador">
 					<h3>Observador de estados</h3>
 				</section>
@@ -2293,6 +2293,136 @@
 				<section data-state="observadorevento">
 					<div id="observadormenu" w3-include-html="auxfiles/content.html"></div>
 				</section>
+
+				<section>
+					
+					<p style="padding-bottom: 50px;">Monitoramento da temperatura interna do motor</p>
+
+					<img style="height: 400px;" src="ilustracoes/observadorFoguete.png" alt="Foguete">
+
+					<p style="font-size: 25px; text-align: justify;">Fonte: <a href="https://www.youtube.com/watch?v=4OerJmPpkRg">Understanding Kalman Filters, Part 2: State Observers</a></p>
+
+				</section>
+
+				<section>
+					
+					<p style="padding-bottom: 120px;">Planta: Sistema de propulsão</p>
+
+					<img style="width: 60%;" src="ilustracoes/observadorDiagramaPlanta.png" alt="Foguete planta">
+
+				</section>
+
+				<section>
+					
+					<p style="padding-bottom: 40px;">Planta e modelo</p>
+
+					<div style="width: 60%; height: 550px; float: left">
+						<img style="height: 550px;" src="ilustracoes/observadorDiagramaComparacao.png" alt="Planta e modelo comparação">
+					</div>
+
+					<div style="width: 40%; height: 550px; float: left">
+						<p class="fragment fade-in" data-fragment-index="1" style="font-size: 35px; text-align: justify;">A saída da planta e a saída do modelo nem sempre coincidem, pois:</p>
+						<ul style="font-size: 35px;">
+							<li class="fragment fade-in" data-fragment-index="2">Erros de modelagem</li>
+							<li class="fragment fade-in" data-fragment-index="3">Perturbação</li>
+							<li class="fragment fade-in" data-fragment-index="4">Condições iniciais</li>
+						</ul>
+					</div>
+
+				</section>
+
+				<section>
+					
+					<p style="padding-bottom: 70px;">Comparação das saídas</p>
+
+					<img style="width: 95%;" src="ilustracoes/observadorDiagramaErro.png" alt="Diagrama Erro">
+
+				</section>
+
+				<section>
+					
+					<p>Estrutura do observador de estados</p>
+
+					<div style="width: 50%; height: 430px; float: left;">
+						<img style="width: 100%" src="ilustracoes/observadorDiagramaGeral.png" alt="Diagrama geral">
+					</div>
+
+					<div style="width: 50%; height: 430px; float: left;">
+						<img style="width: 100%;" src="ilustracoes/observadorDiagramaMatrizes.png" alt="Planta matrizes">
+					</div>
+
+					<div style="width: 100%; float: left;">
+						
+						<p class="fragment fade-in" data-fragment-index="1" style="font-size: 30px; text-align: justify;"><b>Planta</b>: Componentes físicos (motores, amplificadores, engrenagens, ...)</p>
+
+						<p class="fragment fade-in" data-fragment-index="2" style="font-size: 30px; text-align: justify;"><b>Observador</b>: Simulação com as mesmas variáveis de etado</p>
+
+					</div>
+
+				</section>
+
+				<section>
+					
+					<p style="padding-bottom: 25px;">Dinâmica do erro</p>
+
+					<div style="width: 40%; height: 550px; float: left">
+						
+						<p class="fragment fade-in" data-fragment-index="1" style="font-size: 25px; text-align: justify;">Dinâmica da planta</p>
+						<p class="fragment fade-in" data-fragment-index="1" style="font-size: 25px;">\(\begin{array}{l}{\dot{x}(t)=A x(t)+B u(t)} \\ {y(t)=C x(t)}\end{array}\)</p>
+						<p class="fragment fade-in" data-fragment-index="2" style="font-size: 25px; text-align: justify;">Dinâmica do observador </p>
+						<p class="fragment fade-in" data-fragment-index="2" style="font-size: 25px;">\(\begin{aligned} \dot{\hat{x}} &=A \hat{x}+B u+H(y-\hat{y}) \\ \hat{y} &=C \hat{x} \end{aligned}\)</p>
+						<p class="fragment fade-in" data-fragment-index="3" style="font-size: 25px; text-align: justify;">Subtraindo as equações</p>
+						<p class="fragment fade-in" data-fragment-index="3" style="font-size: 25px;">\(\dot{x}-\dot{\hat{x}}=(A-H C)(x-\hat{x})\)</p>
+						<p class="fragment fade-in" data-fragment-index="4" style="font-size: 25px; text-align: justify;">Dinâmica do erro (\(\epsilon=x-\hat{x}\))</p>
+						<p class="fragment fade-in" data-fragment-index="4" style="font-size: 25px;">\(\dot{\epsilon}=(A-H C) \epsilon\)</p>
+
+					</div>
+
+					<div style="width: 60%; height: 550px; float: left">
+						<img style="width: 100%;" src="ilustracoes/observadorDiagramaMatrizes.png" alt="Planta matrizes">
+					</div>
+
+				</section>
+
+				<section>
+					
+					<p style="font-size: 25px; text-align: justify;">
+						A relimentação de estados \(u(t) = - Kx\) pode ser feita por meio dos estados observados, tal como indica a figura a seguir, ou seja, fazendo \(u(t) = - K \hat{x}\). Para transformar o problema regulador num problema servo, adiciona-se um somador às saídas onde se coloca a referência .
+					</p>
+					
+					<img style="height: 500px;" src="ilustracoes/observadorDiagramaControlador.png" alt="Observador e controlador">
+
+
+
+
+				</section>
+
+				<section>
+					
+					<p style="padding-bottom: 30px;">Projeto do observador de estados</p>
+
+					<p style="font-size: 25px; text-align: justify;">No projeto por alocação de polos, escolhemos o ganho \(K\) para que a dinâmica em malha fechada atenda os requisitos de projeto.</p>
+
+					<p>\(\dot{x} = \underbrace{(A - BK)}_{A_f} x\)</p>
+					
+					<p class="fragment fade-in" data-fragment-index="1" style="font-size: 25px; text-align: justify; padding-top: 40px;">No projeto do observador, escolhemos o ganho \(H\) para que a dinâmica do observador seja mais rápida do que a da planta.</p>
+
+					<p class="fragment fade-in" data-fragment-index="1">\(\dot{\epsilon} = \underbrace{(A - HC)}_{A_{ob}} \epsilon\)</p>
+
+				</section>
+
+				<section>
+					
+					<h5>Exemplo</h5>
+
+					<p style="text-align: justify;">Considere o sistema dinâmico representado pelas seguintes matrizes de estado.</p>
+
+					<p>\(A=\left[ \begin{array}{rr}{0} & {6} \\ {-1} & {-5}\end{array}\right] \quad B=\left[ \begin{array}{r}{-0,5} \\ {0,5}\end{array}\right] \quad C=\left[ \begin{array}{ll}{1} & {1}\end{array}\right]\)</p>
+
+					<p style="text-align: justify;">Projete um observador de estados cujo os polos sejam \(s_{1,2} = -12 \pm j12\).</p>
+
+				</section>
+
 
 			</section>
 
