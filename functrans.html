@@ -1,0 +1,455 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1.0, maximum-scale=2.0, minimum-scale=.2, user-scalable=yes">
+	<meta name="description" content="Apresentações do curso de Controle de Sistemas Mecânicos">
+	<meta name="author" content="André de S. Mendes">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+	<title>ME9710/NMB710 - Controle de Sistemas Mecânicos</title>
+
+	<link rel="stylesheet" href="mycss/revealasm.css">
+	<link rel="stylesheet" href="mycss/theme/whiteasm.css" id="theme">
+	<!-- My class files -->
+	<link rel="stylesheet" href="mycss/asm.css">
+
+	<!-- Theme used for syntax highlighting of code -->
+	<link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
+
+	<!-- Printing and PDF exports -->
+	<script>
+		var link = document.createElement('link');
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = window.location.search.match(/print-pdf/gi) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+		document.getElementsByTagName('head')[0].appendChild(link);
+	</script>
+
+</head>
+
+<body>
+
+	<!-- Para pinch zoom no celular, é preciso insterir este "data-prevent-swipe" para evitar conflito. -->
+	<div class="reveal" onclick="closeNav()" data-prevent-swipe>
+
+		<div class="slides">
+
+				<section>
+
+					<h3>Função de transferência</h3>
+
+				</section>
+
+				<section>
+
+					<h5 style="margin-bottom: 50px">Malha aberta X Malha fechada</h5>
+
+					<img src="ilustracoes/functransMAxMF.svg" style="width:90%" alt="Malha aberta X Malha fechada">
+
+					<p class="fragment fade-in" data-fragment-index="1">Desempenho</p>
+
+					<ul style="font-size: 25px;">
+						<li class="fragment fade-in" data-fragment-index="1">Acompanhamento do sinal de referência.
+							\(x
+							\rightarrow r \therefore e \rightarrow 0\)</li>
+						<li class="fragment fade-in" data-fragment-index="1">Rejeição de perturbação</li>
+						<li class="fragment fade-in" data-fragment-index="1">Tolerância aos erros de modelagem</li>
+					</ul>
+
+				</section>
+
+				<section>
+
+					<h5 style="margin-bottom: 50px">Aplicação do controlador</h5>
+
+					<img style="width:90%" src="ilustracoes/functransEtapas1.svg" alt="Etapas 1">
+
+				</section>
+
+				<section>
+
+					<h5 style="margin-bottom: 50px">Aplicação do controlador</h5>
+
+					<img style="width:90%" src="ilustracoes/functransEtapas2.svg" alt="Etapas 2">
+
+				</section>
+
+				<section>
+
+					<h5 style="margin-bottom: 50px">Aplicação do controlador</h5>
+
+					<img style="width:90%" src="ilustracoes/functransEtapas3.svg" alt="Etapas 3">
+
+				</section>
+
+				<section>
+
+					<h5 style="margin-bottom: 50px">Reservatório</h5>
+
+					<img style="width:90%" src="ilustracoes/functransReservatorio.svg" alt="Reservatório">
+
+					<aside class="notes">
+						<p>
+							\(h(t)\) é o nível do reservatório no instante \(t\), \(q_i\) é a vazão de entrada
+							e \(q_o\) é
+							a vazão de saída.
+						</p>
+						<p>
+							\(G(s)\) é a função de transferência que relaciona a vazão de entrada e o nível do
+							reservatório (saída).
+						</p>
+					</aside>
+
+				</section>
+
+				<section>
+
+					<h5>Reservatório</h5>
+
+					<p style="font-size: 25px">\(V(t + \Delta t) - V(t) = \Delta t \, q_i - \Delta t q_o\)</p>
+					<p class="fragment fade-in" data-fragment-index="1" style="font-size: 25px">\[ \lim_{\Delta t
+						\to 0}
+						\frac{V(t + \Delta t) - V(t)}{\Delta t} = \lim_{\Delta t \to 0} \left( q_i - q_o \right)\]
+					</p>
+					<p class="fragment fade-in" data-fragment-index="2" style="font-size: 25px">\( \frac{dV}{dt} =
+						q_i -
+						q_o \)</p>
+
+					<p class="fragment fade-in" data-fragment-index="3" style="font-size: 25px">Supondo área
+						transversal
+						constante ao longo da altura e modelo de válvula de saída: \(q_o = C \, h\)</p>
+
+					<p class="fragment fade-in" data-fragment-index="4" style="font-size: 25px">\( A \frac{dh}{dt} =
+						q_i
+						- C \, h \)</p>
+
+					<p class="fragment fade-in" data-fragment-index="5" style="font-size: 25px">\( A \frac{dh}{dt} +
+						C
+						\, h = q_i \)</p>
+
+					<p class="fragment fade-in" data-fragment-index="6" style="font-size: 25px">\( \mathscr{L}
+						\left[ A
+						\frac{dh}{dt} + C \, h \right] = \mathscr{L} \left[ q_i \right] \rightarrow \left( A \, s +
+						C
+						\right) H(s) = Q_i(s) \)</p>
+
+					<div class="fragment fade-in" data-fragment-index="7"
+						style="background-color:rgb(168, 188, 253); padding:10px; margin:auto; display:inline-block; align-content: center;">
+						<p style="font-size: 25px;">\(G(s) = \frac{H(s)}{Q_i(s)} = \frac{1}{A \, s + C} \)</p>
+					</div>
+
+					<aside class="notes">
+						<p>
+							\(V(t)\) é o volume do reservatório no instante \(t\).
+						</p>
+						<p>
+							Para a obtenção da função de transferência, assumimos condições iniciais nulas.
+						</p>
+					</aside>
+
+				</section>
+
+				<section>
+
+					<h5>Estabilidade absoluta</h5>
+
+					<p style="font-size: 25px">\(G(s) = \frac{a_m s^m + a_{m-1} s^{m-1} + \, \cdots \, + a_1 s +
+						1}{(s+p_1)(s+p_2) \, \cdots \, (s+p_n)} \)</p>
+
+					<img style="height:300px; margin-top: 50px; margin-bottom: 50px"
+						src="ilustracoes/functransPlanoComplexo.svg" alt="Plano complexo">
+
+					<p style="font-size: 25px">Se todos os polos \(s_k = -p_k\) do sistema estiverem no semi plano
+						esquerdo
+						(SPE), a função de transferência \(G(s)\) é estável.</p>
+
+				</section>
+
+				<section>
+
+					<h5>Estabilidade absoluta</h5>
+
+					<p style="font-size: 25px">\(G(s) = \frac{a_m s^m + a_{m-1} s^{m-1} + \, \cdots \, + a_1 s +
+						1}{(s+p_1)(s+p_2) \, \cdots \, (s+p_n)} \)</p>
+
+					<p style="font-size: 25px">Qual é a resposta no tempo para uma entrada U(s) = 1?</p>
+
+					<p class="fragment fade-in" data-fragment-index="1" style="font-size: 25px">\(G(s) =
+						\frac{Y(s)}{U(s)} \rightarrow Y(s) = G(s) U(s)\)</p>
+
+					<p class="fragment fade-in" data-fragment-index="2" style="font-size: 25px">\(Y(s) = G(s) =
+						\frac{r_1}{s + p_1} + \frac{r_2}{s + p_2} + \cdots + \frac{r_n}{s + p_n}\)</p>
+
+					<p class="fragment fade-in" data-fragment-index="3" style="font-size: 25px">\( \mathscr{L}^{-1}
+						\left[ Y(s) \right] = \mathscr{L}^{-1} \left[ \frac{r_1}{s + p_1} + \frac{r_2}{s + p_2} +
+						\cdots
+						+ \frac{r_n}{s + p_n}
+						\right]\)</p>
+					<p class="fragment fade-in" data-fragment-index="4" style="font-size: 25px">\(y(t) = r_1 {\rm
+						e}^{-p_1 \, t} + r_2 {\rm e}^{-p_2 \, t} + \cdots + r_n {\rm e}^{-p_n \, t} \)</p>
+
+					<p style="font-size: 25px">Basta que um polo \(s_k = - p_k\) tenha parte real positiva para que
+						o
+						sistema
+						seja instável.</p>
+
+				</section>
+
+				<section>
+
+					<h5>Ganho da função de transferência</h5>
+
+					<p style="font-size: 30px">\(G(s) = \frac{p_m s^m + p_{m-1} s^{m-1} + \, \cdots \, + p_1 s +
+						p_0}{q_n s^n + q_{n-1} s^{n-1} + \, \cdots \, + q_1 s + q_0}\)</p>
+
+					<div style="width: 30%; height: 130px; float:left;">
+						<p class="fragment fade-in" data-fragment-index="1" style="font-size: 25px;">Primeira forma
+							normal</p>
+					</div>
+
+					<div style="width: 70%; height: 130px; float:right;">
+						<p class="fragment fade-in" data-fragment-index="1" style="font-size: 30px;">
+							\(G(s) = \color{red}{\frac{p_m}{q_n}} \frac{1 \, s^m + \frac{p_{m-1}}{p_m} s^{m-1} + \,
+							\cdots \, + \frac{p_1}{p_m} s + \frac{p_0}{p_m}}{1 \, s^n + \frac{q_{n-1}}{q_n} s^{n-1}
+							+ \,
+							\cdots \, + \frac{q_1}{q_n} s + \frac{q_0}{q_n}}\)
+						</p>
+					</div>
+
+					<div style="width: 30%; height: 130px; float:left;">
+						<p class="fragment fade-in" data-fragment-index="2" style="font-size: 25px">Segunda forma
+							normal
+						</p>
+					</div>
+					<div style="width: 70%; height: 130px; float:right;">
+						<p class="fragment fade-in" data-fragment-index="2" style="font-size: 30px;">\(G(s) =
+							\color{red}{\frac{p_0}{q_0}} \frac{\frac{p_m}{p_0} s^m + \frac{p_{m-1}}{p_0} s^{m-1} +
+							\,
+							\cdots \, + \frac{p_1}{p_0} s + 1}{\frac{q_m}{q_0} s^n + \frac{q_{n-1}}{q_0} s^{n-1} +
+							\,
+							\cdots \, + \frac{q_1}{q_0} s + 1}\)</p>
+					</div>
+
+					<div class="fragment fade-in" data-fragment-index="3"
+						style="background-color:rgb(168, 188, 253); padding:10px; float:left; margin-bottom: 15px; align-content: center;">
+						<p style="font-size: 30px;">\(K = \color{red}{\frac{p_m}{q_n}}\) é a constante de ganho.</p>
+					</div>
+
+					<div class="fragment fade-in" data-fragment-index="3"
+						style="background-color:rgb(168, 188, 253); padding:10px; float: left; margin:auto; align-content: center;">
+						<p style="font-size: 30px;">\(K_g = \color{red}{\frac{p_0}{q_0}}\) é a constante de ganho de
+							frequência zero (\(s = 0\)).</p>
+					</div>
+
+				</section>
+
+				<section>
+
+					<p style="font-size: 25px">Verifique a estabilidade das funções de transferência:</p>
+
+					<ol style="font-size: 35px;">
+						<li>\(G(s) = \frac{(s - 3)}{(s + 1)(s+2)}\)</li>
+						<li style="margin-top: 20px;">\(G(s) = \frac{1}{(s+1)(s^2 + 4 s + 13)}\)</li>
+						<li style="margin-top: 20px;">\(G(s) = \frac{1}{(s-1)}\)</li>
+					</ol>
+
+					<p style="font-size: 25px; margin-top: 100px;">Determine os ganhos \(K\) e \(K_g\) da função de
+						transferência #2.</p>
+
+				</section>
+
+		</div>
+	</div>
+
+	<div style="position:absolute; z-index:1; float:right; top:10px; right:10px;margin:0;padding:0">
+		<a href="https://portal.fei.edu.br/" target="_blank"><img src="ilustracoes/logoFEI.png" alt="Logo FEI"
+				title="Centro Universitário FEI" style="width:80px; margin-top:0"></a>
+	</div>
+
+	<script src="reveal.js/lib/js/head.min.js"></script>
+	<script src="reveal.js/js/reveal.js"></script>
+
+	<script>
+		// More info about config & dependencies:
+		// - https://github.com/hakimel/reveal.js#configuration
+		// - https://github.com/hakimel/reveal.js#dependencies
+		Reveal.initialize({
+			dependencies: [
+				// Cross-browser shim that fully implements classList - https://github.com/eligrey/classList.js/
+				{ src: 'reveal.js/lib/js/classList.js', condition: function () { return !document.body.classList; } },
+
+				// Interpret Markdown in <section> elements
+				{ src: 'reveal.js/plugin/markdown/marked.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+				{ src: 'reveal.js/plugin/markdown/markdown.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+
+				// Syntax highlight for <code> elements
+				{ src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function () { hljs.initHighlightingOnLoad(); } },
+
+				// Zoom in and out with Alt+click
+				{ src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+
+				// Speaker notes
+				{ src: 'reveal.js/plugin/notes/notes.js', async: true },
+
+				// MathJax
+				{ src: 'reveal.js/plugin/math/math.js', async: true }
+			],
+
+			// math: {
+			// 	mathjax: 'MathJax/MathJax.js',
+			// 	config: 'TeX-AMS_HTML-full'  // See http://docs.mathjax.org/en/latest/config-files.html
+			// },
+			math: {
+				mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js',
+				config: 'TeX-AMS_HTML-full'  // See http://docs.mathjax.org/en/latest/config-files.html
+			},
+
+			// Display presentation control arrows
+			controls: true,
+
+			// Help the user learn the controls by providing hints, for example by
+			// bouncing the down arrow when they first encounter a vertical slide
+			controlsTutorial: true,
+
+			// Determines where controls appear, "edges" or "bottom-right"
+			controlsLayout: 'bottom-right',
+
+			// Visibility rule for backwards navigation arrows; "faded", "hidden"
+			// or "visible"
+			controlsBackArrows: 'faded',
+
+			// Display a presentation progress bar 
+			// [removido, pois gera cliques indesejados na navegação pelo celular. Ao tentar navegar para baixo na seta inferior de controle a barra de progresso é acionada e o slide correspondente é aberto. ]
+			progress: false,
+
+			// Display the page number of the current slide
+			slideNumber: true,
+
+			// Push each slide change to the browser history
+			history: true,
+
+			// Enable keyboard shortcuts for navigation
+			keyboard: true,
+
+			// Enable the slide overview mode
+			overview: false,
+
+			// Vertical centering of slides
+			center: true,
+
+			// Enables touch navigation on devices with touch input
+			touch: true,
+
+			// Loop the presentation
+			loop: false,
+
+			// Change the presentation direction to be RTL
+			rtl: false,
+
+			// Randomizes the order of slides each time the presentation loads
+			shuffle: false,
+
+			// Turns fragments on and off globally
+			fragments: true,
+
+			// Flags whether to include the current fragment in the URL,
+			// so that reloading brings you to the same fragment position
+			fragmentInURL: false,
+
+			// Flags if the presentation is running in an embedded mode,
+			// i.e. contained within a limited portion of the screen
+			embedded: false,
+
+			// Flags if we should show a help overlay when the questionmark
+			// key is pressed
+			help: true,
+
+			// Flags if speaker notes should be visible to all viewers
+			showNotes: false,
+
+			// Global override for autoplaying embedded media (video/audio/iframe)
+			// - null: Media will only autoplay if data-autoplay is present
+			// - true: All media will autoplay, regardless of individual setting
+			// - false: No media will autoplay, regardless of individual setting
+			autoPlayMedia: true,
+
+			// Number of milliseconds between automatically proceeding to the
+			// next slide, disabled when set to 0, this value can be overwritten
+			// by using a data-autoslide attribute on your slides
+			autoSlide: 0,
+
+			// Stop auto-sliding after user input
+			autoSlideStoppable: true,
+
+			// Use this method for navigation when auto-sliding
+			autoSlideMethod: Reveal.navigateNext,
+
+			// Specify the average time in seconds that you think you will spend
+			// presenting each slide. This is used to show a pacing timer in the
+			// speaker view
+			defaultTiming: 120,
+
+			// Enable slide navigation via mouse wheel
+			mouseWheel: false,
+
+			// Hides the address bar on mobile devices
+			hideAddressBar: true,
+
+			// Opens links in an iframe preview overlay
+			// Add `data-preview-link` and `data-preview-link="false"` to customise each link
+			// individually
+			previewLinks: false,
+
+			// Transition style
+			transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+			// Transition speed
+			transitionSpeed: 'default', // default/fast/slow
+
+			// Transition style for full page slide backgrounds
+			backgroundTransition: 'slide', // none/fade/slide/convex/concave/zoom
+
+			// Number of slides away from the current that are visible
+			viewDistance: 3,
+
+			// Parallax background image
+			// parallaxBackgroundImage: '', // e.g. "'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg'"
+
+			// Parallax background size
+			// parallaxBackgroundSize: '', // CSS syntax, e.g. "2100px 900px"
+
+			// Number of pixels to move the parallax background per slide
+			// - Calculated automatically unless specified
+			// - Set to 0 to disable movement along an axis
+			// parallaxBackgroundHorizontal: null,
+			// parallaxBackgroundVertical: null,
+
+			// The display mode that will be used to show slides
+			display: 'block',
+
+			// The "normal" size of the presentation, aspect ratio will be preserved
+			// when the presentation is scaled to fit different resolutions. Can be
+			// specified using percentage units.
+			width: 960,
+			height: 700,
+
+			// // Factor of the display size that should remain empty around the content
+			margin: 0.01,
+
+			// // Bounds for smallest/largest possible scale to apply to content
+			minScale: 0.2,
+			maxScale: 2,
+
+			pdfMaxPagesPerSlide: 1,
+			pdfSeparateFragments: false,
+		});
+
+	</script>
+
+</body>
+
+</html>

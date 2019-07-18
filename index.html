@@ -103,6 +103,12 @@
 
 				</section>
 
+				<section style="background-color: red; margin: 0;margin-top: 0; padding:0;padding-top:0;">
+					
+					<img style="margin: 0; margin-top: 0; padding:0;padding-top:0;" src="ilustracoes/drawing.svg" alt="Bloco">
+
+				</section>
+
 				<section id="ajuda">
 					<h3>Primeiros passos</h3>
 
@@ -318,58 +324,78 @@
 
 				</section>
 
-				<section id="laplaceteste">
-
-					<p style="font-size: 30px; text-align: justify; margin-bottom: 30px;">Considere o carro de massa
-						\(m\) e coeficiente de
-						arrasto \(c\). Para uma dada velocidade inicial \(v(0)\), qual é a expressão da velocidade
-						em função do tempo \(v(t)\) para uma entrada \(f(t)=1\)?</p>
-
-					<img style="width: 50%;" src="ilustracoes/functransSedan.svg" alt="Sedan">
-
-					<p style="font-size:30px"> \(m \, \dot{v} = f(t) - c \,v\) </p>
-
-				</section>
-
 				<section>
 
 					<div style="width:100%">
 
 						<h5 style="margin-bottom: 50px">Transformada de Laplace</h5>
 
-						<p style="font-size: 25px;">Definição</p>
-						<p style="font-size: 25px;">\[\mathscr{L} \left[ f(t) \right] = \int_0^\infty e^{-st} f(t)
-							\, dt
-							= F(s)\]</p>
-
-						<p style="font-size: 25px;" class="fragment fade-in" data-fragment-index="1">Exemplo:
+						<p style="font-size: 35px; text-align: left;">Definição</p>
+						<p style="margin-top: 60px; margin-bottom: 60px;">\[\mathscr{L} \left[ f(t) \right] = \int_0^\infty e^{-st} f(t) \, dt = F(s)\]</p>
+						<p style="font-size: 35px; text-align: left;" class="fragment fade-in" data-fragment-index="1">Exemplo 1:
 							Transformada de Laplace de \(f(t) = 1\)?</p>
 
-						<p style="font-size: 25px;" class="fragment fade-in" data-fragment-index="2">\[ F(s) =
+<!-- 						<p style="font-size: 25px;" class="fragment fade-in" data-fragment-index="2">\[ F(s) =
 							\int_0^\infty e^{-st} dt = \left. \frac{e^{-s t}}{-s} \right|^{\infty}_{0} = \left.
 							\frac{e^{-s t}}{s} \right|^{0}_{\infty}\]</p>
 						<p style="font-size: 25px;" class="fragment fade-in" data-fragment-index="3">\[ F(s) =
 							\frac{e^0}{s} - \frac{e^{-\infty}}{s} = \frac{1}{s}\]</p>
+ -->
+						<p style="font-size: 35px; text-align: left;" class="fragment fade-in" data-fragment-index="1">Exemplo 2:
+							Transformada de Laplace de \(f(t) = e^{-at}\)?</p>
 
-						<div style="width:100%;">
 
-							<a href="https://moodle.fei.edu.br/moodle/course/view.php?id=745&section=2" target="_blank"
-								class="button2" style="float: left; margin: 10px; align-content: center;bottom: 10 px"
-								title="Estudo recomendado">Tabelas de Laplace</a>
+				</section>
 
-						</div>
+				<section>
+					
+					<h5>Tabelas de Laplace<br></h5>
+
+					<div class="fragment fade-in" data-fragment-index="1" style="width: 35%; height: 450px; float: left;">
+					<p style="font-size: 25px; text-align: left;">Pares:</p>
+					<p style="font-size: 25px;">\begin{eqnarray} 1 &amp;\Longleftrightarrow&amp; \frac{1}{s} \\ e^{-at} &amp;\Longleftrightarrow&amp; \frac{1}{s+a} \\ \nonumber t &amp;\Longleftrightarrow&amp; \frac{1}{s^2} \\ \frac{1}{a}\left( 1 - e^{-at} \right)
+					    &amp;\Longleftrightarrow&amp; \frac{1}{s(s+a)} \end{eqnarray}
+					    <br></p>
+					</div>
+
+					<div class="fragment fade-in" data-fragment-index="2" style="width: 65%; height: 450px; float: left;">
+					<p style="font-size: 25px; text-align: left;">Propriedades:</p>
+					<p style="font-size: 25px;">\begin{eqnarray} \mathscr{L}[A f(t)]&amp;=&amp;A F(s) \\ \mathscr{L}\left[f_{1}(t) \pm f_{2}(t)\right]&amp;=&amp;F_{1}(s) \pm F_{2}(s) \\ \mathscr{L}_{ \pm}\left[\frac{d}{d t} f(t)\right]&amp;=&amp;s F(s)-f(0
+					    \pm) \\ \nonumber \mathscr{L}_{ \pm}\left[\frac{d^{2}}{d t^{2}} f(t)\right]&amp;=&amp;s^{2} F(s)-s f(0 \pm)-\dot{f}(0 \pm) \end{eqnarray}
+					</p>
+					</div>
+
+					<p class="fragment fade-in" data-fragment-index="3" style="font-size: 25px;">Estes e outros pares e propriedades podem ser encontrados em <a href="https://moodle.fei.edu.br/moodle/mod/resource/view.php?id=128113">Tabelas de Laplace</a>.</p>
 
 				</section>
 
 				<section>
 
-					<a href="#laplaceteste" class="button2" style="margin: 10px; align-content: center;"
-						title="Mais exercícios">Voltar
-						para o exercício</a>
+					<p style="font-size: 30px; text-align: justify; margin-bottom: 30px;">Considere o carro de massa \(m\) e coeficiente de arrasto \(c\). Para uma dada velocidade inicial \(v(0)\), qual é a expressão da velocidade em função do tempo \(v(t)\) para uma entrada \(f(t)=1\)?</p>
 
-					<a href="#functrans" class="button2" style="margin: 10px; align-content: center;"
-						title="Dúvidas">Próximo
-						tópico</a>
+					<div style="width: 60%; height: 100px; float: left;">
+					<img style="height: 100px;" src="ilustracoes/functransSedan.svg" alt="Sedan">
+					</div>
+
+					<div style="width: 40%; height: 100px; float: left;">
+					<p style="font-size:30px"> \(m \, \dot{v} = f(t) - c \,v\) </p>
+					</div>
+
+					<div class="fragment fade-in" data-fragment-index="1" style="width: 35%; height: 450px; float: left; margin: 0; padding: 0">
+					<p style="font-size: 25px; text-align: left;">Pares:</p>
+					<p style="font-size: 25px;">\begin{eqnarray} 1 &amp;\Longleftrightarrow&amp; \frac{1}{s} \\ e^{-at} &amp;\Longleftrightarrow&amp; \frac{1}{s+a} \\ \nonumber t &amp;\Longleftrightarrow&amp; \frac{1}{s^2} \\ \frac{1}{a}\left( 1 - e^{-at} \right)
+					    &amp;\Longleftrightarrow&amp; \frac{1}{s(s+a)} \end{eqnarray}
+					    <br></p>
+					</div>
+
+					<div class="fragment fade-in" data-fragment-index="1" style="width: 65%; height: 450px; float: left;">
+					<p style="font-size: 25px; text-align: left;">Propriedades:</p>
+					<p style="font-size: 25px;">\begin{eqnarray} \mathscr{L}[A f(t)]&amp;=&amp;A F(s) \\ \mathscr{L}\left[f_{1}(t) \pm f_{2}(t)\right]&amp;=&amp;F_{1}(s) \pm F_{2}(s) \\ \mathscr{L}_{ \pm}\left[\frac{d}{d t} f(t)\right]&amp;=&amp;s F(s)-f(0
+					    \pm) \\ \nonumber \mathscr{L}_{ \pm}\left[\frac{d^{2}}{d t^{2}} f(t)\right]&amp;=&amp;s^{2} F(s)-s f(0 \pm)-\dot{f}(0 \pm) \end{eqnarray}
+					</p>
+					</div>
+
+
 
 				</section>
 
@@ -378,21 +404,6 @@
 				<section id="functrans">
 
 					<h3>Função de transferência</h3>
-
-				</section>
-
-				<section id="functransteste">
-
-					<p style="font-size: 25px">Verifique a estabilidade das funções de transferência:</p>
-
-					<ol style="font-size: 35px;">
-						<li>\(G(s) = \frac{(s - 3)}{(s + 1)(s+2)}\)</li>
-						<li style="margin-top: 20px;">\(G(s) = \frac{1}{(s+1)(s^2 + 4 s + 13)}\)</li>
-						<li style="margin-top: 20px;">\(G(s) = \frac{1}{(s-1)}\)</li>
-					</ol>
-
-					<p style="font-size: 25px; margin-top: 100px;">Determine os ganhos \(K\) e \(K_g\) da função de
-						transferência #2.</p>
 
 				</section>
 
@@ -599,15 +610,18 @@
 
 				</section>
 
-				<section>
+				<section id="functransteste">
 
-					<a href="#functransteste" class="button2" style="margin: 10px; align-content: center;"
-						title="Mais exercícios">Voltar
-						para o exercício</a>
+					<p style="font-size: 25px">Verifique a estabilidade das funções de transferência:</p>
 
-					<a href="#sistprimeiraordem" class="button2" style="margin: 10px; align-content: center;"
-						title="Dúvidas">Próximo
-						tópico</a>
+					<ol style="font-size: 35px;">
+						<li>\(G(s) = \frac{(s - 3)}{(s + 1)(s+2)}\)</li>
+						<li style="margin-top: 20px;">\(G(s) = \frac{1}{(s+1)(s^2 + 4 s + 13)}\)</li>
+						<li style="margin-top: 20px;">\(G(s) = \frac{1}{(s-1)}\)</li>
+					</ol>
+
+					<p style="font-size: 25px; margin-top: 100px;">Determine os ganhos \(K\) e \(K_g\) da função de
+						transferência #2.</p>
 
 				</section>
 
@@ -620,48 +634,6 @@
 						Sistemas de primeira ordem
 					</h3>
 
-				</section>
-
-				<section id="sistprimeiraordemteste">
-
-					<p style="font-size: 25px; text-align: justify;">Considere o sistema de aquecimento de líquido
-						por
-						meio de vapor da figura a seguir cujas vazões de entrada e de saída são idênticas. A
-						temperatura
-						de entrada do líquido é Ti(t) e a de saída é T(t), a mesma do interior do tanque, pois há
-						uma
-						agitação perfeita do líquido. A vazão de vapor pode ser alterada pela abertura u(t) da
-						válvula
-						(0 a 100%).</p>
-
-					<p style="font-size: 25px; text-align: justify;">Um engenheiro mecânico decidiu identificar a
-						função
-						de transferência aproximada do sistema, por meio de ensaios experimentais. Para tal, ele
-						aplicou
-						um sinal de teste u(t) (do tipo degrau) de amplitude 10 (equivalente a 10% de abertura da
-						válvula) e registrou o comportamento de T(t), obtendo o gráfico de resposta a seguir, cujo
-						ruído
-						presente é devido ao sensor. Determine:</p>
-
-					<div style="width:60%; height:300px; float:left">
-						<ol style="font-size: 25px;">
-							<li>A função de transferência que pode representar o modelo desse sistema;</li>
-							<li>Os parâmetros dessa função de transferência;</li>
-							<li>O tempo de acomodação;</li>
-							<li>A resposta analítica;</li>
-						</ol>
-					</div>
-
-					<div style="width:40%; height:300px; float:right">
-						<img style="height: 300px" src="ilustracoes/sistprimeiraordemVapor.png" alt="Sistema vapor">
-					</div>
-
-				</section>
-
-				<section>
-
-					<img style="width:80%" src="ilustracoes/sistprimeiraordemRespostaExperimental.png"
-						alt="Experimental">
 				</section>
 
 				<section>
@@ -809,18 +781,47 @@
 					</div>
 				</section>
 
-				<section>
+				<section id="sistprimeiraordemteste">
 
-					<a href="#sistprimeiraordemteste" class="button2" style="margin: 10px; align-content: center;"
-						title="Mais exercícios">Voltar
-						para o exercício</a>
+					<p style="font-size: 25px; text-align: justify;">Considere o sistema de aquecimento de líquido
+						por
+						meio de vapor da figura a seguir cujas vazões de entrada e de saída são idênticas. A
+						temperatura
+						de entrada do líquido é Ti(t) e a de saída é T(t), a mesma do interior do tanque, pois há
+						uma
+						agitação perfeita do líquido. A vazão de vapor pode ser alterada pela abertura u(t) da
+						válvula
+						(0 a 100%).</p>
 
-					<a href="#sistsegundaordem" class="button2" style="margin: 10px; align-content: center;"
-						title="Dúvidas">Próximo
-						tópico</a>
+					<p style="font-size: 25px; text-align: justify;">Um engenheiro mecânico decidiu identificar a
+						função
+						de transferência aproximada do sistema, por meio de ensaios experimentais. Para tal, ele
+						aplicou
+						um sinal de teste u(t) (do tipo degrau) de amplitude 10 (equivalente a 10% de abertura da
+						válvula) e registrou o comportamento de T(t), obtendo o gráfico de resposta a seguir, cujo
+						ruído
+						presente é devido ao sensor. Determine:</p>
+
+					<div style="width:60%; height:300px; float:left">
+						<ol style="font-size: 25px;">
+							<li>A função de transferência que pode representar o modelo desse sistema;</li>
+							<li>Os parâmetros dessa função de transferência;</li>
+							<li>O tempo de acomodação;</li>
+							<li>A resposta analítica;</li>
+						</ol>
+					</div>
+
+					<div style="width:40%; height:300px; float:right">
+						<img style="height: 300px" src="ilustracoes/sistprimeiraordemVapor.png" alt="Sistema vapor">
+					</div>
 
 				</section>
 
+				<section>
+
+					<img style="width:80%" src="ilustracoes/sistprimeiraordemRespostaExperimental.png"
+						alt="Experimental">
+				</section>
 
 			</section>
 
@@ -836,19 +837,6 @@
 				<section>
 					<iframe allowfullscreen="" data-src="https://www.youtube.com/embed/99ZE2RGwqSM?autoplay=1"
 						width="100%" height="700px" frameborder="0"></iframe>
-				</section>
-
-				<section id="sistsegundaordemteste">
-
-					<p style="font-size: 25px; text-align: justify;">A figura abaixo representa a resposta ao degrau
-						unitário de um sistema de segunda ordem.
-						Determine a partir do gráfico da figura: o tempo de pico; o sobressinal (em porcentagem); e
-						o
-						tempo de acomodação. Determine também a função de transferência.</p>
-
-					<img style="height: 500px;" src="ilustracoes/sistsegundaordemExercicio.png"
-						alt="Sistema segunda exercício">
-
 				</section>
 
 				<section>
@@ -990,15 +978,17 @@
 
 				<section>
 
-					<a href="#sistsegundaordemteste" class="button2" style="margin: 10px; align-content: center;"
-						title="Mais exercícios">Voltar
-						para o exercício</a>
+					<p style="font-size: 25px; text-align: justify;">A figura abaixo representa a resposta ao degrau
+						unitário de um sistema de segunda ordem.
+						Determine a partir do gráfico da figura: o tempo de pico; o sobressinal (em porcentagem); e
+						o
+						tempo de acomodação. Determine também a função de transferência.</p>
 
-					<a href="#errosest" class="button2" style="margin: 10px; align-content: center;"
-						title="Dúvidas">Próximo
-						tópico</a>
+					<img style="height: 500px;" src="ilustracoes/sistsegundaordemExercicio.png"
+						alt="Sistema segunda exercício">
 
 				</section>
+
 			</section>
 
 			<section>
@@ -1020,17 +1010,6 @@
 					<iframe allowfullscreen=""
 						data-src="https://www.youtube.com/embed/5NVjIIi9fkY?start=60;end=390;cc_load_policy=1;autoplay=1"
 						width="100%" height="700px" frameborder="0"></iframe>
-				</section>
-
-				<section id="errosestteste">
-
-					<p style="font-size: 25px;">Determine o erro estacionário dos seguintes sistemas para as entradas:
-					</p>
-					<p> \(1/s\), \(1/s^2\) e \(1/s^3\)</p>
-
-					<img style="height: 150px; margin: 50px;" src="ilustracoes/errosestExemplo1.svg" alt="Exemplo 1">
-					<img style="height: 150px; margin: 50px;" src="ilustracoes/errosestExemplo2.svg" alt="Exemplo 2">
-
 				</section>
 
 				<section>
@@ -1202,15 +1181,15 @@
 
 				<section>
 
-					<a href="#errosestteste" class="button2" style="margin: 10px; align-content: center;"
-						title="Mais exercícios">Voltar
-						para o exercício</a>
+					<p style="font-size: 25px;">Determine o erro estacionário dos seguintes sistemas para as entradas:
+					</p>
+					<p> \(1/s\), \(1/s^2\) e \(1/s^3\)</p>
 
-					<a href="#controladorpid" class="button2" style="margin: 10px; align-content: center;"
-						title="Dúvidas">Próximo
-						tópico</a>
+					<img style="height: 150px; margin: 50px;" src="ilustracoes/errosestExemplo1.svg" alt="Exemplo 1">
+					<img style="height: 150px; margin: 50px;" src="ilustracoes/errosestExemplo2.svg" alt="Exemplo 2">
 
 				</section>
+
 			</section>
 
 			<section>
@@ -1219,17 +1198,6 @@
 					<h3>
 						Controlador PID
 					</h3>
-
-				</section>
-
-				<section id="controladorpidteste">
-
-					<p style="font-size: 30px;">Considere a função de transferência do sistema LJ: </p>
-
-					<p style="font-size: 30px;">\( G(s) = \frac{0{,}9}{0{,}3 s + 1} \)</p>
-
-					<p style="font-size: 30px; text-align: justify;">Projete um controlador PI para o sistema LJ de
-						forma que o tempo de acomodação em malha fechada seja \(\tau_{mf} = \frac{\tau}{2}\). </p>
 
 				</section>
 
@@ -1370,13 +1338,12 @@
 
 				<section>
 
-					<a href="#controladorpidteste" class="button2" style="margin: 10px; align-content: center;"
-						title="Mais exercícios">Voltar
-						para o exercício</a>
+					<p style="font-size: 30px;">Considere a função de transferência do sistema LJ: </p>
 
-					<a href="#espacoestados" class="button2" style="margin: 10px; align-content: center;"
-						title="Dúvidas">Próximo
-						tópico</a>
+					<p style="font-size: 30px;">\( G(s) = \frac{0{,}9}{0{,}3 s + 1} \)</p>
+
+					<p style="font-size: 30px; text-align: justify;">Projete um controlador PI para o sistema LJ de
+						forma que o tempo de acomodação em malha fechada seja \(\tau_{mf} = \frac{\tau}{2}\). </p>
 
 				</section>
 
@@ -2933,7 +2900,7 @@
 			height: 700,
 
 			// // Factor of the display size that should remain empty around the content
-			margin: 0,
+			margin: 0.01,
 
 			// // Bounds for smallest/largest possible scale to apply to content
 			minScale: 0.2,

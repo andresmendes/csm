@@ -1,0 +1,353 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1.0, maximum-scale=2.0, minimum-scale=.2, user-scalable=yes">
+	<meta name="description" content="Apresentações do curso de Controle de Sistemas Mecânicos">
+	<meta name="author" content="André de S. Mendes">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+	<title>ME9710/NMB710 - Controle de Sistemas Mecânicos</title>
+
+	<link rel="stylesheet" href="mycss/revealasm.css">
+	<link rel="stylesheet" href="mycss/theme/whiteasm.css" id="theme">
+	<!-- My class files -->
+	<link rel="stylesheet" href="mycss/asm.css">
+
+	<!-- Theme used for syntax highlighting of code -->
+	<link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
+
+	<!-- Printing and PDF exports -->
+	<script>
+		var link = document.createElement('link');
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = window.location.search.match(/print-pdf/gi) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+		document.getElementsByTagName('head')[0].appendChild(link);
+	</script>
+
+</head>
+
+<body>
+
+	<!-- Para pinch zoom no celular, é preciso insterir este "data-prevent-swipe" para evitar conflito. -->
+	<div class="reveal" onclick="closeNav()" data-prevent-swipe>
+
+		<div class="slides">
+
+				<section>
+					
+					<h3>Polos dominantes</h3>
+
+					<p>Maya Cap. 6.10.5, página 95.</p>
+
+				</section>
+
+				<section>
+					
+					<img src="ilustracoes/dominanciaDiagrama1.png" alt="Dominância diagrama 1">
+
+				</section>
+
+				<section>
+					
+					<img src="ilustracoes/dominanciaDiagrama2.png" alt="Dominância diagrama 2">
+
+				</section>
+
+				<section>
+					
+					<img src="ilustracoes/dominanciaDiagrama3.png" alt="Dominância diagrama 3">
+
+				</section>
+
+			</section>
+
+			<section>		
+
+					<section id="lugardasraizes">	
+
+						<h3>Lugar das raízes</h3>
+
+					</section>
+
+					<section>	
+
+						<p>
+						Obtenha o gráfico do lugar das raízes para as funções de transferência abaixo:
+						</p>
+
+
+						<div style="width: 50%; height:150px; float:left">	
+							<p style="font-size: 30px;">\(G1 = \frac{1}{(s+1)}\)</p>
+						</div>
+						<div style="width: 50%; height:150px; float:left">	
+							<p style="font-size: 30px;">\(G2 = \frac{1}{((s+1)(s+4))}\)</p>
+						</div>
+						<div style="width: 50%; height:150px; float:left">	
+							<p style="font-size: 30px;">\(G3 = \frac{(s+4)}{(s+1)}\)</p>
+						</div>
+						<div style="width: 50%; height:150px; float:left">	
+							<p style="font-size: 30px;">\(G4 = \frac{1}{((s+1)(s+2)(s+3))}\)</p>
+						</div>
+						<div style="width: 50%; height:150px; float:left">	
+							<p style="font-size: 30px;">\(G5 = \frac{(s+3)}{((s+1)(s+2))}\)</p>
+						</div>
+						<div style="width: 50%; height:150px; float:left">	
+							<p style="font-size: 30px;">\(G6 = \frac{1}{((s+1)(s+2)(s+3)(s+4))}\)</p>
+						</div>
+
+					</section>
+
+					<section>			
+
+						<!-- <p>Considerações</p> -->
+						<h5>Considerações</h5>
+
+						<ul style="font-size: 40px;">	
+							<li>Simetria em relação ao eixo real</li>
+							<li class="fragment fade-in" data-fragment-index="1">LGR no eixo real</li>
+							<li class="fragment fade-in" data-fragment-index="2">Número de ramos do LGR é igual ao número de polos</li>
+							<li class="fragment fade-in" data-fragment-index="3">Quando \(K=0\), os polos são iguais aos polos de malha aberta </li>
+							<li class="fragment fade-in" data-fragment-index="4">Quando \(K \rightarrow \infty\), os polos tendem ao infinito ou ao zero</li>
+							<li class="fragment fade-in" data-fragment-index="5">Atração do LGR pelos zeros e repulsão pelos polos</li>
+							<li class="fragment fade-in" data-fragment-index="6">Ramos que vão para o infinito: Número de assíntotas = (número de polos) - (número de zeros)</li>
+						</ul>
+
+					</section>
+
+					<section>
+
+						<h5>Projeto 1</h5>
+
+						<p>Projeto PI de velocidade do sistema LJ</p>
+
+						<p style="padding: 70px;">\(P(s) = \frac{K_g}{\tau s + 1} = \frac{0{,}9}{0{,}3s+1}\)</p>
+
+						<p>Deseja-se \(e_{ss}\)=0 (Degrau) e \(\tau_{m.f.} = \tau/2\)</p>
+						
+					</section>
+
+					<section>
+
+						<h5>Projeto 2</h5>
+
+						<p>Projeto PD de posição do sistema LJ</p>
+
+						<p style="padding: 70px;">\(P(s) = \frac{10}{s(0{,}3 s + 1)} = \frac{100/3}{s+10/3}\)</p>
+
+						<p>Deseja-se \(e_{ss}\)=0 (Degrau) e \(\tau_{m.f.} = \tau/2\)</p>
+						
+					</section>
+
+					<section>
+
+						<h5>Projeto 3</h5>
+
+						<p>Projeto LEAD de posição do sistema LJ</p>
+
+						<p style="padding: 30px;">\(P(s) = \frac{10}{s(0{,}3 s + 1)} = \frac{100/3}{s+10/3}\)</p>
+						
+						<p style="padding: 30px;">\(C(s) = \frac{(\lambda_1 s + 1)}{(\lambda_2 s + 1))} = \frac{(s + z)}{s+p}\)</p>
+
+						<p>Deseja-se \(e_{ss}\)=0 (Degrau) e polos dominantes em \(-4 \pm 4j\)</p>
+						
+					</section>
+
+
+
+
+		</div>
+	</div>
+
+	<div style="position:absolute; z-index:1; float:right; top:10px; right:10px;margin:0;padding:0">
+		<a href="https://portal.fei.edu.br/" target="_blank"><img src="ilustracoes/logoFEI.png" alt="Logo FEI"
+				title="Centro Universitário FEI" style="width:80px; margin-top:0"></a>
+	</div>
+
+	<script src="reveal.js/lib/js/head.min.js"></script>
+	<script src="reveal.js/js/reveal.js"></script>
+
+	<script>
+		// More info about config & dependencies:
+		// - https://github.com/hakimel/reveal.js#configuration
+		// - https://github.com/hakimel/reveal.js#dependencies
+		Reveal.initialize({
+			dependencies: [
+				// Cross-browser shim that fully implements classList - https://github.com/eligrey/classList.js/
+				{ src: 'reveal.js/lib/js/classList.js', condition: function () { return !document.body.classList; } },
+
+				// Interpret Markdown in <section> elements
+				{ src: 'reveal.js/plugin/markdown/marked.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+				{ src: 'reveal.js/plugin/markdown/markdown.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+
+				// Syntax highlight for <code> elements
+				{ src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function () { hljs.initHighlightingOnLoad(); } },
+
+				// Zoom in and out with Alt+click
+				{ src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+
+				// Speaker notes
+				{ src: 'reveal.js/plugin/notes/notes.js', async: true },
+
+				// MathJax
+				{ src: 'reveal.js/plugin/math/math.js', async: true }
+			],
+
+			// math: {
+			// 	mathjax: 'MathJax/MathJax.js',
+			// 	config: 'TeX-AMS_HTML-full'  // See http://docs.mathjax.org/en/latest/config-files.html
+			// },
+			math: {
+				mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js',
+				config: 'TeX-AMS_HTML-full'  // See http://docs.mathjax.org/en/latest/config-files.html
+			},
+
+			// Display presentation control arrows
+			controls: true,
+
+			// Help the user learn the controls by providing hints, for example by
+			// bouncing the down arrow when they first encounter a vertical slide
+			controlsTutorial: true,
+
+			// Determines where controls appear, "edges" or "bottom-right"
+			controlsLayout: 'bottom-right',
+
+			// Visibility rule for backwards navigation arrows; "faded", "hidden"
+			// or "visible"
+			controlsBackArrows: 'faded',
+
+			// Display a presentation progress bar 
+			// [removido, pois gera cliques indesejados na navegação pelo celular. Ao tentar navegar para baixo na seta inferior de controle a barra de progresso é acionada e o slide correspondente é aberto. ]
+			progress: false,
+
+			// Display the page number of the current slide
+			slideNumber: true,
+
+			// Push each slide change to the browser history
+			history: true,
+
+			// Enable keyboard shortcuts for navigation
+			keyboard: true,
+
+			// Enable the slide overview mode
+			overview: false,
+
+			// Vertical centering of slides
+			center: true,
+
+			// Enables touch navigation on devices with touch input
+			touch: true,
+
+			// Loop the presentation
+			loop: false,
+
+			// Change the presentation direction to be RTL
+			rtl: false,
+
+			// Randomizes the order of slides each time the presentation loads
+			shuffle: false,
+
+			// Turns fragments on and off globally
+			fragments: true,
+
+			// Flags whether to include the current fragment in the URL,
+			// so that reloading brings you to the same fragment position
+			fragmentInURL: false,
+
+			// Flags if the presentation is running in an embedded mode,
+			// i.e. contained within a limited portion of the screen
+			embedded: false,
+
+			// Flags if we should show a help overlay when the questionmark
+			// key is pressed
+			help: true,
+
+			// Flags if speaker notes should be visible to all viewers
+			showNotes: false,
+
+			// Global override for autoplaying embedded media (video/audio/iframe)
+			// - null: Media will only autoplay if data-autoplay is present
+			// - true: All media will autoplay, regardless of individual setting
+			// - false: No media will autoplay, regardless of individual setting
+			autoPlayMedia: true,
+
+			// Number of milliseconds between automatically proceeding to the
+			// next slide, disabled when set to 0, this value can be overwritten
+			// by using a data-autoslide attribute on your slides
+			autoSlide: 0,
+
+			// Stop auto-sliding after user input
+			autoSlideStoppable: true,
+
+			// Use this method for navigation when auto-sliding
+			autoSlideMethod: Reveal.navigateNext,
+
+			// Specify the average time in seconds that you think you will spend
+			// presenting each slide. This is used to show a pacing timer in the
+			// speaker view
+			defaultTiming: 120,
+
+			// Enable slide navigation via mouse wheel
+			mouseWheel: false,
+
+			// Hides the address bar on mobile devices
+			hideAddressBar: true,
+
+			// Opens links in an iframe preview overlay
+			// Add `data-preview-link` and `data-preview-link="false"` to customise each link
+			// individually
+			previewLinks: false,
+
+			// Transition style
+			transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+			// Transition speed
+			transitionSpeed: 'default', // default/fast/slow
+
+			// Transition style for full page slide backgrounds
+			backgroundTransition: 'slide', // none/fade/slide/convex/concave/zoom
+
+			// Number of slides away from the current that are visible
+			viewDistance: 3,
+
+			// Parallax background image
+			// parallaxBackgroundImage: '', // e.g. "'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg'"
+
+			// Parallax background size
+			// parallaxBackgroundSize: '', // CSS syntax, e.g. "2100px 900px"
+
+			// Number of pixels to move the parallax background per slide
+			// - Calculated automatically unless specified
+			// - Set to 0 to disable movement along an axis
+			// parallaxBackgroundHorizontal: null,
+			// parallaxBackgroundVertical: null,
+
+			// The display mode that will be used to show slides
+			display: 'block',
+
+			// The "normal" size of the presentation, aspect ratio will be preserved
+			// when the presentation is scaled to fit different resolutions. Can be
+			// specified using percentage units.
+			width: 960,
+			height: 700,
+
+			// // Factor of the display size that should remain empty around the content
+			margin: 0.01,
+
+			// // Bounds for smallest/largest possible scale to apply to content
+			minScale: 0.2,
+			maxScale: 2,
+
+			pdfMaxPagesPerSlide: 1,
+			pdfSeparateFragments: false,
+		});
+
+	</script>
+
+</body>
+
+</html>
