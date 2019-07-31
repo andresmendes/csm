@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<title>Controle de Sistemas Mecânicos</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> -->
+
+<style>
+.mySlides {display:none;width:100%; height: 500px; background-color: red; margin: 0; padding: 0;}
+</style>
+
+<body onkeydown="checkkey(event)">
+
+<h2 class="w3-center">Manual Slideshow</h2>
+
+<!-- <div class="w3-content w3-display-container"> -->
+  
+  <div class="mySlides">
+  
+    <h5>Título</h5>
+
+  <p>Slide 1</p>
+  <p>Slide 1</p>
+  
+  </div>
+
+
+  <div class="mySlides">
+  
+  <p>slide 2</p>
+  
+  </div>
+
+
+
+
+  <button onclick="plusDivs(-1)">&#10094;</button>
+  <button onclick="plusDivs(1)">&#10095;</button>
+
+<!-- </div> -->
+
+<script>
+var slideIndex = 1;
+showDivs(slideIndex);
+
+function plusDivs(n) {
+  showDivs(slideIndex += n);
+}
+
+function showDivs(n) {
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  if (n > x.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = x.length}
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";  
+  }
+  x[slideIndex-1].style.display = "block";  
+}
+</script>
+
+
+
+<!--  Controle teclado  -->
+<!-- Source: https://www.w3schools.com/jsref/event_key_key.asp -->
+<script>
+function checkkey(event) {
+  var x = event.keyCode;
+
+  if (x == '37') { 
+    plusDivs(-1);
+  }
+  if (x == '39') { 
+    plusDivs(1);
+  }
+
+}
+</script>
+
+
+</body>
+</html>
